@@ -10,7 +10,7 @@ read_globals = {
     string = {fields = {"split", "trim"}},
     table = {fields = {"copy", "getn"}},
 
-    "intllib", "ItemStack",
+    "intllib", "ItemStack", "drawers",
 }
 
 files["init.lua"].ignore = { "name", "stack" }

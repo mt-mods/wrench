@@ -91,3 +91,24 @@ for _, tier in pairs({"LV", "MV", "HV"}) do
 		})
 	end
 end
+
+-- other machines
+
+wrench.register_node("technic:injector", {
+	lists = { "main" },
+	metas = {
+		splitstacks = wrench.META_TYPE_INT,
+		mode = wrench.META_TYPE_STRING,
+		infotext = wrench.META_TYPE_STRING,
+		formspec = wrench.META_TYPE_STRING,
+	},
+	after_place = function(pos, player, stack)
+		local meta = minetest.get_meta(pos)
+		local form = meta and meta:get_string("formspec")
+		-- disabled when formspec contains 'enable' button
+		if form and string.find(form, "button[4,1;4,1;enable;", 1, true) then
+			local timer = minetest.get_node_timer(pos)
+			timer:stop()
+		end
+	end,
+})

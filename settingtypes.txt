@@ -1,0 +1,1 @@
+wrench.enable_crafting (enable recipe for wrench) bool true

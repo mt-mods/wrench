@@ -43,6 +43,7 @@ function wrench.blacklist_item(name)
 end
 
 local mods = {
+	"bones",
 	"default",
 	"digtron",
 	"drawers",

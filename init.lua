@@ -44,6 +44,7 @@ end
 
 local mods = {
 	"bones",
+	"connected_chests",
 	"default",
 	"digtron",
 	"drawers",

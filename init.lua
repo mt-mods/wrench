@@ -48,6 +48,7 @@ local mods = {
 	"default",
 	"digtron",
 	"drawers",
+        "pipeworks",
 	"technic",
 	"technic_chests",
 	"technic_cnc",

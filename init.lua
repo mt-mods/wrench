@@ -51,6 +51,7 @@ local mods = {
 	"technic",
 	"technic_chests",
 	"technic_cnc",
+	"xdecor",
 }
 
 for _, modname in pairs(mods) do

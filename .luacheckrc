@@ -3,14 +3,20 @@ allow_defined_top = true
 max_line_length = 999
 
 globals = {
-    "technic", "minetest",
+	"minetest",
 }
 
 read_globals = {
-    string = {fields = {"split", "trim"}},
-    table = {fields = {"copy", "getn"}},
+	string = {fields = {"split", "trim"}},
+	table = {fields = {"copy", "getn"}},
 
-    "intllib", "ItemStack", "drawers",
+	-- Minetest
+	"ItemStack",
+
+	-- Mods
+	"drawers",
+	"intllib",
+	"xdecor",
 }
 
 files["init.lua"].ignore = { "name", "stack" }

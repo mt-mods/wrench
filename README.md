@@ -50,11 +50,10 @@ This mod is a fork from wrench/ in https://github.com/mt-mods/technic
   - xdecor:itemframe
   - xdecor:mailbox
 
-# Settings
-
-in `minetest.conf`
+# Settings in `minetest.conf`
 ```ini
-# enable recipe for wrench (default: true)
+# Only in combination with technic modpack:
+#  enable recipe for wrench (default: true)
 wrench.enable_crafting = true
 ```
 

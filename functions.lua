@@ -81,7 +81,7 @@ function wrench.pickup_node(pos, player)
 	if def.timer then
 		local timer = minetest.get_node_timer(pos)
 		local timeout = timer:get_timeout()
-		if timeout > 0 then
+		if timeout then
 			data.timer = {
 				timeout = timeout,
 				elapsed = timer:get_elapsed()
@@ -133,7 +133,11 @@ function wrench.restore_node(pos, player, stack)
 	end
 	if data.timer then
 		local timer = minetest.get_node_timer(pos)
-		timer:set(data.timer.timeout, data.timer.elapsed)
+		if data.timer.timeout == 0 then
+			timer:stop()
+		else
+			timer:set(data.timer.timeout, data.timer.elapsed)
+		end
 	end
 	if def.after_place then
 		def.after_place(pos, player, stack)

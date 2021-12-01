@@ -25,21 +25,14 @@ nodes = {
 	"xdecor:cauldron_soup",
 }
 
-local function translated(player, text)
-	local player_name = player:get_player_name()
-	local lang_code = minetest.get_player_information(player_name).lang_code
-	return minetest.get_translated_string(lang_code, text)
-end
-
 for _, nodename in pairs(nodes) do
 	wrench.register_node(nodename, {
 		metas = {
 			infotext = wrench.META_TYPE_STRING,
 		},
 		description = function(pos, meta, node, player)
-			local str = translated(player, minetest.registered_nodes[node.name].infotext)
-			local i = string.find(str, "-")
-			return (i and i > 0) and string.sub(str, 1, i - 1) or str
+			local desc = minetest.registered_nodes[node.name].description
+			return desc ~= "" and desc or minetest.registered_nodes[node.name].infotext
 		end,
 
 	})

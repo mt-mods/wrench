@@ -78,6 +78,16 @@ function wrench.pickup_node(pos, player)
 			data.metas[name] = meta:get_int(name)
 		end
 	end
+	if def.timer then
+		local timer = minetest.get_node_timer(pos)
+		local timeout = timer:get_timeout()
+		if timeout > 0 then
+			data.timer = {
+				timeout = timeout,
+				elapsed = timer:get_elapsed()
+			}
+		end
+	end
 	local stack = ItemStack(node.name)
 	local item_meta = stack:get_meta()
 	item_meta:set_string("data", minetest.serialize(data))
@@ -120,6 +130,10 @@ function wrench.restore_node(pos, player, stack)
 		elseif meta_type == wrench.META_TYPE_STRING then
 			meta:set_string(name, value)
 		end
+	end
+	if data.timer then
+		local timer = minetest.get_node_timer(pos)
+		timer:set(data.timer.timeout, data.timer.elapsed)
 	end
 	if def.after_place then
 		def.after_place(pos, player, stack)

@@ -30,9 +30,18 @@ if minetest.settings:get_bool("wrench.enable_crafting", true) then
 		minetest.register_craft({
 			output = "wrench:wrench",
 			recipe = {
-				{"technic:carbon_steel_ingot", "", "technic:carbon_steel_ingot"},
-				{"", "technic:carbon_steel_ingot", ""},
-				{"", "technic:carbon_steel_ingot", ""}
+				{"technic:stainless_steel_ingot", "", "technic:stainless_steel_ingot"},
+				{"", "technic:stainless_steel_ingot", ""},
+				{"", "technic:stainless_steel_ingot", ""}
+			}
+		})
+	elseif minetest.get_modpath("default") then
+		minetest.register_craft({
+			output = "wrench:wrench",
+			recipe = {
+				{"default:steel_ingot", "", "default:steel_ingot"},
+				{"", "default:steel_ingot", ""},
+				{"", "default:steel_ingot", ""}
 			}
 		})
 	end

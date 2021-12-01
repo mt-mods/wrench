@@ -1,1 +1,2 @@
-wrench.enable_crafting (enable recipe for wrench) bool true
+# Allows the wrench to be crafted if either the 'technic' or 'default' mod is installed.
+wrench.enable_crafting (Enable crafting recipe) bool true

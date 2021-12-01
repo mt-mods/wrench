@@ -38,6 +38,7 @@ This mod is a fork from wrench/ in https://github.com/mt-mods/technic
   - pipeworks:autocrafter
   - pipeworks:deployer_*
   - pipeworks:dispenser_*
+  - pipeworks:nodebreaker_*
 * https://github.com/mt-mods/technic
 * https://github.com/minetest-mods/xdecor
   - xdecor:cabinet

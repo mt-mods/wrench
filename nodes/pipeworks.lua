@@ -31,8 +31,14 @@ local wielder_data = {
 }
 
 -- TODO: convert *_on to *_off nodes before pickpup?
+
 wrench.register_node("pipeworks:deployer_off", wielder_data)
 wrench.register_node("pipeworks:deployer_on", wielder_data)
 
 wrench.register_node("pipeworks:dispenser_off", wielder_data)
 wrench.register_node("pipeworks:dispenser_on", wielder_data)
+
+table.insert(wielder_data.lists, "pick");
+table.insert(wielder_data.lists, "ghost_pick");
+wrench.register_node("pipeworks:nodebreaker_off", wielder_data)
+wrench.register_node("pipeworks:nodebreaker_on", wielder_data)

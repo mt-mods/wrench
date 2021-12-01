@@ -75,21 +75,21 @@ end
 -- Register extra nodes with color marking for gold chest
 
 local chest_mark_colors = {
-	'_black',
-	'_blue',
-	'_brown',
-	'_cyan',
-	'_dark_green',
-	'_dark_grey',
-	'_green',
-	'_grey',
-	'_magenta',
-	'_orange',
-	'_pink',
-	'_red',
-	'_violet',
-	'_white',
-	'_yellow',
+	"_black",
+	"_blue",
+	"_brown",
+	"_cyan",
+	"_dark_green",
+	"_dark_grey",
+	"_green",
+	"_grey",
+	"_magenta",
+	"_orange",
+	"_pink",
+	"_red",
+	"_violet",
+	"_white",
+	"_yellow",
 }
 
 for i = 1, 15 do

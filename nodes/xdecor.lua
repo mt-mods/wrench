@@ -16,7 +16,7 @@ for _, nodename in pairs(nodes) do
 	})
 end
 
--- cauldron
+-- Cauldron
 
 nodes = {
 	"xdecor:cauldron_empty",
@@ -27,7 +27,7 @@ nodes = {
 
 local function translated(player, text)
 	local player_name = player:get_player_name()
-	local lang_code =  minetest.get_player_information(player_name).lang_code
+	local lang_code = minetest.get_player_information(player_name).lang_code
 	return minetest.get_translated_string(lang_code, text)
 end
 
@@ -45,17 +45,17 @@ for _, nodename in pairs(nodes) do
 	})
 end
 
--- enchantment_table
+-- Enchantment Table
 
 wrench.register_node("xdecor:enchantment_table", {
-	lists = { "tool", "mese" },
+	lists = {"tool", "mese"},
 	metas = {
 		infotext = wrench.META_TYPE_STRING,
 		formspec = wrench.META_TYPE_STRING,
 	},
 })
 
--- itemframe
+-- Item Frame
 
 wrench.register_node("xdecor:itemframe", {
 	metas = {
@@ -65,7 +65,7 @@ wrench.register_node("xdecor:itemframe", {
 	},
 	owned = true,
 	after_place = function(pos, player, stack)
-                -- force item update
+		-- Force item update
 		local timer = minetest.get_node_timer(pos)
 		timer:start(0)
 	end,
@@ -81,7 +81,7 @@ wrench.register_node("xdecor:itemframe", {
 	end,
 })
 
--- mailbox
+-- Mailbox
 
 local mailbox_metas = {
 	owner = wrench.META_TYPE_STRING,
@@ -90,8 +90,8 @@ local mailbox_metas = {
 }
 
 for i = 1, 7 do
-    mailbox_metas["giver" .. i] = wrench.META_TYPE_STRING
-    mailbox_metas["stack" .. i] = wrench.META_TYPE_STRING
+	mailbox_metas["giver" .. i] = wrench.META_TYPE_STRING
+	mailbox_metas["stack" .. i] = wrench.META_TYPE_STRING
 end
 
 wrench.register_node("xdecor:mailbox", {
@@ -100,16 +100,13 @@ wrench.register_node("xdecor:mailbox", {
 	owned = true,
 })
 
--- workbench
+-- Workbench
 
 wrench.register_node("xdecor:workbench", {
-	lists = { "tool", "input", "hammer", "forms", "storage" },
+	lists = {"tool", "input", "hammer", "forms", "storage" },
 	metas = {
 		infotext = wrench.META_TYPE_STRING,
 	},
 	owned = true,
-	after_place = function(pos, player, stack)
-		local timer = minetest.get_node_timer(pos)
-		timer:start(3.0)
-	end,
+	timer = true,
 })

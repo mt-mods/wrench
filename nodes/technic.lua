@@ -17,8 +17,8 @@ local function register_machine_node(nodename, tier)
 	wrench.register_node(nodename, {lists = lists, metas = metas})
 end
 
--- base_machines table row format: name = { extra meta fields }
-local defaults = { tiers = {"LV", "MV", "HV"} }
+-- base_machines table row format: name = {extra meta fields}
+local defaults = {tiers = {"LV", "MV", "HV"}}
 local base_machines = {
 	electric_furnace = defaults,
 	grinder = defaults,
@@ -92,23 +92,15 @@ for _, tier in pairs({"LV", "MV", "HV"}) do
 	end
 end
 
--- other machines
+-- Other machines
 
 wrench.register_node("technic:injector", {
-	lists = { "main" },
+	lists = {"main"},
 	metas = {
 		splitstacks = wrench.META_TYPE_INT,
 		mode = wrench.META_TYPE_STRING,
 		infotext = wrench.META_TYPE_STRING,
 		formspec = wrench.META_TYPE_STRING,
 	},
-	after_place = function(pos, player, stack)
-		local meta = minetest.get_meta(pos)
-		local form = meta and meta:get_string("formspec")
-		-- disabled when formspec contains 'enable' button
-		if form and string.find(form, "button[4,1;4,1;enable;", 1, true) then
-			local timer = minetest.get_node_timer(pos)
-			timer:stop()
-		end
-	end,
+	timer = true,
 })

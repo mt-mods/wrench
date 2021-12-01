@@ -34,6 +34,14 @@ This mod is a fork from wrench/ in https://github.com/mt-mods/technic
   - drawers:aspen_wood
   - drawers:junglewood
   - drawers:pine_wood
+* https://github.com/minetest-mods/more_chests
+  - more_chests:cobble
+  - more_chests:dropbox
+  - more_chests:fridge
+  - more_chests:big_fridge
+  - more_chests:shared
+  - more_chests:secret
+  - more_chests:toolbox_*
 * https://github.com/mt-mods/pipeworks
   - pipeworks:autocrafter
   - pipeworks:deployer_*
@@ -52,8 +60,7 @@ This mod is a fork from wrench/ in https://github.com/mt-mods/technic
 
 # Settings in `minetest.conf`
 ```ini
-# Only in combination with technic modpack:
-#  enable recipe for wrench (default: true)
+# Allows the wrench to be crafted if either the 'technic' or 'default' mod is installed.
 wrench.enable_crafting = true
 ```
 

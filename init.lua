@@ -43,6 +43,7 @@ function wrench.blacklist_item(name)
 end
 
 local mods = {
+	"3d_armor_stand",
 	"bones",
 	"connected_chests",
 	"default",

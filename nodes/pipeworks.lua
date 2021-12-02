@@ -1,6 +1,17 @@
 
 -- Register wrench support for pipeworks
 
+local desc_ghost_items = function(pos, meta, node, player)
+	local desc = minetest.registered_nodes[node.name].description
+	return string.format("%s with configuration", desc)
+end
+
+local desc_infotext = function(pos, meta, node, player)
+	return meta:get_string("infotext")
+end
+
+-- Autocrafter
+
 wrench.register_node("pipeworks:autocrafter", {
 	lists = {"src", "dst", "recipe", "output"},
 	metas = {
@@ -9,9 +20,7 @@ wrench.register_node("pipeworks:autocrafter", {
 		infotext = wrench.META_TYPE_STRING,
 		formspec = wrench.META_TYPE_STRING,
 	},
-	description = function(pos, meta, node, player)
-		return meta:get_string("infotext")
-	end,
+	description = desc_infotext,
 	timer = true,
 })
 
@@ -49,10 +58,7 @@ local filter_data = {
 		infotext = wrench.META_TYPE_STRING,
 		formspec = wrench.META_TYPE_STRING,
 	},
-	description = function(pos, meta, node, player)
-		local desc = minetest.registered_nodes[node.name].description
-		return string.format("%s with configuration", desc)
-	end,
+	description = desc_ghost_items,
 }
 
 wrench.register_node("pipeworks:filter", filter_data)
@@ -61,13 +67,76 @@ wrench.register_node("pipeworks:mese_filter", filter_data)
 filter_data.metas["channel"] = wrench.META_TYPE_STRING
 wrench.register_node("pipeworks:digiline_filter", filter_data)
 
--- TODO: Tubes
+-- Tubes (6d style): 'mese_sand_tube' and 'teleport_tube'
 
---[[
-local nodes = {
-	"pipeworks:teleport_tube",
-	"pipeworks:mese_tube_000010",
-	"pipeworks:lua_tube_000000",
-	"pipeworks:mese_sand_tube_2",
+for i = 1, 10 do
+	wrench.register_node("pipeworks:mese_sand_tube_"..i, {
+		drop = 1,
+		metas = {
+			infotext = wrench.META_TYPE_STRING,
+			formspec = wrench.META_TYPE_STRING,
+			dist = wrench.META_TYPE_INT,
+		},
+		description = desc_infotext,
+	})
+	wrench.register_node("pipeworks:teleport_tube_"..i, {
+		drop = 1,
+		metas = {
+			infotext = wrench.META_TYPE_STRING,
+			formspec = wrench.META_TYPE_STRING,
+			channel = wrench.META_TYPE_STRING,
+			can_receive = wrench.META_TYPE_INT,
+		},
+		description = desc_infotext,
+	})
+end
+
+-- Tubes (old style): 'lua_tube' and 'mese_tube'
+
+local lua_tube_data = {
+	drop = 1,
+	metas = {
+		formspec = wrench.META_TYPE_STRING,
+		code = wrench.META_TYPE_STRING,
+		ignore_offevents = wrench.META_TYPE_STRING,
+		lc_memory  = wrench.META_TYPE_STRING,
+		luac_id = wrench.META_TYPE_INT,
+		real_portstates = wrench.META_TYPE_INT,
+	},
+	description = function(pos, meta, node, player)
+		local desc = minetest.registered_nodes[node.name].description
+		return string.format("%s with program", desc)
+	end,
 }
-]]--
+
+local mese_tube_data = {
+	drop = 1,
+	lists = {},
+	metas = {
+		infotext = wrench.META_TYPE_STRING,
+		formspec = wrench.META_TYPE_STRING,
+	},
+	description = desc_ghost_items,
+}
+
+for i = 1, 6 do
+	mese_tube_data.metas["l"..i.."s"] = wrench.META_TYPE_INT
+	table.insert(mese_tube_data.lists, "line"..i)
+end
+
+for xm = 0, 1 do
+for xp = 0, 1 do
+for ym = 0, 1 do
+for yp = 0, 1 do
+for zm = 0, 1 do
+for zp = 0, 1 do
+	local tname = xm..xp..ym..yp..zm..zp
+	wrench.register_node("pipeworks:lua_tube"..tname, lua_tube_data)
+	wrench.register_node("pipeworks:lua_tube"..tname.."_burnt", lua_tube_data)
+	wrench.register_node("pipeworks:mese_tube_"..tname, mese_tube_data)
+end
+end
+end
+end
+end
+end

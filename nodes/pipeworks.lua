@@ -71,7 +71,7 @@ wrench.register_node("pipeworks:digiline_filter", filter_data)
 
 for i = 1, 10 do
 	wrench.register_node("pipeworks:mese_sand_tube_"..i, {
-		drop = 1,
+		drop = true,
 		metas = {
 			infotext = wrench.META_TYPE_STRING,
 			formspec = wrench.META_TYPE_STRING,
@@ -80,7 +80,7 @@ for i = 1, 10 do
 		description = desc_infotext,
 	})
 	wrench.register_node("pipeworks:teleport_tube_"..i, {
-		drop = 1,
+		drop = true,
 		metas = {
 			infotext = wrench.META_TYPE_STRING,
 			formspec = wrench.META_TYPE_STRING,
@@ -94,7 +94,7 @@ end
 -- Tubes (old style): 'lua_tube' and 'mese_tube'
 
 local lua_tube_data = {
-	drop = 1,
+	drop = true,
 	metas = {
 		formspec = wrench.META_TYPE_STRING,
 		code = wrench.META_TYPE_STRING,
@@ -110,7 +110,7 @@ local lua_tube_data = {
 }
 
 local mese_tube_data = {
-	drop = 1,
+	drop = true,
 	lists = {},
 	metas = {
 		infotext = wrench.META_TYPE_STRING,

@@ -47,6 +47,11 @@ function wrench.pickup_node(pos, player)
 			return false, errors.owned:format(owner)
 		end
 	end
+	local drop = def.drop and minetest.registered_nodes[node.name].drop
+	if drop then
+		-- drop node name like digging
+		node.name = drop
+	end
 	local data = {
 		name = node.name,
 		version = SERIALIZATION_VERSION,

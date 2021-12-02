@@ -81,12 +81,10 @@ function wrench.pickup_node(pos, player)
 	if def.timer then
 		local timer = minetest.get_node_timer(pos)
 		local timeout = timer:get_timeout()
-		if timeout then
-			data.timer = {
-				timeout = timeout,
-				elapsed = timer:get_elapsed()
-			}
-		end
+		data.timer = {
+			timeout = timeout,
+			elapsed = timer:get_elapsed()
+		}
 	end
 	local stack = ItemStack(node.name)
 	local item_meta = stack:get_meta()

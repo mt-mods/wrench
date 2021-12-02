@@ -22,9 +22,9 @@ local wielder_data = {
 		infotext = wrench.META_TYPE_STRING,
 		formspec = wrench.META_TYPE_STRING,
 	},
+	-- drop node in state 'off' like digging
+	drop = true,
 }
-
--- TODO: convert *_on to *_off nodes before pickpup?
 
 wrench.register_node("pipeworks:deployer_off", wielder_data)
 wrench.register_node("pipeworks:deployer_on", wielder_data)

@@ -47,18 +47,8 @@ function wrench.pickup_node(pos, player)
 			return false, errors.owned:format(owner)
 		end
 	end
-	-- TODO: Move handling for 'def.drop' to wrench.register_node()?
-	-- Unsupported types are then already noticed when registering
-	if type(def.drop) == "string" then
+	if def.drop then
 		node.name = def.drop
-	elseif type(def.drop) == "boolean" then
-		-- drop node name like digging
-		local drop = def.drop and minetest.registered_nodes[node.name].drop
-		if type(drop) == "string" then
-			node.name = drop
-		end
-	elseif def.drop then
-		minetest.log("warning", "wrench.pickup_node '"..node.name.."' invalid type for def.drop")
 	end
 	local data = {
 		name = node.name,

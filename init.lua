@@ -18,7 +18,6 @@ function wrench.register_node(name, def)
 	assert(type(def) == "table", "wrench.register_node invalid type for def")
 	local node_def = minetest.registered_nodes[name]
 	if node_def then
-		wrench.registered_nodes[name] = table.copy(def)
 		local old_after_place = node_def.after_place_node
 		minetest.override_item(name, {
 			after_place_node = function(...)
@@ -27,6 +26,20 @@ function wrench.register_node(name, def)
 				end
 			end
 		})
+		def = table.copy(def)
+		if def.drop == true and type(node_def.drop) == "string" then
+			def.drop = node_def.drop
+		elseif def.drop and type(def.drop) ~= "string" then
+			minetest.log("warning", "Ignoring invalid type for drop in definition for "..name)
+			def.drop = nil
+		end
+		if def.drop and not wrench.registered_nodes[def.drop] then
+			if def.drop ~= name then
+				minetest.log("warning", "Ignoring unsupported node for drop in definition for "..name)
+			end
+			def.drop = nil
+		end
+		wrench.registered_nodes[name] = def
 	else
 		minetest.log("warning", "Attempt to register unknown node for wrench: "..name)
 	end

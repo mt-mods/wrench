@@ -3,6 +3,8 @@ local S = rawget(_G, "intllib") and intllib.Getter() or function(s) return s end
 
 local SERIALIZATION_VERSION = 1
 
+local has_pipeworks = minetest.get_modpath("pipeworks")
+
 local errors = {
 	owned = S("Cannot pickup node. Owned by %s."),
 	full_inv = S("Not enough room in inventory to pickup node."),
@@ -101,6 +103,12 @@ function wrench.pickup_node(pos, player)
 	end
 	player_inv:add_item("main", stack)
 	minetest.remove_node(pos)
+	if def.after_pickup then
+		def.after_pickup(pos, node, meta:to_table(), player)
+	end
+	if has_pipeworks and minetest.registered_nodes[node.name].tube then
+		pipeworks.after_dig(pos)
+	end
 	return true
 end
 
@@ -141,6 +149,9 @@ function wrench.restore_node(pos, player, stack)
 	end
 	if def.after_place then
 		def.after_place(pos, player, stack)
+	end
+	if has_pipeworks and minetest.registered_nodes[data.name].tube then
+		pipeworks.after_place(pos)
 	end
 	return true
 end

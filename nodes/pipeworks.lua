@@ -13,7 +13,6 @@ end
 -- Autocrafter
 
 wrench.register_node("pipeworks:autocrafter", {
-	after_place = pipeworks.after_place,
 	lists = {"src", "dst", "recipe", "output"},
 	metas = {
 		enabled = wrench.META_TYPE_INT,
@@ -26,7 +25,6 @@ wrench.register_node("pipeworks:autocrafter", {
 })
 
 local wielder_data = {
-	after_place = pipeworks.after_place,
 	lists = {"main"},
 	metas = {
 		owner = wrench.META_TYPE_STRING,
@@ -51,7 +49,6 @@ wrench.register_node("pipeworks:nodebreaker_on", wielder_data)
 -- Filters
 
 local filter_data = {
-	after_place = pipeworks.after_place,
 	lists = {"main"},
 	metas = {
 		slotseq_mode = wrench.META_TYPE_INT,
@@ -75,7 +72,6 @@ wrench.register_node("pipeworks:digiline_filter", filter_data)
 for i = 1, 10 do
 	wrench.register_node("pipeworks:mese_sand_tube_"..i, {
 		drop = true,
-		after_place = pipeworks.after_place,
 		metas = {
 			infotext = wrench.META_TYPE_STRING,
 			formspec = wrench.META_TYPE_STRING,
@@ -85,7 +81,6 @@ for i = 1, 10 do
 	})
 	wrench.register_node("pipeworks:teleport_tube_"..i, {
 		drop = true,
-		after_place = pipeworks.after_place,
 		metas = {
 			infotext = wrench.META_TYPE_STRING,
 			formspec = wrench.META_TYPE_STRING,
@@ -100,7 +95,6 @@ end
 
 local lua_tube_data = {
 	drop = true,
-	after_place = pipeworks.after_place,
 	metas = {
 		formspec = wrench.META_TYPE_STRING,
 		code = wrench.META_TYPE_STRING,
@@ -117,7 +111,6 @@ local lua_tube_data = {
 
 local mese_tube_data = {
 	drop = true,
-	after_place = pipeworks.after_place,
 	lists = {},
 	metas = {
 		infotext = wrench.META_TYPE_STRING,

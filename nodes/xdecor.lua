@@ -47,6 +47,17 @@ wrench.register_node("xdecor:enchantment_table", {
 	},
 })
 
+-- Hive
+
+wrench.register_node("xdecor:hive", {
+	timer = true,
+	lists = {"honey"},
+	metas = {
+		formspec = wrench.META_TYPE_STRING,
+		infotext = wrench.META_TYPE_STRING,
+	},
+})
+
 -- Item Frame
 
 wrench.register_node("xdecor:itemframe", {

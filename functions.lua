@@ -4,6 +4,7 @@ local S = rawget(_G, "intllib") and intllib.Getter() or function(s) return s end
 local SERIALIZATION_VERSION = 1
 
 local has_pipeworks = minetest.get_modpath("pipeworks")
+local has_mesecons = minetest.get_modpath("mesecons")
 
 local errors = {
 	owned = S("Cannot pickup node. Owned by %s."),
@@ -49,11 +50,8 @@ function wrench.pickup_node(pos, player)
 			return false, errors.owned:format(owner)
 		end
 	end
-	if def.drop then
-		node.name = def.drop
-	end
 	local data = {
-		name = node.name,
+		name = def.drop or node.name,
 		version = SERIALIZATION_VERSION,
 		lists = {},
 		metas = {},
@@ -90,7 +88,7 @@ function wrench.pickup_node(pos, player)
 			elapsed = timer:get_elapsed()
 		}
 	end
-	local stack = ItemStack(node.name)
+	local stack = ItemStack(def.drop or node.name)
 	local item_meta = stack:get_meta()
 	item_meta:set_string("data", minetest.serialize(data))
 	item_meta:set_string("description", get_description(def, pos, meta, node, player))
@@ -108,6 +106,9 @@ function wrench.pickup_node(pos, player)
 	end
 	if has_pipeworks and minetest.registered_nodes[node.name].tube then
 		pipeworks.after_dig(pos)
+	end
+	if has_mesecons and minetest.registered_nodes[node.name].mesecons then
+		mesecon.on_dignode(pos, node)
 	end
 	return true
 end

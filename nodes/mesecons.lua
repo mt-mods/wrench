@@ -1,8 +1,6 @@
 
 -- Register wrench support for mesecons
 
--- TODO: update neighboring mesecons:wire or nodes (via after_dig_node?)
-
 local function register_node_on_off(name, def)
 	wrench.register_node(name .. "_off", def)
 	def.drop = true

@@ -35,3 +35,7 @@ for _, modname in pairs(mods) do
 		dofile(modpath.."/nodes/"..modname..".lua")
 	end
 end
+
+if minetest.settings:get_bool("wrench.enable_debug", false) then
+	dofile(modpath.."/debug.lua")
+end

@@ -15,7 +15,7 @@ local basic_chests = {
 	"more_chests:toolbox_wood",
 }
 
-for _,chest in pairs(basic_chests) do
+for _, chest in pairs(basic_chests) do
 	wrench.register_node(chest, {
 		lists = {"main"},
 		metas = {

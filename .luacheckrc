@@ -15,6 +15,6 @@ read_globals = {
 	-- Mods
 	"drawers",
 	"intllib",
-        "pipeworks",
+	"pipeworks",
 	"xdecor",
 }

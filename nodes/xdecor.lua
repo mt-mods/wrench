@@ -34,7 +34,6 @@ for _, nodename in pairs(nodes) do
 			local desc = minetest.registered_nodes[node.name].description
 			return desc ~= "" and desc or minetest.registered_nodes[node.name].infotext
 		end,
-
 	})
 end
 
@@ -83,8 +82,8 @@ local mailbox_metas = {
 }
 
 for i = 1, 7 do
-	mailbox_metas["giver" .. i] = wrench.META_TYPE_STRING
-	mailbox_metas["stack" .. i] = wrench.META_TYPE_STRING
+	mailbox_metas["giver"..i] = wrench.META_TYPE_STRING
+	mailbox_metas["stack"..i] = wrench.META_TYPE_STRING
 end
 
 wrench.register_node("xdecor:mailbox", {
@@ -96,7 +95,7 @@ wrench.register_node("xdecor:mailbox", {
 -- Workbench
 
 wrench.register_node("xdecor:workbench", {
-	lists = {"tool", "input", "hammer", "forms", "storage" },
+	lists = {"tool", "input", "hammer", "forms", "storage"},
 	metas = {
 		infotext = wrench.META_TYPE_STRING,
 	},

@@ -119,7 +119,7 @@ local all_nodes = {
 
 for mod, nodes in pairs(all_nodes) do
 	if minetest.get_modpath(mod) then
-		for _,n in pairs(nodes) do
+		for _, n in pairs(nodes) do
 			minetest.register_alias("wrench:picked_up_"..n:gsub(":", "_"), n)
 		end
 	end

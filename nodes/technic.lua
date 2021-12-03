@@ -17,8 +17,8 @@ local function register_machine_node(nodename, tier)
 	wrench.register_node(nodename, {lists = lists, metas = metas})
 end
 
--- base_machines table row format: name = {extra meta fields}
 local defaults = {tiers = {"LV", "MV", "HV"}}
+
 local base_machines = {
 	electric_furnace = defaults,
 	grinder = defaults,
@@ -30,7 +30,7 @@ local base_machines = {
 }
 
 for name, data in pairs(base_machines) do
-	for _,tier in ipairs(data.tiers) do
+	for _, tier in ipairs(data.tiers) do
 		local nodename = "technic:"..tier:lower().."_"..name
 		register_machine_node(nodename, tier)
 		if minetest.registered_nodes[nodename.."_active"] then
@@ -39,7 +39,6 @@ for name, data in pairs(base_machines) do
 	end
 end
 
----------------------------------------------------------------------
 -- Special nodes
 
 wrench.register_node("technic:coal_alloy_furnace", {

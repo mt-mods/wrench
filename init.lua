@@ -21,6 +21,7 @@ local mods = {
 	"bones",
 	"connected_chests",
 	"default",
+	"digilines",
 	"digtron",
 	"drawers",
 	"mesecons",

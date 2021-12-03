@@ -13,9 +13,10 @@ read_globals = {
 	"ItemStack",
 
 	-- Mods
+	"digilines",
 	"drawers",
 	"intllib",
-        "mesecon",
+	"mesecon",
 	"pipeworks",
 	"xdecor",
 }

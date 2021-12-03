@@ -5,6 +5,7 @@ local SERIALIZATION_VERSION = 1
 
 local has_pipeworks = minetest.get_modpath("pipeworks")
 local has_mesecons = minetest.get_modpath("mesecons")
+local has_digilines = minetest.get_modpath("digilines")
 
 local errors = {
 	owned = S("Cannot pickup node. Owned by %s."),
@@ -109,6 +110,9 @@ function wrench.pickup_node(pos, player)
 	end
 	if has_mesecons and minetest.registered_nodes[node.name].mesecons then
 		mesecon.on_dignode(pos, node)
+	end
+	if has_digilines and digilines.getspec(node) then
+		digilines.update_autoconnect(pos)
 	end
 	return true
 end

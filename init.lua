@@ -16,6 +16,7 @@ dofile(modpath.."/api.lua")
 
 local mods = {
 	"3d_armor_stand",
+	"biofuel",
 	"bones",
 	"connected_chests",
 	"default",

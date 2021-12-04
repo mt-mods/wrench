@@ -7,10 +7,10 @@ local get_keys = function(list)
 	return keys
 end
 
-local orig_wrench_pickup_node = wrench:pickup_node
-wrench:pickup_node = function(pos, player)
+local orig_wrench_pickup_node = wrench.pickup_node
+wrench.pickup_node = function(self, pos, player)
 	if not player:get_player_control().sneak then
-		return orig_wrench_pickup_node(pos, player)
+		return orig_wrench_pickup_node(self, pos, player)
 	end
 	local node = minetest.get_node(pos)
 	local def = minetest.registered_nodes[node.name]

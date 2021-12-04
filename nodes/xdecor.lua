@@ -64,7 +64,7 @@ wrench:register_node("realchess:chessboard", {
 	},
 	description = function(pos, meta, node, player)
 		local desc = minetest.registered_nodes[node.name].description
-		return string.format("%s '%s' vs '%s'", desc, meta:get_string("playerWhite"), meta:get_sting("playerBlack"))
+		return string.format("%s '%s' vs. '%s'", desc, meta:get_string("playerWhite"), meta:get_string("playerBlack"))
 	end
 })
 

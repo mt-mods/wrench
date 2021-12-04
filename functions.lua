@@ -89,10 +89,15 @@ function wrench.pickup_node(pos, player)
 			elapsed = timer:get_elapsed()
 		}
 	end
-	local stack = ItemStack(def.drop or node.name)
+	local drop_node = node
+	if def.drop then
+		drop_node = table.copy(node)
+		drop_node.name = def.drop
+	end
+	local stack = ItemStack(drop_node.name)
 	local item_meta = stack:get_meta()
 	item_meta:set_string("data", minetest.serialize(data))
-	item_meta:set_string("description", get_description(def, pos, meta, node, player))
+	item_meta:set_string("description", get_description(def, pos, meta, drop_node, player))
 	if #stack:to_string() > 65000 then
 		return false, errors.metadata
 	end

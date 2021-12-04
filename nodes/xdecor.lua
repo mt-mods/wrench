@@ -37,6 +37,37 @@ for _, nodename in pairs(nodes) do
 	})
 end
 
+-- Chessboard
+
+wrench.register_node("realchess:chessboard", {
+	lists = {"board"},
+	metas = {
+		formspec = wrench.META_TYPE_STRING,
+		infotext = wrench.META_TYPE_STRING,
+
+		playerBlack = wrench.META_TYPE_STRING,
+		playerWhite = wrench.META_TYPE_STRING,
+		lastMove = wrench.META_TYPE_STRING,
+
+		blackAttacked = wrench.META_TYPE_STRING,
+		whiteAttacked = wrench.META_TYPE_STRING,
+
+		lastMoveTime = wrench.META_TYPE_INT,
+		castlingBlackL = wrench.META_TYPE_INT,
+		castlingBlackR = wrench.META_TYPE_INT,
+		castlingWhiteL = wrench.META_TYPE_INT,
+		castlingWhiteR = wrench.META_TYPE_INT,
+
+		moves = wrench.META_TYPE_STRING,
+		eaten = wrench.META_TYPE_STRING,
+		mode = wrench.META_TYPE_STRING,
+	},
+	description = function(pos, meta, node, player)
+		local desc = minetest.registered_nodes[node.name].description
+		return string.format("%s '%s' vs '%s'", desc, meta:get_string("playerWhite"), meta:get_sting("playerBlack"))
+	end
+})
+
 -- Enchantment Table
 
 wrench.register_node("xdecor:enchantment_table", {

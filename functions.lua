@@ -105,13 +105,14 @@ function wrench.pickup_node(pos, player)
 	if def.after_pickup then
 		def.after_pickup(pos, node, meta:to_table(), player)
 	end
-	if has_pipeworks and minetest.registered_nodes[node.name].tube then
+	local node_def = minetest.registered_nodes[node.name]
+	if has_pipeworks and node_def.tube then
 		pipeworks.after_dig(pos)
 	end
-	if has_mesecons and minetest.registered_nodes[node.name].mesecons then
+	if has_mesecons and node_def.mesecons then
 		mesecon.on_dignode(pos, node)
 	end
-	if has_digilines and digilines.getspec(node) then
+	if has_digilines and node_def.digiline or node_def.digilines then
 		digilines.update_autoconnect(pos)
 	end
 	return true
@@ -155,8 +156,15 @@ function wrench.restore_node(pos, player, stack)
 	if def.after_place then
 		def.after_place(pos, player, stack)
 	end
-	if has_pipeworks and minetest.registered_nodes[data.name].tube then
+	local node_def = minetest.registered_nodes[data.name]
+	if has_pipeworks and node_def.tube then
 		pipeworks.after_place(pos)
+	end
+	if has_mesecons and node_def.mesecons then
+		mesecon.on_placenode(pos, minetest.get_node(pos))
+	end
+	if has_digilines and node_def.digiline or node_def.digilines then
+		digilines.update_autoconnect(pos)
 	end
 	return true
 end

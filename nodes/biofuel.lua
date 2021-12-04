@@ -17,5 +17,4 @@ wrench.register_node("biofuel:refinery_active", {
 		progress = wrench.META_TYPE_INT,
 	},
 	timer = true,
-	drop = "biofuel:refinery",
 })

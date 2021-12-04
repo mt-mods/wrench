@@ -19,6 +19,7 @@ wrench.register_node("pipeworks:autocrafter", {
 		channel = wrench.META_TYPE_STRING,
 		infotext = wrench.META_TYPE_STRING,
 		formspec = wrench.META_TYPE_STRING,
+		splitstacks = wrench.META_TYPE_INT,
 	},
 	description = desc_infotext,
 	timer = true,
@@ -28,8 +29,6 @@ local wielder_data = {
 	lists = {"main"},
 	metas = {
 		owner = wrench.META_TYPE_STRING,
-		infotext = wrench.META_TYPE_STRING,
-		formspec = wrench.META_TYPE_STRING,
 	},
 	drop = true,
 }
@@ -73,7 +72,6 @@ for i = 1, 10 do
 		drop = true,
 		metas = {
 			infotext = wrench.META_TYPE_STRING,
-			formspec = wrench.META_TYPE_STRING,
 			dist = wrench.META_TYPE_INT,
 		},
 		description = desc_infotext,
@@ -112,7 +110,6 @@ local mese_tube_data = {
 	drop = true,
 	lists = {},
 	metas = {
-		infotext = wrench.META_TYPE_STRING,
 		formspec = wrench.META_TYPE_STRING,
 	},
 	description = desc_ghost_items,

@@ -1,15 +1,25 @@
 
 -- Register nodes from default / minetest_game
 
+local has_pipeworks = minetest.get_modpath("pipeworks")
+local splitstacks = has_pipeworks and wrench.META_TYPE_INT
+local formspec = has_pipeworks and wrench.META_TYPE_STRING
+
 wrench.register_node("default:chest", {
 	lists = {"main"},
+	metas = {
+		splitstacks = splitstacks,
+		formspec = formspec,
+	}
 })
 
 wrench.register_node("default:chest_locked", {
 	lists = {"main"},
 	metas = {
 		owner = wrench.META_TYPE_STRING,
-		infotext = wrench.META_TYPE_STRING
+		infotext = wrench.META_TYPE_STRING,
+		splitstacks = splitstacks,
+		formspec = formspec,
 	},
 	owned = true,
 })
@@ -21,7 +31,9 @@ wrench.register_node("default:furnace", {
 		fuel_totaltime = wrench.META_TYPE_FLOAT,
 		fuel_time = wrench.META_TYPE_FLOAT,
 		src_totaltime = wrench.META_TYPE_FLOAT,
-		src_time = wrench.META_TYPE_FLOAT
+		src_time = wrench.META_TYPE_FLOAT,
+		splitstacks = splitstacks,
+		formspec = formspec,
 	},
 })
 
@@ -32,9 +44,10 @@ wrench.register_node("default:furnace_active", {
 		fuel_totaltime = wrench.META_TYPE_FLOAT,
 		fuel_time = wrench.META_TYPE_FLOAT,
 		src_totaltime = wrench.META_TYPE_FLOAT,
-		src_time = wrench.META_TYPE_FLOAT
+		src_time = wrench.META_TYPE_FLOAT,
+		splitstacks = splitstacks,
+		formspec = formspec,
 	},
-	store_meta_always = true,
 })
 
 local function get_sign_description(pos, meta, node)

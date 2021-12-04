@@ -1,6 +1,9 @@
 
 -- Register wrench support for technic_chests
 
+local has_pipeworks = minetest.get_modpath("pipeworks")
+local splitstacks = has_pipeworks and wrench.META_TYPE_INT
+
 local function get_chest_description(pos, meta, node)
 	local desc = minetest.registered_nodes[node.name].description
 	local text = meta:get_string("infotext")
@@ -20,24 +23,28 @@ local chests_meta = {
 		infotext = wrench.META_TYPE_STRING,
 		formspec = wrench.META_TYPE_STRING,
 		sort_mode = wrench.META_TYPE_INT,
+		splitstacks = splitstacks,
 	},
 	copper = {
 		infotext = wrench.META_TYPE_STRING,
 		formspec = wrench.META_TYPE_STRING,
 		sort_mode = wrench.META_TYPE_INT,
 		autosort = wrench.META_TYPE_INT,
+		splitstacks = splitstacks,
 	},
 	silver = {
 		infotext = wrench.META_TYPE_STRING,
 		formspec = wrench.META_TYPE_STRING,
 		sort_mode = wrench.META_TYPE_INT,
 		autosort = wrench.META_TYPE_INT,
+		splitstacks = splitstacks,
 	},
 	gold = {
 		infotext = wrench.META_TYPE_STRING,
 		formspec = wrench.META_TYPE_STRING,
 		sort_mode = wrench.META_TYPE_INT,
 		autosort = wrench.META_TYPE_INT,
+		splitstacks = splitstacks,
 	},
 	mithril = {
 		infotext = wrench.META_TYPE_STRING,
@@ -50,6 +57,7 @@ local chests_meta = {
 		send_inject = wrench.META_TYPE_INT,
 		send_pull = wrench.META_TYPE_INT,
 		send_overflow = wrench.META_TYPE_INT,
+		splitstacks = splitstacks,
 	},
 }
 

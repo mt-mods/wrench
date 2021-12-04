@@ -1,6 +1,8 @@
 
 -- Register wrench support for Technic CNC
 
+local has_pipeworks = minetest.get_modpath("pipeworks")
+
 local function register_cnc(name, def)
 	wrench.register_node(name, def)
 	if minetest.registered_nodes[name.."_active"] then
@@ -35,6 +37,7 @@ if minetest.registered_nodes["technic:cnc_mk2"] then
 			size = wrench.META_TYPE_INT,
 			program = wrench.META_TYPE_STRING,
 			cnc_user = wrench.META_TYPE_STRING,
+			splitstacks = has_pipeworks and wrench.META_TYPE_INT,
 		},
 	})
 end

@@ -3,7 +3,7 @@
 
 local desc_channel = function(pos, meta, node, player)
 	local desc = minetest.registered_nodes[node.name].description
-	return string.format("%s channel: %s", desc, meta:get_string("channel") or "")
+	return string.format("%s with channel \"%s\"", desc, meta:get_string("channel"))
 end
 
 wrench.register_node("digilines:chest", {

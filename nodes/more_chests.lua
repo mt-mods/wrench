@@ -16,7 +16,7 @@ local basic_chests = {
 }
 
 for _, chest in pairs(basic_chests) do
-	wrench.register_node(chest, {
+	wrench:register_node(chest, {
 		lists = {"main"},
 		metas = {
 			owner = wrench.META_TYPE_STRING,
@@ -28,7 +28,7 @@ end
 
 -- Shared Chest
 
-wrench.register_node("more_chests:shared", {
+wrench:register_node("more_chests:shared", {
 	lists = {"main"},
 	metas = {
 		owner = wrench.META_TYPE_STRING,

@@ -6,7 +6,7 @@ local desc_channel = function(pos, meta, node, player)
 	return string.format("%s with channel \"%s\"", desc, meta:get_string("channel"))
 end
 
-wrench.register_node("digilines:chest", {
+wrench:register_node("digilines:chest", {
 	lists = {"main"},
 	metas = {
 		infotext = wrench.META_TYPE_STRING,
@@ -15,7 +15,7 @@ wrench.register_node("digilines:chest", {
 	},
 })
 
-wrench.register_node("digilines:lightsensor", {
+wrench:register_node("digilines:lightsensor", {
 	metas = {
 		formspec = wrench.META_TYPE_STRING,
 		channel = wrench.META_TYPE_STRING,
@@ -23,7 +23,7 @@ wrench.register_node("digilines:lightsensor", {
 	description = desc_channel,
 })
 
-wrench.register_node("digilines:rtc", {
+wrench:register_node("digilines:rtc", {
 	metas = {
 		formspec = wrench.META_TYPE_STRING,
 		channel = wrench.META_TYPE_STRING,
@@ -31,7 +31,7 @@ wrench.register_node("digilines:rtc", {
 	description = desc_channel,
 })
 
-wrench.register_node("digilines:lcd", {
+wrench:register_node("digilines:lcd", {
 	metas = {
 		formspec = wrench.META_TYPE_STRING,
 		channel = wrench.META_TYPE_STRING,

@@ -11,7 +11,7 @@ local nodes = {
 }
 
 for _, nodename in pairs(nodes) do
-	wrench.register_node(nodename, {
+	wrench:register_node(nodename, {
 		lists = {"main"},
 	})
 end
@@ -26,7 +26,7 @@ nodes = {
 }
 
 for _, nodename in pairs(nodes) do
-	wrench.register_node(nodename, {
+	wrench:register_node(nodename, {
 		metas = {
 			infotext = wrench.META_TYPE_STRING,
 		},
@@ -39,7 +39,7 @@ end
 
 -- Chessboard
 
-wrench.register_node("realchess:chessboard", {
+wrench:register_node("realchess:chessboard", {
 	lists = {"board"},
 	metas = {
 		formspec = wrench.META_TYPE_STRING,
@@ -70,7 +70,7 @@ wrench.register_node("realchess:chessboard", {
 
 -- Enchantment Table
 
-wrench.register_node("xdecor:enchantment_table", {
+wrench:register_node("xdecor:enchantment_table", {
 	lists = {"tool", "mese"},
 	metas = {
 		infotext = wrench.META_TYPE_STRING,
@@ -80,7 +80,7 @@ wrench.register_node("xdecor:enchantment_table", {
 
 -- Hive
 
-wrench.register_node("xdecor:hive", {
+wrench:register_node("xdecor:hive", {
 	timer = true,
 	lists = {"honey"},
 	metas = {
@@ -91,7 +91,7 @@ wrench.register_node("xdecor:hive", {
 
 -- Item Frame
 
-wrench.register_node("xdecor:itemframe", {
+wrench:register_node("xdecor:itemframe", {
 	metas = {
 		owner = wrench.META_TYPE_STRING,
 		infotext = wrench.META_TYPE_STRING,
@@ -128,7 +128,7 @@ for i = 1, 7 do
 	mailbox_metas["stack"..i] = wrench.META_TYPE_STRING
 end
 
-wrench.register_node("xdecor:mailbox", {
+wrench:register_node("xdecor:mailbox", {
 	lists = {"mailbox", "drop"},
 	metas = mailbox_metas,
 	owned = true,
@@ -136,7 +136,7 @@ wrench.register_node("xdecor:mailbox", {
 
 -- Workbench
 
-wrench.register_node("xdecor:workbench", {
+wrench:register_node("xdecor:workbench", {
 	lists = {"tool", "input", "hammer", "forms", "storage"},
 	metas = {
 		infotext = wrench.META_TYPE_STRING,

@@ -16,7 +16,7 @@ end
 
 register_node_on_off("mesecons_commandblock:commandblock", {
 	-- ignore after_place function: sets owner
-	owner = true,
+	owned = true,
 	metas = {
 		infotext = wrench.META_TYPE_STRING,
 		commands = wrench.META_TYPE_STRING,

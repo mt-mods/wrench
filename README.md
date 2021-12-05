@@ -43,11 +43,11 @@ This mod is a fork from wrench/ in https://github.com/mt-mods/technic
   - drawers:junglewood
   - drawers:pine_wood
 * https://github.com/minetest-mods/mesecons
-  - mesecons_commandblock:commandblock_*
-  - mesecons_detector:node_detector_*
-  - mesecons_detector:object_detector_*
-  - mesecons_luacontroller:luacontroller*
-  - mesecons_microcontroller:microcontroller*
+  - mesecons_commandblock:commandblock_\*
+  - mesecons_detector:node_detector_\*
+  - mesecons_detector:object_detector_\*
+  - mesecons_luacontroller:luacontroller\*
+  - mesecons_microcontroller:microcontroller\*
 * https://notabug.org/tenplus1/mobs_redo
   - mobs:spawner
 * https://github.com/minetest-mods/more_chests
@@ -57,25 +57,38 @@ This mod is a fork from wrench/ in https://github.com/mt-mods/technic
   - more_chests:big_fridge
   - more_chests:shared
   - more_chests:secret
-  - more_chests:toolbox_*
+  - more_chests:toolbox_\*
 * https://github.com/mt-mods/pipeworks
   - pipeworks:autocrafter
-  - pipeworks:deployer_*
-  - pipeworks:dispenser_*
-  - pipeworks:nodebreaker_*
-  - pipeworks:*filter
+  - pipeworks:deployer_\*
+  - pipeworks:dispenser_\*
+  - pipeworks:nodebreaker_\*
+  - pipeworks:\*filter
   - pipeworks:lua_tube*
-  - pipeworks:mese_sand_tube_*
-  - pipeworks:mese_tube_*
-  - pipeworks:teleport_tube_*
+  - pipeworks:mese_sand_tube_\*
+  - pipeworks:mese_tube_\*
+  - pipeworks:teleport_tube_\*
 * https://github.com/mt-mods/technic
+  - technic:cnc\*
+  - technic:coal_alloy_furnace\*
+  - technic:\*chest\*
+  - technic:injector
+  - technic:tool_workshop
+  - technic:\*_alloy_furnace\*
+  - technic:\*_battery_box\*
+  - technic:\*_centrifuge\*
+  - technic:\*_compressor\*
+  - technic:\*_electric_furnace\*
+  - technic:\*_extractor\*
+  - technic:\*_freezer\*
+  - technic:\*_grinder\*
 * https://github.com/minetest-mods/xdecor
   - realchess:chessboard
   - xdecor:cabinet
   - xdecor:cabinet_half
   - xdecor:empty_shelf
   - xdecor:multishelf
-  - xdecor:cauldron_*
+  - xdecor:cauldron_\*
   - xdecor:enchantment_table
   - xdecor:itemframe
   - xdecor:mailbox

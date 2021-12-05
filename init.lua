@@ -2,6 +2,7 @@
 local modpath = minetest.get_modpath("wrench")
 
 wrench = {
+	plus = true,
 	registered_nodes = {},
 	blacklisted_items = {},
 	META_TYPE_FLOAT = 1,

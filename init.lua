@@ -9,10 +9,10 @@ wrench = {
 	META_TYPE_INT = 3,
 }
 
-dofile(modpath.."/api.lua")
+dofile(modpath.."/legacy.lua")
 dofile(modpath.."/functions.lua")
 dofile(modpath.."/tool.lua")
-dofile(modpath.."/legacy.lua")
+dofile(modpath.."/api.lua")
 
 local mods = {
 	"3d_armor_stand",

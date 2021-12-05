@@ -1,16 +1,4 @@
 
--- Compatibility for old function signature
-
-local register_node = wrench.register_node
-
-function wrench.register_node(self, ...)
-	if self == wrench then
-		register_node(...)
-	else
-		register_node(self, ...)
-	end
-end
-
 -- Register aliases for old wrench:picked_up_* nodes
 
 local all_nodes = {

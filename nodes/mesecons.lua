@@ -2,9 +2,9 @@
 -- Register wrench support for mesecons
 
 local function register_node_on_off(name, def)
-	wrench.register_node(name .. "_off", def)
+	wrench.register_node(name.."_off", def)
 	def.drop = true
-	wrench.register_node(name .. "_on", def)
+	wrench.register_node(name.."_on", def)
 end
 
 local desc_conf = function(pos, meta, node, player)
@@ -49,7 +49,7 @@ register_node_on_off("mesecons_detector:object_detector", {
 
 -- Controllers
 
-local luacontroller_defs = {
+local luacontroller_def = {
 	drop = true,
 	metas = {
 		code = wrench.META_TYPE_STRING,
@@ -60,8 +60,23 @@ local luacontroller_defs = {
 		ignore_offevents = wrench.META_TYPE_STRING,
 	},
 	description = function(pos, meta, node, player)
-		local desc = minetest.registered_nodes[node.name].description
+		local desc = minetest.registered_nodes["mesecons_luacontroller:luacontroller0000"].description
 		return string.format("%s with code", desc)
+	end,
+}
+
+local microcontroller_def = {
+	drop = true,
+	metas = {
+		infotext = wrench.META_TYPE_STRING,
+		code = wrench.META_TYPE_STRING,
+		afterid = wrench.META_TYPE_INT,
+		eeprom = wrench.META_TYPE_STRING,
+		formspec = wrench.META_TYPE_STRING,
+		real_portstates = wrench.META_TYPE_INT,
+	},
+	description = function(pos, meta, node, player)
+		return meta:get_string("infotext")
 	end,
 }
 
@@ -69,27 +84,13 @@ for a = 0, 1 do
 for b = 0, 1 do
 for c = 0, 1 do
 for d = 0, 1 do
-	local state = d .. c .. b .. a
-	wrench.register_node("mesecons_luacontroller:luacontroller" .. state, luacontroller_defs)
-
-	wrench.register_node("mesecons_microcontroller:microcontroller" .. state, {
-		drop = "mesecons_microcontroller:microcontroller0000",
-		metas = {
-			infotext = wrench.META_TYPE_STRING,
-			code = wrench.META_TYPE_STRING,
-			afterid = wrench.META_TYPE_INT,
-			eeprom = wrench.META_TYPE_STRING,
-			formspec = wrench.META_TYPE_STRING,
-			real_portstates = wrench.META_TYPE_INT,
-		},
-	description = function(pos, meta, node, player)
-		return meta:get_string("infotext")
-	end,
-	})
+	local state = d..c..b..a
+	wrench.register_node("mesecons_luacontroller:luacontroller"..state, luacontroller_def)
+	wrench.register_node("mesecons_microcontroller:microcontroller"..state, microcontroller_def)
 end
 end
 end
 end
 
-luacontroller_defs.drop = nil
-wrench.register_node("mesecons_luacontroller:luacontroller_burnt", luacontroller_defs)
+luacontroller_def.drop = nil
+wrench.register_node("mesecons_luacontroller:luacontroller_burnt", luacontroller_def)

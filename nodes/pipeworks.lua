@@ -1,7 +1,7 @@
 
 -- Register wrench support for pipeworks
 
-local desc_ghost_items = function(pos, meta, node, player)
+local desc_config = function(pos, meta, node, player)
 	local desc = minetest.registered_nodes[node.name].description
 	return string.format("%s with configuration", desc)
 end
@@ -56,7 +56,7 @@ local filter_data = {
 		infotext = wrench.META_TYPE_STRING,
 		formspec = wrench.META_TYPE_STRING,
 	},
-	description = desc_ghost_items,
+	description = desc_config,
 }
 
 wrench.register_node("pipeworks:filter", filter_data)
@@ -101,8 +101,8 @@ local lua_tube_data = {
 		real_portstates = wrench.META_TYPE_INT,
 	},
 	description = function(pos, meta, node, player)
-		local desc = minetest.registered_nodes[node.name].description
-		return string.format("%s with program", desc)
+		local desc = minetest.registered_nodes["pipeworks:lua_tube000000"].description
+		return string.format("%s with code", desc)
 	end,
 }
 
@@ -112,15 +112,13 @@ local mese_tube_data = {
 	metas = {
 		formspec = wrench.META_TYPE_STRING,
 	},
-	description = desc_ghost_items,
+	description = desc_config,
 }
 
 for i = 1, 6 do
 	mese_tube_data.metas["l"..i.."s"] = wrench.META_TYPE_INT
 	table.insert(mese_tube_data.lists, "line"..i)
 end
-
-wrench.register_node("pipeworks:lua_tube_burnt", lua_tube_data)
 
 for xm = 0, 1 do
 for xp = 0, 1 do
@@ -137,3 +135,6 @@ end
 end
 end
 end
+
+lua_tube_data.drop = nil
+wrench.register_node("pipeworks:lua_tube_burnt", lua_tube_data)

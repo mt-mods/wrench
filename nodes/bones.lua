@@ -1,7 +1,7 @@
 
 -- Register wrench support for bones
 
-wrench:register_node("bones:bones", {
+wrench.register_node("bones:bones", {
 	lists = {"main"},
 	metas = {
 			owner = wrench.META_TYPE_STRING,

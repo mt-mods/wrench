@@ -1,7 +1,7 @@
 
 -- Register wrench support for vessels
 
-wrench:register_node("vessels:shelf", {
+wrench.register_node("vessels:shelf", {
 	lists = { "vessels" },
 	metas = {
 		infotext = wrench.META_TYPE_STRING,

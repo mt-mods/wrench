@@ -12,7 +12,7 @@ end
 
 -- Autocrafter
 
-wrench:register_node("pipeworks:autocrafter", {
+wrench.register_node("pipeworks:autocrafter", {
 	lists = {"src", "dst", "recipe", "output"},
 	metas = {
 		enabled = wrench.META_TYPE_INT,
@@ -33,16 +33,16 @@ local wielder_data = {
 	drop = true,
 }
 
-wrench:register_node("pipeworks:deployer_off", wielder_data)
-wrench:register_node("pipeworks:deployer_on", wielder_data)
+wrench.register_node("pipeworks:deployer_off", wielder_data)
+wrench.register_node("pipeworks:deployer_on", wielder_data)
 
-wrench:register_node("pipeworks:dispenser_off", wielder_data)
-wrench:register_node("pipeworks:dispenser_on", wielder_data)
+wrench.register_node("pipeworks:dispenser_off", wielder_data)
+wrench.register_node("pipeworks:dispenser_on", wielder_data)
 
 table.insert(wielder_data.lists, "pick")
 table.insert(wielder_data.lists, "ghost_pick")
-wrench:register_node("pipeworks:nodebreaker_off", wielder_data)
-wrench:register_node("pipeworks:nodebreaker_on", wielder_data)
+wrench.register_node("pipeworks:nodebreaker_off", wielder_data)
+wrench.register_node("pipeworks:nodebreaker_on", wielder_data)
 
 -- Filters
 
@@ -59,16 +59,16 @@ local filter_data = {
 	description = desc_ghost_items,
 }
 
-wrench:register_node("pipeworks:filter", filter_data)
-wrench:register_node("pipeworks:mese_filter", filter_data)
+wrench.register_node("pipeworks:filter", filter_data)
+wrench.register_node("pipeworks:mese_filter", filter_data)
 
 filter_data.metas["channel"] = wrench.META_TYPE_STRING
-wrench:register_node("pipeworks:digiline_filter", filter_data)
+wrench.register_node("pipeworks:digiline_filter", filter_data)
 
 -- Tubes (6d style): 'mese_sand_tube' and 'teleport_tube'
 
 for i = 1, 10 do
-	wrench:register_node("pipeworks:mese_sand_tube_"..i, {
+	wrench.register_node("pipeworks:mese_sand_tube_"..i, {
 		drop = true,
 		metas = {
 			infotext = wrench.META_TYPE_STRING,
@@ -76,7 +76,7 @@ for i = 1, 10 do
 		},
 		description = desc_infotext,
 	})
-	wrench:register_node("pipeworks:teleport_tube_"..i, {
+	wrench.register_node("pipeworks:teleport_tube_"..i, {
 		drop = true,
 		metas = {
 			infotext = wrench.META_TYPE_STRING,
@@ -120,7 +120,7 @@ for i = 1, 6 do
 	table.insert(mese_tube_data.lists, "line"..i)
 end
 
-wrench:register_node("pipeworks:lua_tube_burnt", lua_tube_data)
+wrench.register_node("pipeworks:lua_tube_burnt", lua_tube_data)
 
 for xm = 0, 1 do
 for xp = 0, 1 do
@@ -129,8 +129,8 @@ for yp = 0, 1 do
 for zm = 0, 1 do
 for zp = 0, 1 do
 	local tname = xm..xp..ym..yp..zm..zp
-	wrench:register_node("pipeworks:lua_tube"..tname, lua_tube_data)
-	wrench:register_node("pipeworks:mese_tube_"..tname, mese_tube_data)
+	wrench.register_node("pipeworks:lua_tube"..tname, lua_tube_data)
+	wrench.register_node("pipeworks:mese_tube_"..tname, mese_tube_data)
 end
 end
 end

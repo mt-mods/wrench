@@ -2,9 +2,9 @@
 -- Register wrench support for mesecons
 
 local function register_node_on_off(name, def)
-	wrench:register_node(name .. "_off", def)
+	wrench.register_node(name .. "_off", def)
 	def.drop = true
-	wrench:register_node(name .. "_on", def)
+	wrench.register_node(name .. "_on", def)
 end
 
 local desc_conf = function(pos, meta, node, player)
@@ -70,9 +70,9 @@ for b = 0, 1 do
 for c = 0, 1 do
 for d = 0, 1 do
 	local state = d .. c .. b .. a
-	wrench:register_node("mesecons_luacontroller:luacontroller" .. state, luacontroller_defs)
+	wrench.register_node("mesecons_luacontroller:luacontroller" .. state, luacontroller_defs)
 
-	wrench:register_node("mesecons_microcontroller:microcontroller" .. state, {
+	wrench.register_node("mesecons_microcontroller:microcontroller" .. state, {
 		drop = "mesecons_microcontroller:microcontroller0000",
 		metas = {
 			infotext = wrench.META_TYPE_STRING,
@@ -92,4 +92,4 @@ end
 end
 
 luacontroller_defs.drop = nil
-wrench:register_node("mesecons_luacontroller:luacontroller_burnt", luacontroller_defs)
+wrench.register_node("mesecons_luacontroller:luacontroller_burnt", luacontroller_defs)

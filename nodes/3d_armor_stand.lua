@@ -23,13 +23,13 @@ local function description(pos, meta, node)
 	return string.format("%s with armor", desc)
 end
 
-wrench:register_node("3d_armor_stand:armor_stand", {
+wrench.register_node("3d_armor_stand:armor_stand", {
 	lists = lists,
 	after_place = after_place,
 	description = description,
 })
 
-wrench:register_node("3d_armor_stand:locked_armor_stand", {
+wrench.register_node("3d_armor_stand:locked_armor_stand", {
 	lists = lists,
 	metas = {
 		owner = wrench.META_TYPE_STRING,

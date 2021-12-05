@@ -8,13 +8,13 @@ local get_keys = function(list)
 end
 
 local orig_wrench_pickup_node = wrench.pickup_node
-wrench.pickup_node = function(self, pos, player)
+wrench.pickup_node = function(pos, player)
 	if not player:get_player_control().sneak then
-		return orig_wrench_pickup_node(self, pos, player)
+		return orig_wrench_pickup_node(pos, player)
 	end
 	local node = minetest.get_node(pos)
 	local def = minetest.registered_nodes[node.name]
-	print("wrench:register_node(\"" .. node.name .. "\", {");
+	print("wrench.register_node(\"" .. node.name .. "\", {");
 	-- timer
 	local timer = minetest.get_node_timer(pos)
 	if timer:get_timeout() ~= 0 then

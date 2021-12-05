@@ -7,6 +7,26 @@ local get_keys = function(list)
 	return keys
 end
 
+local spairs = function(tbl, order_func)
+	local ptrs = {}
+	for p in pairs(tbl) do ptrs[#ptrs +1] = p end
+	table.sort(ptrs, order_func and function(a, b) return order_func(a, b) end)
+	local i = 0
+	return function()
+		i = i +1
+		if ptrs[i] then return ptrs[i], tbl[ptrs[i]] end
+	end
+end
+
+local strip_esc = function(text)
+	text = minetest.strip_colors(text)
+	-- strip translation foo
+	text = string.gsub(text, "^.*T@.*%)", "")
+	return string.gsub(text, "%c.", "")
+end
+
+-- use wrench with sneak to show node propperies (useful to add new nodes)
+
 local orig_wrench_pickup_node = wrench.pickup_node
 wrench.pickup_node = function(pos, player)
 	if not player:get_player_control().sneak then
@@ -39,7 +59,7 @@ wrench.pickup_node = function(pos, player)
 	if def.can_dig then
 		print("\t-- has can_dig " .. type(def.can_dig) .. " " ..
 			((type(def.can_dig) == "function") and
-			(def.can_dig(pos, player) and ', returns rue' or 'returns false') or ""
+			(def.can_dig(pos, player) and ', returns true' or ', returns false') or ""
 			)
                 )
 	end
@@ -80,3 +100,24 @@ wrench.pickup_node = function(pos, player)
 	print("})")
 end
 
+-- list supported modnames and nodes (useful to update README.md)
+
+minetest.register_on_mods_loaded(function()
+	print("wrench registered_nodes:")
+	local last_mod = "?"
+	for name, def in spairs(wrench.registered_nodes, function(a,b)
+--		return minetest.registered_nodes[a].mod_origin < minetest.registered_nodes[b].mod_origin or a < b
+		return a < b
+	end) do
+		if not def.drop then
+			local node = minetest.registered_nodes[name]
+			local mod = node.mod_origin
+			if last_mod ~= mod then
+				last_mod = mod
+				print("* "..mod)
+			end
+			local desc = strip_esc(node.description or "")
+			print(string.format("  - %-40s %q", name, desc))
+		end
+	end
+end)

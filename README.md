@@ -22,6 +22,14 @@ This mod is a fork from wrench/ in https://github.com/mt-mods/technic
   - default:furnace
   - default:sign_wall_wood
   - default:sign_wall_steel
+  - vessels:shelf
+* https://github.com/minetest-mods/3d_armor
+  - 3d_armor_stand:armor_stand
+  - 3d_armor_stand:locked_armor_stand
+* https://notabug.org/TenPlus1/bees
+  - bees:hive_wild
+* https://github.com/Lokrates/Biofuel
+  - biofuel:refinery
 * https://github.com/HybridDog/connected_chests
 * https://github.com/minetest-mods/digtron
   - digtron:battery_holder
@@ -34,6 +42,14 @@ This mod is a fork from wrench/ in https://github.com/mt-mods/technic
   - drawers:aspen_wood
   - drawers:junglewood
   - drawers:pine_wood
+* https://github.com/minetest-mods/mesecons
+  - mesecons_commandblock:commandblock_*
+  - mesecons_detector:node_detector_*
+  - mesecons_detector:object_detector_*
+  - mesecons_luacontroller:luacontroller*
+  - mesecons_microcontroller:microcontroller*
+* https://notabug.org/tenplus1/mobs_redo
+  - mobs:spawner
 * https://github.com/minetest-mods/more_chests
   - more_chests:cobble
   - more_chests:dropbox
@@ -48,8 +64,13 @@ This mod is a fork from wrench/ in https://github.com/mt-mods/technic
   - pipeworks:dispenser_*
   - pipeworks:nodebreaker_*
   - pipeworks:*filter
+  - pipeworks:lua_tube*
+  - pipeworks:mese_sand_tube_*
+  - pipeworks:mese_tube_*
+  - pipeworks:teleport_tube_*
 * https://github.com/mt-mods/technic
 * https://github.com/minetest-mods/xdecor
+  - realchess:chessboard
   - xdecor:cabinet
   - xdecor:cabinet_half
   - xdecor:empty_shelf

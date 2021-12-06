@@ -1,9 +1,11 @@
 # textdomain: wrench
 
-# technic_wrench translation template
+# Polish Translation for technic_wrench
+# Polskie tłumaczenie technic_wrench
+# by mat9117
 
-Wrench=
-@1 with items=
+Wrench=Klucz
+@1 with items=@1 z rzeczami
 
 Cannot pickup node. Owned by @1.=
 Not enough room in inventory to pickup node.=

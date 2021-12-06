@@ -1,7 +1,10 @@
 
-local modpath = minetest.get_modpath("wrench")
+local modname = minetest.get_current_modname()
+local modpath = minetest.get_modpath(modname)
+local S = minetest.get_translator(modname)
 
 wrench = {
+	translator = S,
 	plus = true,
 	registered_nodes = {},
 	blacklisted_items = {},

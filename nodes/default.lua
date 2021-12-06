@@ -1,6 +1,8 @@
 
 -- Register nodes from default / minetest_game
 
+local S = wrench.translator
+
 local has_pipeworks = minetest.get_modpath("pipeworks")
 local splitstacks = has_pipeworks and wrench.META_TYPE_INT
 local formspec = has_pipeworks and wrench.META_TYPE_STRING
@@ -56,7 +58,7 @@ local function get_sign_description(pos, meta, node)
 	if #text > 32 then
 		text = text:sub(1, 24).."..."
 	end
-	return string.format("%s with text \"%s\"", desc, text)
+	return S("@1 with text \"@2\"", desc, text)
 end
 
 wrench.register_node("default:sign_wall_wood", {

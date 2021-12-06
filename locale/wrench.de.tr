@@ -1,0 +1,21 @@
+# textdomain: wrench
+
+# German Translation for technic_wrench
+# Deutsche Übersetzung von technic_wrench
+# by Xanthin and others
+
+Wrench=Schraubenschluessel
+@1 with items=@1 mit Gegenstaenden
+
+Cannot pickup node. Owned by @1.=
+Not enough room in inventory to pickup node.=
+Cannot pickup node containing @1.=
+Cannot pickup node. Nesting inventories is not allowed.=
+Cannot pickup node. Node contains too much metadata.=
+@1 with channel "@2"=@1 mit Kanal "@2"
+@1 with armor=@1 mit Rüstung
+@1 with configuration=@1 mit Konfiguration
+@1 with code=@1 mit Code
+@1 "@2" vs. "@3"=@1 "@2" gegen "@3"
+@1 with "@2"=@1 mit "@2"
+@1 with text "@2"=@1 mit Text "@2"

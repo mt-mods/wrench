@@ -1,6 +1,8 @@
 
 -- Register wrench support for armor stands
 
+local S = wrench.translator
+
 local def = minetest.registered_nodes["3d_armor_stand:armor_stand"]
 
 local add_entity_and_node = def and def.after_place_node
@@ -20,7 +22,7 @@ end
 
 local function description(pos, meta, node)
 	local desc = minetest.registered_nodes[node.name].description
-	return string.format("%s with armor", desc)
+	return S("@1 with armor", desc)
 end
 
 wrench.register_node("3d_armor_stand:armor_stand", {

@@ -15,7 +15,6 @@ read_globals = {
 	-- Mods
 	"digilines",
 	"drawers",
-	"intllib",
 	"mesecon",
 	"pipeworks",
 	"xdecor",

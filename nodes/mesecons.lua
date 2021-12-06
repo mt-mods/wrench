@@ -1,6 +1,8 @@
 
 -- Register wrench support for mesecons
 
+local S = wrench.translator
+
 local function register_node_on_off(name, def)
 	wrench.register_node(name.."_off", def)
 	def.drop = true
@@ -9,7 +11,7 @@ end
 
 local desc_conf = function(pos, meta, node, player)
         local desc = minetest.registered_nodes[node.name].description
-        return string.format("%s with configuration", desc)
+        return S("@1 with configuration", desc)
 end
 
 -- Commandblock
@@ -61,7 +63,7 @@ local luacontroller_def = {
 	},
 	description = function(pos, meta, node, player)
 		local desc = minetest.registered_nodes["mesecons_luacontroller:luacontroller0000"].description
-		return string.format("%s with code", desc)
+		return S("@1 with code", desc)
 	end,
 }
 

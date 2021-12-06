@@ -1,9 +1,11 @@
 
 -- Register wrench support for pipeworks
 
+local S = wrench.translator
+
 local desc_config = function(pos, meta, node, player)
 	local desc = minetest.registered_nodes[node.name].description
-	return string.format("%s with configuration", desc)
+	return S("@1 with configuration", desc)
 end
 
 local desc_infotext = function(pos, meta, node, player)
@@ -102,7 +104,7 @@ local lua_tube_data = {
 	},
 	description = function(pos, meta, node, player)
 		local desc = minetest.registered_nodes["pipeworks:lua_tube000000"].description
-		return string.format("%s with code", desc)
+		return S("@1 with code", desc)
 	end,
 }
 

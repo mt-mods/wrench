@@ -1,7 +1,6 @@
 
-local modname = minetest.get_current_modname()
-local modpath = minetest.get_modpath(modname)
-local S = minetest.get_translator(modname)
+local modpath = minetest.get_modpath("wrench")
+local S = minetest.get_translator("wrench")
 
 wrench = {
 	translator = S,

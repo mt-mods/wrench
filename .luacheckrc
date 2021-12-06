@@ -1,6 +1,11 @@
 unused_args = false
 allow_defined_top = true
 
+-- Exclude regression tests / unit tests
+exclude_files = {
+	"**/spec/**",
+}
+
 globals = {
 	"minetest",
 }

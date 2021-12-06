@@ -6,7 +6,7 @@ mineunit("protection")
 mineunit("player")
 mineunit("server")
 
--- Just for default:stone, could use other stuff like air or unknown nodes...
+-- Just for default:stone, could use any node instead of `default` but real placement requires supporting node
 fixture("default")
 
 -- Load wrench mod
@@ -56,6 +56,23 @@ describe("Wrench", function()
 			minetest.get_meta({x=0,y=1,z=0}):get_inventory():set_stack("cust_ow", 3, "default:sand 1")
 		end)
 
+		it("can register node for wrench", function()
+			-- Modified copy/paste code from https://github.com/SmallJoker/bitchange/blob/master/shop.lua @ 733ce6f4
+			-- Checking `wrench.plus` instead of `wrench` and changed `wrench:register_node` to `wrench.register_node`
+			if minetest.get_modpath("wrench") and wrench.plus then
+				local STRING = wrench.META_TYPE_STRING
+				wrench.register_node("bitchange:shop", {
+					lists = {"stock", "custm", "custm_ej", "cust_ow", "cust_og", "cust_ej"},
+					metas = {
+						owner = STRING,
+						infotext = STRING,
+						title = STRING,
+					},
+					owned = true
+				})
+			end
+		end)
+
 		it("can be picked up", function()
 			-- Sam uses wrench holding sneak targeting node at pos from directly above it
 			Sam:do_use_from_above({x=0,y=1,z=0}, {sneak=true})
@@ -65,6 +82,9 @@ describe("Wrench", function()
 
 			-- Check that Sam got correct item, next test does extended validation for stack
 			assert.has_item(Sam, "main", 2, "bitchange:shop 1")
+
+			-- Verify tool wear, value should change on successful operation
+			assert.lt(0, Sam:get_inventory():get_stack("main", 1):get_wear())
 		end)
 
 		it("correctly placed after picked up", function()
@@ -128,15 +148,22 @@ describe("Wrench", function()
 
 		wrench_test_setup_and_teardown()
 
-		it("works pointing nothing", function()
-			-- Sam uses wrench holding sneak targeting nothing
-			Sam:set_pos({x=9999,y=9999,z=9999})
-			Sam:do_use({sneak=true})
+		local function test_noop_use(description, controls)
+			it(description, function()
+				-- Sam uses wrench holding sneak targeting nothing
+				Sam:set_pos({x=9999,y=9999,z=9999})
+				Sam:do_use(controls)
+				-- Check that Sam still have wrench and did not receive new item
+				assert.has_item(Sam, "main", 1, "wrench:wrench 1")
+				assert.has_item(Sam, "main", 2, ItemStack())
+				-- Verify tool wear, no operation should not affect tool
+				assert.equals(0, Sam:get_inventory():get_stack("main", 1):get_wear())
+			end)
+		end
 
-			-- Check that Sam still have wrench and did not receive new item
-			assert.has_item(Sam, "main", 1, "wrench:wrench 1")
-			assert.has_item(Sam, "main", 2, ItemStack())
-		end)
+		test_noop_use("works pointing nothing (sneak)", {sneak=true})
+		test_noop_use("works pointing nothing (aux1)", {aux1=true})
+		test_noop_use("works pointing nothing (no modifers)")
 
 	end)
 

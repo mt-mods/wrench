@@ -9,10 +9,18 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
+      with:
+        path: wrench
+
+    - uses: actions/checkout@v2
+      with:
+        path: drawers
+        repository: minetest-mods/drawers
 
     - id: mineunit
       uses: mt-mods/mineunit-actions@master
       with:
+        working-directory: wrench
         badge-label: Test coverage
 
     - uses: KeisukeYamashita/create-comment@v1

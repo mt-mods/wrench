@@ -1,5 +1,5 @@
 
--- Cleaned up copy/paste from https://github.com/SmallJoker/bitchange/blob/master/shop.lua
+-- Cleaned up copy/paste from https://github.com/SmallJoker/bitchange/blob/master/shop.lua @ 733ce6f4
 -- Added forced registration to save setting modpaths and modname, wrench API should work
 --  without knowing anything about mod that is calling API to register nodes.
 
@@ -23,17 +23,3 @@ minetest.register_node(":bitchange:shop", {
 		inv:set_size("cust_ej", 4) -- ejected items if player has no inventory room
 	end,
 })
-
--- Modified from original: added `and wrench.plus` and changed `wrench:register_node` to `wrench.register_node`
-if minetest.get_modpath("wrench") and wrench and wrench.plus then
-	local STRING = wrench.META_TYPE_STRING
-	wrench.register_node("bitchange:shop", {
-		lists = {"stock", "custm", "custm_ej", "cust_ow", "cust_og", "cust_ej"},
-		metas = {
-			owner = STRING,
-			infotext = STRING,
-			title = STRING,
-		},
-		owned = true
-	})
-end

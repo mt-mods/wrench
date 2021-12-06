@@ -39,9 +39,9 @@ local mods = {
 	"xdecor",
 }
 
-for _, modname in pairs(mods) do
-	if minetest.get_modpath(modname) then
-		dofile(modpath.."/nodes/"..modname..".lua")
+for _, mod in pairs(mods) do
+	if minetest.get_modpath(mod) then
+		dofile(modpath.."/nodes/"..mod..".lua")
 	end
 end
 

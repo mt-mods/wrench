@@ -7,7 +7,6 @@ for c = 0, 1 do
 for d = 0, 1 do
 	local state = d..c..b..a
 	wrench.register_node("mesecons_microcontroller:microcontroller"..state, {
-		drop = true,
 		metas = {
 			infotext = wrench.META_TYPE_STRING,
 			code = wrench.META_TYPE_STRING,

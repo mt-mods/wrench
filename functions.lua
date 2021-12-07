@@ -123,7 +123,7 @@ function wrench.pickup_node(pos, player)
 	return true
 end
 
-function wrench.restore_node(pos, player, stack)
+function wrench.restore_node(pos, player, stack, pointed)
 	if not stack then
 		return
 	end
@@ -159,7 +159,7 @@ function wrench.restore_node(pos, player, stack)
 		end
 	end
 	if def.after_place then
-		def.after_place(pos, player, stack)
+		def.after_place(pos, player, stack, pointed)
 	end
 	local node_def = minetest.registered_nodes[data.name]
 	if has_pipeworks and node_def.tube then

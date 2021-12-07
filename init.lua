@@ -35,6 +35,7 @@ local mods = {
 	"mobs",
 	"more_chests",
 	"pipeworks",
+	"protector",
 	"signs_lib",
 	"technic",
 	"technic_chests",

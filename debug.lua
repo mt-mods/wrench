@@ -61,13 +61,13 @@ wrench.pickup_node = function(pos, player)
 			((type(def.can_dig) == "function") and
 			(def.can_dig(pos, player) and ', returns true' or ', returns false') or ""
 			)
-                )
+		)
 	end
 	local meta = minetest.get_meta(pos)
 	-- owner
 	local owner = meta:get_string("owner")
 	if owner and owner ~= "" then
-		print("\towner = true, -- '" .. owner ..  "' FIXME:?")
+		print("\towned = true, -- '" .. owner ..  "' FIXME:?")
 	end
 	-- lists
 	local inventory = meta:get_inventory()

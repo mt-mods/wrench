@@ -26,5 +26,3 @@ wrench.register_node("protector:protect2", {
 		members = wrench.META_TYPE_STRING,
 	},
 })
-
-

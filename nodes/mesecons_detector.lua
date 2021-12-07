@@ -11,7 +11,6 @@ for _, state in ipairs(states) do
 			digiline_channel = wrench.META_TYPE_STRING,
 			scanname = wrench.META_TYPE_STRING,
 		},
-		description = wrench.description_with_configuration,
 	})
 	wrench.register_node("mesecons_detector:object_detector_"..state, {
 		drop = state == "on",
@@ -20,6 +19,5 @@ for _, state in ipairs(states) do
 			digiline_channel = wrench.META_TYPE_STRING,
 			scanname = wrench.META_TYPE_STRING,
 		},
-		description = wrench.description_with_configuration,
 	})
 end

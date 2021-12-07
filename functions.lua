@@ -35,7 +35,11 @@ local function get_description(def, pos, meta, node, player)
 			return desc
 		end
 	end
-	return wrench.description_with_items(pos, meta, node, player)
+	if def.lists then
+		return wrench.description_with_items(pos, meta, node, player)
+	else
+		return wrench.description_with_configuration(pos, meta, node, player)
+	end
 end
 
 function wrench.description_with_items(pos, meta, node, player)

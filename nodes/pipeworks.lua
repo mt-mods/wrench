@@ -105,11 +105,9 @@ local lua_tube_data = {
 
 local mese_tube_data = {
 	drop = true,
-	lists = {},
 	metas = {
 		formspec = wrench.META_TYPE_STRING,
 	},
-	description = wrench.description_with_configuration,
 }
 
 for i = 1, 6 do

@@ -13,6 +13,5 @@ for _, state in ipairs(states) do
 			formspec = wrench.META_TYPE_STRING,
 			owner = wrench.META_TYPE_STRING,
 		},
-		description = wrench.description_with_configuration,
 	})
 end

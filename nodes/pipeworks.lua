@@ -3,11 +3,6 @@
 
 local S = wrench.translator
 
-local desc_config = function(pos, meta, node, player)
-	local desc = minetest.registered_nodes[node.name].description
-	return S("@1 with configuration", desc)
-end
-
 local desc_infotext = function(pos, meta, node, player)
 	return meta:get_string("infotext")
 end
@@ -58,7 +53,7 @@ local filter_data = {
 		infotext = wrench.META_TYPE_STRING,
 		formspec = wrench.META_TYPE_STRING,
 	},
-	description = desc_config,
+	description = wrench.description_with_configuration,
 }
 
 wrench.register_node("pipeworks:filter", filter_data)
@@ -114,7 +109,7 @@ local mese_tube_data = {
 	metas = {
 		formspec = wrench.META_TYPE_STRING,
 	},
-	description = desc_config,
+	description = wrench.description_with_configuration,
 }
 
 for i = 1, 6 do

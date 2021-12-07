@@ -35,7 +35,15 @@ local function get_description(def, pos, meta, node, player)
 			return desc
 		end
 	end
+	return wrench.description_with_items(pos, meta, node, player)
+end
+
+function wrench.description_with_items(pos, meta, node, player)
 	return S("@1 with items", minetest.registered_nodes[node.name].description)
+end
+
+function wrench.description_with_configuration(pos, meta, node, player)
+	return S("@1 with configuration", minetest.registered_nodes[node.name].description)
 end
 
 function wrench.pickup_node(pos, player)

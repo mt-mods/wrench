@@ -4,14 +4,6 @@ function wrench.register_node(name, def)
 	assert(type(def) == "table", "wrench.register_node invalid type for def")
 	local node_def = minetest.registered_nodes[name]
 	if node_def then
-		local old_after_place = node_def.after_place_node
-		minetest.override_item(name, {
-			after_place_node = function(...)
-				if not wrench.restore_node(...) and old_after_place then
-					return old_after_place(...)
-				end
-			end
-		})
 		def = table.copy(def)
 		if def.drop == true and type(node_def.drop) == "string" then
 			def.drop = node_def.drop
@@ -40,3 +32,22 @@ function wrench.blacklist_item(name)
 		minetest.log("warning", "Attempt to blacklist unknown item for wrench. "..name)
 	end
 end
+
+minetest.register_on_mods_loaded(function()
+	for name, def in pairs(wrench.registered_nodes) do
+		local node_def = minetest.registered_nodes[name]
+		if node_def then
+			local old_after_place = node_def.after_place_node
+			minetest.override_item(name, {
+				after_place_node = function(...)
+					if not wrench.restore_node(...) and old_after_place then
+						return old_after_place(...)
+					end
+				end
+			})
+		else
+			minetest.log("warning", "Registered node is now unknown: "..name)
+			wrench.registered_nodes[name] = nil
+		end
+	end
+end)

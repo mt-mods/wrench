@@ -17,5 +17,6 @@ read_globals = {
 	"drawers",
 	"mesecon",
 	"pipeworks",
+	"signs_lib",
 	"xdecor",
 }

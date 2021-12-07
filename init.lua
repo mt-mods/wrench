@@ -19,6 +19,7 @@ dofile(modpath.."/legacy.lua")
 
 local mods = {
 	"3d_armor_stand",
+	"basic_signs",
 	"bees",
 	"biofuel",
 	"bones",

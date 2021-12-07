@@ -8,18 +8,18 @@ function wrench.register_node(name, def)
 		if def.drop == true and type(node_def.drop) == "string" then
 			def.drop = node_def.drop
 		elseif def.drop and type(def.drop) ~= "string" then
-			minetest.log("warning", "Ignoring invalid type for drop in definition for "..name)
+			minetest.log("warning", "[wrench] Ignoring invalid type for drop in definition for "..name)
 			def.drop = nil
 		end
 		if def.drop and not wrench.registered_nodes[def.drop] then
 			if def.drop ~= name then
-				minetest.log("warning", "Ignoring unsupported node for drop in definition for "..name)
+				minetest.log("warning", "[wrench] Ignoring unsupported node for drop in definition for "..name)
 			end
 			def.drop = nil
 		end
 		wrench.registered_nodes[name] = def
 	else
-		minetest.log("warning", "Attempt to register unknown node for wrench. "..name)
+		minetest.log("warning", "[wrench] Attempt to register unknown node for wrench: "..name)
 	end
 end
 
@@ -29,7 +29,7 @@ function wrench.blacklist_item(name)
 	if node_def then
 		wrench.blacklisted_items[name] = true
 	else
-		minetest.log("warning", "Attempt to blacklist unknown item for wrench. "..name)
+		minetest.log("warning", "[wrench] Attempt to blacklist unknown item for wrench: "..name)
 	end
 end
 
@@ -46,7 +46,7 @@ minetest.register_on_mods_loaded(function()
 				end
 			})
 		else
-			minetest.log("warning", "Registered node is now unknown: "..name)
+			minetest.log("warning", "[wrench] Registered node is now unknown: "..name)
 			wrench.registered_nodes[name] = nil
 		end
 	end

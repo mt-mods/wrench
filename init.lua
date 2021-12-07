@@ -31,6 +31,7 @@ local mods = {
 	"mobs",
 	"more_chests",
 	"pipeworks",
+	"signs_lib",
 	"technic",
 	"technic_chests",
 	"technic_cnc",

@@ -12,6 +12,10 @@ local function get_sign_description(pos, meta, node)
 	return S("@1 with text \"@2\"", desc, text)
 end
 
+local function remove_glow(pos, meta)
+	meta:set_string("glow", "")
+end
+
 local function register_all(name, def)
 	wrench.register_node(name, def)
 	name = name:gsub("_wall", "")
@@ -27,6 +31,7 @@ local sign_def = {
 		glow = wrench.META_TYPE_STRING,
 		widefont = wrench.META_TYPE_INT,
 	},
+	before_remove = remove_glow,
 	after_place = function(pos, player, stack, pointed)
 		signs_lib.after_place_node(pos, player, stack, pointed)
 		signs_lib.update_sign(pos)
@@ -65,6 +70,7 @@ register_all("basic_signs:sign_wall_locked", {
 		widefont = wrench.META_TYPE_INT,
 		owner = wrench.META_TYPE_STRING,
 	},
+	before_remove = remove_glow,
 	after_place = function(pos, player, stack, pointed)
 		signs_lib.after_place_node(pos, player, stack, pointed, true)
 		signs_lib.update_sign(pos)

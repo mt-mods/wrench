@@ -12,6 +12,10 @@ local function get_sign_description(pos, meta, node)
 	return S("@1 with text \"@2\"", desc, text)
 end
 
+local function remove_glow(pos, meta)
+	meta:set_string("glow", "")
+end
+
 -- Wood signs
 
 local wood_signs = {
@@ -29,6 +33,7 @@ for _, n in pairs(wood_signs) do
 			glow = wrench.META_TYPE_STRING,
 			widefont = wrench.META_TYPE_INT,
 		},
+		before_remove = remove_glow,
 		after_place = function(pos, player, stack, pointed)
 			signs_lib.after_place_node(pos, player, stack, pointed)
 			signs_lib.update_sign(pos)
@@ -56,6 +61,7 @@ for _, n in pairs(steel_signs) do
 			widefont = wrench.META_TYPE_INT,
 			owner = wrench.META_TYPE_STRING,
 		},
+		before_remove = remove_glow,
 		after_place = function(pos, player, stack, pointed)
 			signs_lib.after_place_node(pos, player, stack, pointed, true)
 			signs_lib.update_sign(pos)

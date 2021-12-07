@@ -106,6 +106,9 @@ function wrench.pickup_node(pos, player)
 		return false, errors.full_inv
 	end
 	player_inv:add_item("main", stack)
+	if def.before_remove then
+		def.before_remove(pos, meta, node, player)
+	end
 	minetest.remove_node(pos)
 	if def.after_pickup then
 		def.after_pickup(pos, node, meta:to_table(), player)

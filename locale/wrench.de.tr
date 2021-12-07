@@ -3,15 +3,17 @@
 # German Translation for technic_wrench
 # Deutsche Übersetzung von technic_wrench
 # by Xanthin and others
+# Siehe auch https://dev.minetest.net/Translating/de ".. der Konsistenz zuliebe"
 
 Wrench=Schraubenschluessel
 @1 with items=@1 mit Gegenstaenden
 
-Cannot pickup node. Owned by @1.=
-Not enough room in inventory to pickup node.=
-Cannot pickup node containing @1.=
-Cannot pickup node. Nesting inventories is not allowed.=
-Cannot pickup node. Node contains too much metadata.=
+Cannot pickup node. Owned by @1.=Block kann nicht genommen werden. Dieser gehört @1.
+Not enough room in inventory to pickup node.=Nicht genug Platz im Inventar um diesen Block zu nehmen.
+Cannot pickup node containing @1.=Block mit @1 kann nicht genommen werden.
+Cannot pickup node. Nesting inventories is not allowed.=Block kann nicht genommen werden. Verschalteltes Inventar ist nicht erlaubt.
+Cannot pickup node. Node contains too much metadata.=Block kann nicht genommen werden. Der Block enthält zu viele Metadaten.
+
 @1 with channel "@2"=@1 mit Kanal "@2"
 @1 with armor=@1 mit Rüstung
 @1 with configuration=@1 mit Konfiguration

@@ -26,6 +26,12 @@ This mod is a fork from wrench/ in https://github.com/mt-mods/technic
 * https://github.com/minetest-mods/3d_armor
   - 3d_armor_stand:armor_stand
   - 3d_armor_stand:locked_armor_stand
+* https://github.com/mt-mods/basic_signs
+  - basic_signs:sign_wall_glass
+  - basic_signs:sign_wall_locked
+  - basic_signs:sign_wall_obsidian_glass
+  - basic_signs:sign_wall_plastic
+  - basic_signs:sign_wall_steel_\*
 * https://notabug.org/TenPlus1/bees
   - bees:hive_wild
 * https://github.com/Lokrates/Biofuel
@@ -64,10 +70,15 @@ This mod is a fork from wrench/ in https://github.com/mt-mods/technic
   - pipeworks:dispenser_\*
   - pipeworks:nodebreaker_\*
   - pipeworks:\*filter
-  - pipeworks:lua_tube*
+  - pipeworks:lua_tube\*
   - pipeworks:mese_sand_tube_\*
   - pipeworks:mese_tube_\*
   - pipeworks:teleport_tube_\*
+* https://notabug.org/tenplus1/protector
+  - protector:chest
+  - protector:protect
+  - protector:protect2
+* https://github.com/mt-mods/signs_lib
 * https://github.com/mt-mods/technic
   - technic:cnc\*
   - technic:coal_alloy_furnace\*

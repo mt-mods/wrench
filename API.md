@@ -1,12 +1,12 @@
-* `wrench.register_node(node.name, definition)`
-
-definition:
-
-    {
-        lists = list
+# API
+## Node registrition
+### Schematic
+```lua
+wrench.register_node(node.name, {
+        lists = list,
         -- inventory list
 
-        metas = table
+        metas = table,
         -- Table for node metadata:
             -- name: Meta name
             -- type: Data type:
@@ -53,4 +53,18 @@ definition:
         -- Default
         after_place = function(pos, player, itemstack, pointed_thing),
         -- Function called after place node
-    }
+})
+```    
+### Example
+```lua
+wrench.register_node("bones:bones", {
+        lists = {"main"},
+        metas = {
+                        owner = wrench.META_TYPE_STRING,
+                        infotext = wrench.META_TYPE_STRING,
+                        formspec = wrench.META_TYPE_STRING,
+                        time = wrench.META_TYPE_INT,
+        },
+        owned = true,
+})
+```

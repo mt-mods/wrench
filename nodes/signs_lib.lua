@@ -32,6 +32,7 @@ for _, n in pairs(wood_signs) do
 			text = wrench.META_TYPE_STRING,
 			glow = wrench.META_TYPE_STRING,
 			widefont = wrench.META_TYPE_INT,
+			unifont = wrench.META_TYPE_INT,
 		},
 		before_remove = remove_glow,
 		after_place = function(pos, player, stack, pointed)
@@ -59,6 +60,7 @@ for _, n in pairs(steel_signs) do
 			text = wrench.META_TYPE_STRING,
 			glow = wrench.META_TYPE_STRING,
 			widefont = wrench.META_TYPE_INT,
+			unifont = wrench.META_TYPE_INT,
 			owner = wrench.META_TYPE_STRING,
 		},
 		before_remove = remove_glow,

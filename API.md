@@ -1,6 +1,6 @@
 # API
-## Node registrition
-### Schematic
+## Node registration
+Schematic:
 ```lua
 wrench.register_node(node.name, {
         lists = list,
@@ -55,7 +55,7 @@ wrench.register_node(node.name, {
         -- Function called after place node
 })
 ```    
-### Example
+Example:
 ```lua
 wrench.register_node("bones:bones", {
         lists = {"main"},

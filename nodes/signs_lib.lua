@@ -1,17 +1,6 @@
 
 -- Register wrench support for signs_lib (overrides default signs)
 
-local S = wrench.translator
-
-local function get_sign_description(pos, meta, node)
-	local desc = minetest.registered_nodes[node.name].description
-	local text = meta:get_string("text")
-	if #text > 32 then
-		text = text:sub(1, 24).."..."
-	end
-	return S("@1 with text \"@2\"", desc, text)
-end
-
 local function remove_glow(pos, meta)
 	meta:set_string("glow", "")
 end
@@ -39,7 +28,6 @@ for _, n in pairs(wood_signs) do
 			signs_lib.after_place_node(pos, player, stack, pointed)
 			signs_lib.update_sign(pos)
 		end,
-		description = get_sign_description,
 		drop = "default:sign_wall_wood",
 	})
 end
@@ -68,7 +56,6 @@ for _, n in pairs(steel_signs) do
 			signs_lib.after_place_node(pos, player, stack, pointed, true)
 			signs_lib.update_sign(pos)
 		end,
-		description = get_sign_description,
 		drop = "default:sign_wall_steel",
 		owned = true,
 	})

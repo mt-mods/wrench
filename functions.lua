@@ -37,6 +37,8 @@ local function get_description(def, pos, meta, node, player)
 	end
 	if def.lists then
 		return wrench.description_with_items(pos, meta, node, player)
+	elseif def.metas and def.metas.text then
+		return wrench.description_with_text(pos, meta, node, player)
 	else
 		return wrench.description_with_configuration(pos, meta, node, player)
 	end
@@ -48,6 +50,14 @@ end
 
 function wrench.description_with_configuration(pos, meta, node, player)
 	return S("@1 with configuration", minetest.registered_nodes[node.name].description)
+end
+
+function wrench.description_with_text(pos, meta, node, player)
+	local text = meta:get_string("text")
+	if #text > 32 then
+		text = text:sub(1, 24).."..."
+	end
+	return S("@1 with text \"@2\"", minetest.registered_nodes[node.name].description, text)
 end
 
 function wrench.pickup_node(pos, player)

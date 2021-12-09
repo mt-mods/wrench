@@ -4,22 +4,18 @@ function wrench.register_node(name, def)
 	assert(type(def) == "table", "wrench.register_node invalid type for def")
 	local node_def = minetest.registered_nodes[name]
 	if node_def then
-		def = table.copy(def)
-		if def.drop == true and type(node_def.drop) == "string" then
-			def.drop = node_def.drop
-		elseif def.drop and type(def.drop) ~= "string" then
-			minetest.log("warning", "[wrench] Ignoring invalid type for drop in definition for "..name)
-			def.drop = nil
-		end
-		if def.drop and not wrench.registered_nodes[def.drop] then
-			if def.drop ~= name then
-				minetest.log("warning", "[wrench] Ignoring unsupported node for drop in definition for "..name)
-			end
-			def.drop = nil
-		end
-		wrench.registered_nodes[name] = def
+		wrench.registered_nodes[name] = table.copy(def)
 	else
-		minetest.log("warning", "[wrench] Attempt to register unknown node for wrench: "..name)
+		minetest.log("warning", "[wrench] Attempt to register unknown node: "..name)
+	end
+end
+
+function wrench.unregister_node(name)
+	assert(type(name) == "string", "wrench.unregister_node invalid type for name")
+	if wrench.registered_nodes[name] then
+		wrench.registered_nodes = nil
+	else
+		minetest.log("warning", "[wrench] Attempt to unregister unsupported node: "..name)
 	end
 end
 
@@ -29,7 +25,7 @@ function wrench.blacklist_item(name)
 	if node_def then
 		wrench.blacklisted_items[name] = true
 	else
-		minetest.log("warning", "[wrench] Attempt to blacklist unknown item for wrench: "..name)
+		minetest.log("warning", "[wrench] Attempt to blacklist unknown item: "..name)
 	end
 end
 
@@ -45,6 +41,16 @@ minetest.register_on_mods_loaded(function()
 					end
 				end
 			})
+			if def.drop == true and type(node_def.drop) == "string" then
+				def.drop = node_def.drop
+			elseif def.drop and type(def.drop) ~= "string" then
+				minetest.log("warning", "[wrench] Ignoring invalid type for drop in definition for "..name)
+				def.drop = nil
+			end
+			if def.drop and not wrench.registered_nodes[def.drop] then
+				minetest.log("warning", "[wrench] Ignoring unsupported node for drop in definition for "..name)
+				def.drop = nil
+			end
 		else
 			minetest.log("warning", "[wrench] Registered node is now unknown: "..name)
 			wrench.registered_nodes[name] = nil

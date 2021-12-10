@@ -104,3 +104,49 @@ wrench.register_node("technic:injector", {
 	},
 	timer = true,
 })
+
+-- Forcefield emitter
+
+local states = { "off", "on" }
+for _, state in ipairs(states) do
+	wrench.register_node("technic:forcefield_emitter_"..state, {
+		drop = state == "on",
+		metas = {
+			enabled = wrench.META_TYPE_INT,
+			formspec = wrench.META_TYPE_STRING,
+			infotext = wrench.META_TYPE_STRING,
+			mesecon_mode = wrench.META_TYPE_INT,
+			mesecon_effect = wrench.META_TYPE_INT,
+			HV_EU_input = wrench.META_TYPE_INT,
+			HV_EU_demand = wrench.META_TYPE_INT,
+			range = wrench.META_TYPE_INT,
+			shape = wrench.META_TYPE_INT,
+			channel = wrench.has_digilines and wrench.META_TYPE_STRING,
+		},
+	})
+end
+
+-- Quarry
+
+wrench.register_node("technic:quarry", {
+	owned = true,
+	lists = {"cache"},
+	metas = {
+		enabled = wrench.META_TYPE_INT,
+		finished = wrench.META_TYPE_INT,
+		dig_index = wrench.META_TYPE_INT,
+		dig_steps = wrench.META_TYPE_INT,
+		quarry_dir = wrench.META_TYPE_INT,
+		owner = wrench.META_TYPE_STRING,
+		purge_on = wrench.META_TYPE_INT,
+		infotext = wrench.META_TYPE_STRING,
+		formspec = wrench.META_TYPE_STRING,
+		quarry_pos = wrench.META_TYPE_STRING,
+		dig_level = wrench.META_TYPE_INT,
+		HV_EU_demand = wrench.META_TYPE_INT,
+		max_depth = wrench.META_TYPE_INT,
+		dug = wrench.META_TYPE_INT,
+		size = wrench.META_TYPE_INT,
+		channel = wrench.has_digilines and wrench.META_TYPE_STRING,
+	},
+})

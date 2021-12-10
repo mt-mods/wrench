@@ -3,10 +3,6 @@ local S = wrench.translator
 
 local SERIALIZATION_VERSION = 1
 
-local has_pipeworks = minetest.get_modpath("pipeworks")
-local has_mesecons = minetest.get_modpath("mesecons")
-local has_digilines = minetest.get_modpath("digilines")
-
 local errors = {
 	owned = function(owner) return S("Cannot pickup node. Owned by @1.", owner) end,
 	full_inv = S("Not enough room in inventory to pickup node."),
@@ -136,13 +132,13 @@ function wrench.pickup_node(pos, player)
 		def.after_pickup(pos, node, meta:to_table(), player)
 	end
 	local node_def = minetest.registered_nodes[node.name]
-	if has_pipeworks and node_def.tube then
+	if wrench.has_pipeworks and node_def.tube then
 		pipeworks.after_dig(pos)
 	end
-	if has_mesecons and node_def.mesecons then
+	if wrench.has_mesecons and node_def.mesecons then
 		mesecon.on_dignode(pos, node)
 	end
-	if has_digilines and node_def.digiline or node_def.digilines then
+	if wrench.has_digilines and node_def.digiline or node_def.digilines then
 		digilines.update_autoconnect(pos)
 	end
 	return true
@@ -187,13 +183,13 @@ function wrench.restore_node(pos, player, stack, pointed)
 		def.after_place(pos, player, stack, pointed)
 	end
 	local node_def = minetest.registered_nodes[data.name]
-	if has_pipeworks and node_def.tube then
+	if wrench.has_pipeworks and node_def.tube then
 		pipeworks.after_place(pos)
 	end
-	if has_mesecons and node_def.mesecons then
+	if wrench.has_mesecons and node_def.mesecons then
 		mesecon.on_placenode(pos, minetest.get_node(pos))
 	end
-	if has_digilines and node_def.digiline or node_def.digilines then
+	if wrench.has_digilines and node_def.digiline or node_def.digilines then
 		digilines.update_autoconnect(pos)
 	end
 	return true

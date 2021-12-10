@@ -1,15 +1,17 @@
 
 local modpath = minetest.get_modpath("wrench")
-local S = minetest.get_translator("wrench")
 
 wrench = {
-	translator = S,
+	translator = minetest.get_translator("wrench"),
 	plus = true,
 	registered_nodes = {},
 	blacklisted_items = {},
 	META_TYPE_FLOAT = 1,
 	META_TYPE_STRING = 2,
 	META_TYPE_INT = 3,
+	has_pipeworks = minetest.get_modpath("pipeworks"),
+	has_mesecons = minetest.get_modpath("mesecons"),
+	has_digilines = minetest.get_modpath("digilines"),
 }
 
 dofile(modpath.."/api.lua")

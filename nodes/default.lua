@@ -1,9 +1,8 @@
 
 -- Register nodes from default / minetest_game
 
-local has_pipeworks = minetest.get_modpath("pipeworks")
-local splitstacks = has_pipeworks and wrench.META_TYPE_INT
-local formspec = has_pipeworks and wrench.META_TYPE_STRING
+local splitstacks = wrench.has_pipeworks and wrench.META_TYPE_INT
+local formspec = wrench.has_pipeworks and wrench.META_TYPE_STRING
 
 wrench.register_node("default:chest", {
 	lists = {"main"},

@@ -1,8 +1,7 @@
 
 -- Register wrench support for technic_chests
 
-local has_pipeworks = minetest.get_modpath("pipeworks")
-local splitstacks = has_pipeworks and wrench.META_TYPE_INT
+local splitstacks = wrench.has_pipeworks and wrench.META_TYPE_INT
 
 local function get_chest_description(pos, meta, node)
 	local desc = minetest.registered_nodes[node.name].description

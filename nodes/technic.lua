@@ -85,7 +85,8 @@ for _, tier in pairs({"LV", "MV", "HV"}) do
 				[tier.."_EU_supply"] = wrench.META_TYPE_INT,
 				[tier.."_EU_input"] = wrench.META_TYPE_INT,
 				internal_EU_charge = wrench.META_TYPE_INT,
-				last_side_shown = wrench.META_TYPE_INT
+				last_side_shown = wrench.META_TYPE_INT,
+				channel = wrench.has_digilines and wrench.META_TYPE_STRING,
 			},
 		})
 	end

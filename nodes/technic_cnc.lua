@@ -36,6 +36,7 @@ if minetest.registered_nodes["technic:cnc_mk2"] then
 			program = wrench.META_TYPE_STRING,
 			cnc_user = wrench.META_TYPE_STRING,
 			splitstacks = wrench.has_pipeworks and wrench.META_TYPE_INT,
+			channel = wrench.has_digilines and wrench.META_TYPE_STRING,
 		},
 	})
 end

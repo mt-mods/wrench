@@ -21,8 +21,9 @@ end
 local strip_esc = function(text)
 	text = minetest.strip_colors(text)
 	-- strip translation foo
-	text = string.gsub(text, "^.*T@.*%)", "")
-	return string.gsub(text, "%c.", "")
+	local ESCAPE_CHAR = string.char(0x1b)
+	text = string.gsub(text, ESCAPE_CHAR .. "%(T@[^%)]+%)", "")
+	return string.gsub(text, ESCAPE_CHAR .. "[ET]", "")
 end
 
 -- use wrench with sneak to show node propperies (useful to add new nodes)

@@ -28,6 +28,7 @@ local mods = {
 	"connected_chests",
 	"default",
 	"digilines",
+	"digistuff",
 	"digtron",
 	"drawers",
 	"mesecons_commandblock",

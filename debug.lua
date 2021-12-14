@@ -1,10 +1,18 @@
 
+local S = wrench.translator
+
 local get_keys = function(list)
 	local keys = {}
 	for k, _ in pairs(list) do
 		keys[#keys+1] = k
 	end
 	return keys
+end
+
+local array_find = function(list, val)
+	for i, _ in ipairs(list) do
+		if list[i] == val then return i end
+	end
 end
 
 local spairs = function(tbl, order_func)
@@ -30,10 +38,34 @@ end
 
 local orig_wrench_pickup_node = wrench.pickup_node
 wrench.pickup_node = function(pos, player)
+	local node = minetest.get_node(pos)
+	local meta = minetest.get_meta(pos)
 	if not player:get_player_control().sneak then
+	        local wrench_def = wrench.registered_nodes[node.name]
+		if wrench_def and wrench_def.lists then
+			local inventory = meta:get_inventory()
+	                local lists = get_keys(inventory:get_lists())
+			if #lists > 0 then
+				for _, v in ipairs(lists) do
+					if not array_find(wrench_def.lists, v) then
+						return false, S("unknown list value: @1", v)
+					end
+				end
+			end
+		end
+		if wrench_def and wrench_def.metas then
+			local metatable = meta:to_table()
+			local metas = get_keys(metatable.fields)
+			if #metas > 0 then
+				for k, v in pairs(metatable.fields) do
+					if not wrench_def.metas[k] then
+						return false, S("unknown meta key: @1", k)
+					end
+				end
+			end
+	        end
 		return orig_wrench_pickup_node(pos, player)
 	end
-	local node = minetest.get_node(pos)
 	local def = minetest.registered_nodes[node.name]
 	print("wrench.register_node(\"" .. node.name .. "\", {");
 	-- timer
@@ -48,7 +80,7 @@ wrench.pickup_node = function(pos, player)
 		elseif def.drop == node.name or def.drop == node.name .. " 1" then
 			print("\t-- drop = \"" .. def.drop .. "\",")
 		else
-			print("\tdrop = \"" .. def.drop .. "\",")
+			print("\tdrop = true, -- " .. def.drop)
 		end
 	end
 	if def.after_place_node then
@@ -64,7 +96,6 @@ wrench.pickup_node = function(pos, player)
 			)
 		)
 	end
-	local meta = minetest.get_meta(pos)
 	-- owner
 	local owner = meta:get_string("owner")
 	if owner and owner ~= "" then

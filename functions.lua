@@ -21,6 +21,18 @@ local function get_stored_metadata(itemstack)
 	return data
 end
 
+local function other_keys_than(list, keys)
+	local list2 = table.copy(list)
+	for _, k in ipairs(keys) do
+		list2[k] = nil
+	end
+	local other_keys = {}
+	for k, _ in pairs(list2) do
+		other_keys[#other_keys+1] = k
+	end
+	return other_keys
+end
+
 local function get_description(def, pos, meta, node, player)
 	local t = type(def.description)
 	if t == "string" then
@@ -35,6 +47,9 @@ local function get_description(def, pos, meta, node, player)
 		return wrench.description_with_items(pos, meta, node, player)
 	elseif def.metas and def.metas.text then
 		return wrench.description_with_text(pos, meta, node, player)
+	elseif def.metas and def.metas.channel and
+		#other_keys_than(def.metas, {"channel", "formspec", "infotext", "owner"}) == 0 then
+		return wrench.description_with_channel(pos, meta, node, player)
 	else
 		return wrench.description_with_configuration(pos, meta, node, player)
 	end
@@ -42,6 +57,11 @@ end
 
 function wrench.description_with_items(pos, meta, node, player)
 	return S("@1 with items", minetest.registered_nodes[node.name].description)
+end
+
+function wrench.description_with_channel(pos, meta, node, player)
+	local desc = minetest.registered_nodes[node.name].description
+	return S("@1 with channel \"@2\"", desc, meta:get_string("channel"))
 end
 
 function wrench.description_with_configuration(pos, meta, node, player)

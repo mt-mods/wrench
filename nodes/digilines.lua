@@ -1,13 +1,6 @@
 
 -- Register wrench support for digilines
 
-local S = wrench.translator
-
-local desc_channel = function(pos, meta, node, player)
-	local desc = minetest.registered_nodes[node.name].description
-	return S("@1 with channel \"@2\"", desc, meta:get_string("channel"))
-end
-
 wrench.register_node("digilines:chest", {
 	lists = {"main"},
 	metas = {
@@ -22,7 +15,6 @@ wrench.register_node("digilines:lightsensor", {
 		formspec = wrench.META_TYPE_STRING,
 		channel = wrench.META_TYPE_STRING,
 	},
-	description = desc_channel,
 })
 
 wrench.register_node("digilines:rtc", {
@@ -30,7 +22,6 @@ wrench.register_node("digilines:rtc", {
 		formspec = wrench.META_TYPE_STRING,
 		channel = wrench.META_TYPE_STRING,
 	},
-	description = desc_channel,
 })
 
 wrench.register_node("digilines:lcd", {
@@ -38,5 +29,4 @@ wrench.register_node("digilines:lcd", {
 		formspec = wrench.META_TYPE_STRING,
 		channel = wrench.META_TYPE_STRING,
 	},
-	description = desc_channel,
 })

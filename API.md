@@ -24,6 +24,10 @@ wrench.register_node(node.name, {
         -- Description of the node + " with items"
         description = `wrench.description_with_configuration`,
         -- Description of the node + " with configuration"
+        description = `wrench.description_with_channel`,
+        -- Description of the node + " with channel " + channel
+        description = `wrench.description_with_text`,
+        -- Description of the node + " with text " + text
         description = function(pos, meta, node, player),
         -- Function returns description
 

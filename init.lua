@@ -6,6 +6,7 @@ wrench = {
 	plus = true,
 	registered_nodes = {},
 	blacklisted_items = {},
+	META_TYPE_IGNORE = 0,
 	META_TYPE_FLOAT = 1,
 	META_TYPE_STRING = 2,
 	META_TYPE_INT = 3,

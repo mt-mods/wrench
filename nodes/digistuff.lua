@@ -1,6 +1,18 @@
 
 -- Register wrench support for digistuff
 
+local S = wrench.translator
+
+function desc_stripped(node)
+	local desc = minetest.registered_nodes[node.name].description
+	desc = string.gsub(desc, " %(you hacker you!%)", "")
+	return string.gsub(desc, " %- you hacker you!%)", ")")
+end
+
+function desc_stripped_with_channel(pos, meta, node, player)
+	return S("@1 with channel \"@2\"", desc_stripped(node), meta:get_string("channel"))
+end
+
 --[[
 	NOTE: it makes no sense to pickup unconfigured nodes with 'wrench' like:
 	- "digistuff:button"
@@ -25,6 +37,7 @@ for _, node in ipairs(nodes) do
 			msg = wrench.META_TYPE_STRING,
 			mlight = wrench.META_TYPE_INT,
 		},
+		description = desc_stripped_with_channel,
 	})
 end
 
@@ -61,6 +74,7 @@ wrench.register_node("digistuff:controller_programmed", {
 		infotext = wrench.META_TYPE_STRING,
 		channel = wrench.META_TYPE_STRING,
 	},
+	description = desc_stripped_with_channel,
 })
 
 -- Detector
@@ -73,7 +87,20 @@ wrench.register_node("digistuff:detector", {
 	},
 })
 
--- Memory
+-- GPU
+
+local gpu_def = {
+	metas = {
+		formspec = wrench.META_TYPE_STRING,
+		channel = wrench.META_TYPE_STRING,
+	},
+}
+for i = 0, 7 do
+	gpu_def.metas["buffer"..i] = wrench.META_TYPE_STRING
+end
+wrench.register_node("digistuff:gpu", gpu_def)
+
+-- Memory: eeprom & ram
 
 local mem_def = {
 	metas = {
@@ -106,6 +133,22 @@ for i = 0, 15 do
 			don = i_state_type,
 			outstate = o_state_type,
 		},
+		description = i == 0 or desc_stripped_with_channel,
+	})
+end
+
+-- Light
+
+for i = 0, 14 do
+	wrench.register_node("digistuff:light_"..i, {
+		metas = {
+			formspec = wrench.META_TYPE_STRING,
+			channel = wrench.META_TYPE_STRING,
+		},
+		description = function(pos, meta, node, player)
+			local state = i == 0 and "off" or S("light level @1", i)
+			return S("@1 (@2) with channel \"@3\"", desc_stripped(node), state, meta:get_string("channel"))
+		end,
 	})
 end
 
@@ -122,6 +165,15 @@ wrench.register_node("digistuff:movestone", {
 		owner = wrench.META_TYPE_STRING,
 		state = movestone_save_state and wrench.META_TYPE_STRING or wrench.META_TYPE_IGNORE,
 		active = movestone_save_state and wrench.META_TYPE_INT or wrench.META_TYPE_IGNORE,
+	},
+})
+
+-- Nic
+
+wrench.register_node("digistuff:nic", {
+	metas = {
+		formspec = wrench.META_TYPE_STRING,
+		channel = wrench.META_TYPE_STRING,
 	},
 })
 
@@ -205,6 +257,7 @@ wrench.register_node("digistuff:piston_ext", {
 		channel = wrench.META_TYPE_STRING,
 		owner = wrench.META_TYPE_STRING,
 	},
+	description = desc_stripped_with_channel,
 })
 
 -- Timer
@@ -218,16 +271,7 @@ wrench.register_node("digistuff:timer", {
 	},
 })
 
--- GPU, Touchscreens
-
---[[ very complex ...
-wrench.register_node("digistuff:gpu", {
-	metas = {
-		formspec = wrench.META_TYPE_STRING,
-		channel = wrench.META_TYPE_STRING,
-		--? buffer[0..7] = wrench.META_TYPE_STRING,
-	},
-})
+-- Touchscreens
 
 wrench.register_node("digistuff:advtouchscreen", {
 	metas = {
@@ -236,15 +280,14 @@ wrench.register_node("digistuff:advtouchscreen", {
 		init = wrench.META_TYPE_INT,
 	},
 })
-
 wrench.register_node("digistuff:touchscreen", {
 	metas = {
 		formspec = wrench.META_TYPE_STRING,
 		channel = wrench.META_TYPE_STRING,
+		data = wrench.META_TYPE_STRING,
 		init = wrench.META_TYPE_INT,
 	},
 })
---]]
 
 -- Wall Knob
 
@@ -259,4 +302,5 @@ wrench.register_node("digistuff:wall_knob_configured", {
 		value = wrench.META_TYPE_INT,
 		protected = wrench.META_TYPE_INT,
 	},
+	description = desc_stripped_with_channel,
 })

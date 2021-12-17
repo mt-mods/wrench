@@ -43,19 +43,25 @@ This mod is a fork from wrench/ in https://github.com/mt-mods/technic
   - digilines:lightsensor
   - digilines:rtc
 * https://github.com/mt-mods/digistuff
+  - digistuff:advtouchscreen
+  - digistuff:button_\*
   - digistuff:camera
   - digistuff:card_reader
   - digistuff:controller_programmed
   - digistuff:detector
   - digistuff:eeprom
+  - digistuff:gpu
   - digistuff:ioexpander_\*
+  - digistuff:light_\*
   - digistuff:movestone
+  - digistuff:nic
   - digistuff:noteblock
   - digistuff:panel
   - digistuff:piezo
-  - digistuff:piston
+  - digistuff:piston\*
   - digistuff:ram
   - digistuff:timer
+  - digistuff:touchscreen
   - digistuff:wall_knob_configured
 * https://github.com/minetest-mods/digtron
   - digtron:battery_holder

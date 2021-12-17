@@ -21,3 +21,8 @@ Cannot pickup node. Node contains too much metadata.=Block kann nicht genommen w
 @1 "@2" vs. "@3"=@1 "@2" gegen "@3"
 @1 with "@2"=@1 mit "@2"
 @1 with text "@2"=@1 mit Text "@2"
+@1 (@2) with channel "@3"=@1 (@2) mit Kanal "@3"
+light level @1=Lichtlevel @1
+
+unknown list value: @1=Unbekannter "list value": @1
+unknown meta key: @1=Unbekannter "meta key": @1

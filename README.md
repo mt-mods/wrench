@@ -37,6 +37,26 @@ This mod is a fork from wrench/ in https://github.com/mt-mods/technic
 * https://github.com/Lokrates/Biofuel
   - biofuel:refinery
 * https://github.com/HybridDog/connected_chests
+* https://github.com/minetest-mods/digilines
+  - digilines:chest
+  - digilines:lcd
+  - digilines:lightsensor
+  - digilines:rtc
+* https://github.com/mt-mods/digistuff
+  - digistuff:camera
+  - digistuff:card_reader
+  - digistuff:controller_programmed
+  - digistuff:detector
+  - digistuff:eeprom
+  - digistuff:ioexpander_\*
+  - digistuff:movestone
+  - digistuff:noteblock
+  - digistuff:panel
+  - digistuff:piezo
+  - digistuff:piston
+  - digistuff:ram
+  - digistuff:timer
+  - digistuff:wall_knob_configured
 * https://github.com/minetest-mods/digtron
   - digtron:battery_holder
   - digtron:inventory

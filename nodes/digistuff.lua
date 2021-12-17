@@ -87,7 +87,6 @@ end
 wrench.register_node("digistuff:eeprom", mem_def)
 wrench.register_node("digistuff:ram", mem_def)
 
-
 -- I/O Expander
 
 -- The input state depends on the neighbor. That's why we don't save this.
@@ -110,17 +109,23 @@ for i = 0, 15 do
 	})
 end
 
---[[ TODO ...
+-- Movestone
+
+-- TODO: Save (and restore) state and activity when pickup a moving movestone?
+local movestone_save_state = false
 wrench.register_node("digistuff:movestone", {
 	owned = true,
+	timer = movestone_save_state,
 	metas = {
 		formspec = wrench.META_TYPE_STRING,
 		channel = wrench.META_TYPE_STRING,
 		owner = wrench.META_TYPE_STRING,
-		state = wrench.META_TYPE_STRING,
-		active = wrench.META_TYPE_INT,
+		state = movestone_save_state and wrench.META_TYPE_STRING or wrench.META_TYPE_IGNORE,
+		active = movestone_save_state and wrench.META_TYPE_INT or wrench.META_TYPE_IGNORE,
 	},
 })
+
+-- Noteblock
 
 wrench.register_node("digistuff:noteblock", {
 	metas = {
@@ -128,7 +133,8 @@ wrench.register_node("digistuff:noteblock", {
 		channel = wrench.META_TYPE_STRING,
 	},
 })
---]]
+
+-- Panel
 
 wrench.register_node("digistuff:panel", {
 	metas = {
@@ -141,6 +147,7 @@ wrench.register_node("digistuff:panel", {
 
 -- Piezo
 
+-- .. with channel sniffing to restore "fastrepeat" or "slowrepeat"
 local node_def = minetest.registered_nodes["digistuff:piezo"]
 local orig_action = node_def.digiline.effector.action
 node_def.digiline.effector.action = function(pos, node, channel, msg)
@@ -167,26 +174,38 @@ wrench.register_node("digistuff:piezo", {
 	end,
 })
 
---[[ TODO ..
-wrench.register_node("digistuff:piston", {
-	--owned = true,
-	metas = {
-		formspec = wrench.META_TYPE_STRING,
-		channel = wrench.META_TYPE_INT,
-		owner = wrench.META_TYPE_STRING,
-	},
-})
+-- Piston
 
-wrench.register_node("digistuff:piston_ext", {
-	drop = true,
-	--owned = true,
+-- TODO: restore extended piston?
+local piston_extended_restore = true
+wrench.register_node("digistuff:piston", {
 	metas = {
 		formspec = wrench.META_TYPE_STRING,
-		channel = wrench.META_TYPE_INT,
+		channel = wrench.META_TYPE_STRING,
 		owner = wrench.META_TYPE_STRING,
 	},
 })
---]]
+wrench.register_node("digistuff:piston_ext", {
+	drop = not piston_extended_restore,
+	before_remove = function(pos, meta, node, player)
+		-- remove "digistuff:piston_pusher"
+		local def = minetest.registered_nodes[node.name]
+		def.after_dig_node(pos, node)
+	end,
+	after_place = piston_extended_restore and function(pos, player, stack, pointed)
+		local channel = minetest.get_meta(pos):get_string("channel")
+		local node = minetest.get_node(pos)
+		minetest.swap_node(pos, {name = "digistuff:piston", param2 = node.param2})
+		node = minetest.get_node(pos)
+		local def = minetest.registered_nodes[node.name]
+		def.digiline.effector.action(pos, node, channel, { action = "extend" })
+	end,
+	metas = {
+		formspec = wrench.META_TYPE_STRING,
+		channel = wrench.META_TYPE_STRING,
+		owner = wrench.META_TYPE_STRING,
+	},
+})
 
 -- Timer
 

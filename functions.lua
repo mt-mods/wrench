@@ -147,9 +147,10 @@ function wrench.pickup_node(pos, player)
 	if def.before_remove then
 		def.before_remove(pos, meta, node, player)
 	end
+	local meta_table = meta:to_table()
 	minetest.remove_node(pos)
 	if def.after_pickup then
-		def.after_pickup(pos, node, meta:to_table(), player)
+		def.after_pickup(pos, node, meta_table, player)
 	end
 	local node_def = minetest.registered_nodes[node.name]
 	if wrench.has_pipeworks and node_def.tube then

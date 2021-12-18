@@ -42,6 +42,7 @@ This mod is a fork from wrench/ in https://github.com/mt-mods/technic
   - digilines:lcd
   - digilines:lightsensor
   - digilines:rtc
+* https://cheapiesystems.com/git/digiscreen/
 * https://github.com/mt-mods/digistuff
   - digistuff:advtouchscreen
   - digistuff:button_\*

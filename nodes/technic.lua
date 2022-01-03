@@ -98,6 +98,8 @@ wrench.register_node("technic:tool_workshop", {
 	},
 })
 
+-- Battery boxes
+
 for _, tier in pairs({"LV", "MV", "HV"}) do
 	for i = 0, 8 do
 		wrench.register_node("technic:"..tier:lower().."_battery_box"..i, {
@@ -112,6 +114,7 @@ for _, tier in pairs({"LV", "MV", "HV"}) do
 				internal_EU_charge_max = wrench.META_TYPE_INT,
 				last_side_shown = wrench.META_TYPE_INT,
 				channel = wrench.has_digilines and wrench.META_TYPE_STRING,
+				tube_time = tier ~= "LV" and wrench.META_TYPE_INT or wrench.META_TYPE_IGNORE,
 			},
 		})
 	end

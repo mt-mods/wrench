@@ -32,6 +32,7 @@ if minetest.registered_nodes["technic:cnc_mk2"] then
 			LV_EU_demand = wrench.META_TYPE_INT,
 			LV_EU_input = wrench.META_TYPE_INT,
 			src_time = wrench.META_TYPE_INT,
+			tube_time = wrench.META_TYPE_INT,
 			size = wrench.META_TYPE_INT,
 			program = wrench.META_TYPE_STRING,
 			cnc_user = wrench.META_TYPE_STRING,

@@ -8,11 +8,11 @@ local function register_machine_node(nodename, tier)
 	local lists = tier ~= "LV" and machine_invlist_upgrades or machine_invlist
 	local metas = {
 		infotext = wrench.META_TYPE_STRING,
-		formspec = tier ~= "LV" and wrench.META_TYPE_STRING or nil,
+		formspec = tier ~= "LV" and wrench.META_TYPE_STRING or wrench.META_TYPE_IGNORE,
 		splitstacks = tier ~= "LV" and wrench.META_TYPE_INT or nil,
 		[tier.."_EU_demand"] = wrench.META_TYPE_INT,
 		[tier.."_EU_input"] = wrench.META_TYPE_INT,
-		tube_time = tier ~= "LV" and wrench.META_TYPE_INT or nil,
+		tube_time = tier ~= "LV" and wrench.META_TYPE_INT or wrench.META_TYPE_IGNORE,
 		src_time = wrench.META_TYPE_INT,
 	}
 	wrench.register_node(nodename, {lists = lists, metas = metas})

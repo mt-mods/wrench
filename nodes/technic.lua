@@ -125,6 +125,29 @@ if wrench.has_digilines then
 	})
 end
 
+-- Supply converter
+
+wrench.register_node("technic:supply_converter", {
+	metas = {
+		infotext = wrench.META_TYPE_STRING,
+		formspec = wrench.META_TYPE_STRING,
+		channel = wrench.META_TYPE_STRING,
+		enabled = wrench.META_TYPE_INT,
+		power = wrench.META_TYPE_INT,
+		mesecon_effect = wrench.META_TYPE_INT,
+		mesecon_mode = wrench.META_TYPE_INT,
+		LV_EU_demand = wrench.META_TYPE_IGNORE,
+		LV_EU_input = wrench.META_TYPE_IGNORE,
+		LV_EU_supply = wrench.META_TYPE_IGNORE,
+		MV_EU_demand = wrench.META_TYPE_IGNORE,
+		MV_EU_input = wrench.META_TYPE_IGNORE,
+		MV_EU_supply = wrench.META_TYPE_IGNORE,
+		HV_EU_demand = wrench.META_TYPE_IGNORE,
+		HV_EU_input = wrench.META_TYPE_IGNORE,
+		HV_EU_supply = wrench.META_TYPE_IGNORE,
+	},
+})
+
 -- Forcefield emitter
 
 local states = { "off", "on" }

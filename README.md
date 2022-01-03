@@ -123,6 +123,7 @@ This mod is a fork from wrench/ in https://github.com/mt-mods/technic
   - technic:\*_electric_furnace\*
   - technic:\*_extractor\*
   - technic:\*_freezer\*
+  - technic:\*_generator\*
   - technic:\*_grinder\*
 * https://github.com/minetest-mods/xdecor
   - realchess:chessboard

@@ -40,6 +40,29 @@ for name, data in pairs(base_machines) do
 	end
 end
 
+-- Generators
+
+local function register_generator(nodename, tier)
+	wrench.register_node(nodename, {
+		lists = {"src"},
+		metas = {
+			infotext = wrench.META_TYPE_IGNORE,
+			formspec = wrench.META_TYPE_IGNORE,
+			splitstacks = tier ~= "LV" and wrench.META_TYPE_INT or wrench.META_TYPE_IGNORE,
+			burn_time = wrench.META_TYPE_INT,
+			burn_totaltime = wrench.META_TYPE_INT,
+			tube_time = wrench.META_TYPE_IGNORE,
+			[tier.."_EU_supply"] = wrench.META_TYPE_IGNORE,
+		},
+	})
+end
+
+for _, tier in ipairs(defaults.tiers) do
+	local nodename ="technic:"..tier:lower().."_generator"
+	register_generator(nodename, tier)
+	register_generator(nodename.."_active", tier)
+end
+
 -- Special nodes
 
 wrench.register_node("technic:coal_alloy_furnace", {

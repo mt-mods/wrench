@@ -9,6 +9,7 @@ wrench.register_node("default:chest", {
 	metas = {
 		splitstacks = splitstacks,
 		formspec = formspec,
+		infotext = wrench.META_TYPE_IGNORE,
 	}
 })
 

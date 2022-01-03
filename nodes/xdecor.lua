@@ -142,6 +142,7 @@ wrench.register_node("xdecor:workbench", {
 	lists = {"tool", "input", "hammer", "forms", "storage"},
 	metas = {
 		infotext = wrench.META_TYPE_STRING,
+		formspec = wrench.META_TYPE_IGNORE,
 	},
 	owned = true,
 	timer = true,

@@ -21,6 +21,7 @@ for _, chest in pairs(basic_chests) do
 		metas = {
 			owner = wrench.META_TYPE_STRING,
 			infotext = wrench.META_TYPE_STRING,
+			formspec = wrench.META_TYPE_IGNORE,
 		},
 		owned = true,
 	})

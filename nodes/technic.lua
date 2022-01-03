@@ -70,7 +70,8 @@ wrench.register_node("technic:tool_workshop", {
 		infotext = wrench.META_TYPE_STRING,
 		MV_EU_demand = wrench.META_TYPE_INT,
 		MV_EU_input = wrench.META_TYPE_INT,
-		tube_time = wrench.META_TYPE_INT
+		tube_time = wrench.META_TYPE_INT,
+		formspec = wrench.META_TYPE_IGNORE
 	},
 })
 
@@ -85,6 +86,7 @@ for _, tier in pairs({"LV", "MV", "HV"}) do
 				[tier.."_EU_supply"] = wrench.META_TYPE_INT,
 				[tier.."_EU_input"] = wrench.META_TYPE_INT,
 				internal_EU_charge = wrench.META_TYPE_INT,
+				internal_EU_charge_max = wrench.META_TYPE_INT,
 				last_side_shown = wrench.META_TYPE_INT,
 				channel = wrench.has_digilines and wrench.META_TYPE_STRING,
 			},
@@ -148,5 +150,7 @@ wrench.register_node("technic:quarry", {
 		dug = wrench.META_TYPE_INT,
 		size = wrench.META_TYPE_INT,
 		channel = wrench.has_digilines and wrench.META_TYPE_STRING,
+		dig_pos = wrench.META_TYPE_IGNORE,
+		HV_EU_input = wrench.META_TYPE_IGNORE,
 	},
 })

@@ -15,7 +15,11 @@ local function register_machine_node(nodename, tier)
 		tube_time = tier ~= "LV" and wrench.META_TYPE_INT or wrench.META_TYPE_IGNORE,
 		src_time = wrench.META_TYPE_INT,
 	}
-	wrench.register_node(nodename, {lists = lists, metas = metas})
+	wrench.register_node(nodename, {
+		lists = lists,
+		metas = metas,
+		lists_ignore = tier ~= "LV" and {"dst_tmp"} or {"dst_tmp", "upgrade1", "upgrade2"}
+	})
 end
 
 local defaults = {tiers = {"LV", "MV", "HV"}}
@@ -116,6 +120,7 @@ for _, tier in pairs({"LV", "MV", "HV"}) do
 				channel = wrench.has_digilines and wrench.META_TYPE_STRING,
 				tube_time = tier ~= "LV" and wrench.META_TYPE_INT or wrench.META_TYPE_IGNORE,
 			},
+			lists_ignore = tier ~= "LV" and nil or {"upgrade1", "upgrade2"},
 		})
 	end
 end

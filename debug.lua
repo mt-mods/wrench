@@ -42,29 +42,47 @@ wrench.pickup_node = function(pos, player)
 	local meta = minetest.get_meta(pos)
 	if not player:get_player_control().sneak then
 	        local wrench_def = wrench.registered_nodes[node.name]
+		local inventory = meta:get_inventory()
+	        local lists = get_keys(inventory:get_lists())
+		local lists_missing = {}
 		if wrench_def and wrench_def.lists then
-			local inventory = meta:get_inventory()
-	                local lists = get_keys(inventory:get_lists())
 			if #lists > 0 then
 				for _, v in ipairs(lists) do
-					if not array_find(wrench_def.lists, v) then
-						return false, S("unknown list value: @1", v)
+					if not array_find(wrench_def.lists, v)
+					and not (wrench_def.lists_ignore and array_find(wrench_def.lists_ignore, v)) then
+						table.insert(lists_missing, v)
 					end
 				end
 			end
 		end
+		local metatable = meta:to_table()
+		local metas = get_keys(metatable.fields)
+		local metas_missing = {}
 		if wrench_def and wrench_def.metas then
-			local metatable = meta:to_table()
-			local metas = get_keys(metatable.fields)
 			if #metas > 0 then
 				for k, v in pairs(metatable.fields) do
 					if not wrench_def.metas[k] then
-						return false, S("unknown meta key: @1", k)
+						table.insert(metas_missing, k)
 					end
 				end
 			end
 	        end
-		return orig_wrench_pickup_node(pos, player)
+		if #lists_missing > 0 or #metas_missing > 0 then
+			return false, S("can't pickup @1, unknown value(s) in lists: @2 metas: @3",
+				node.name,
+				table.concat(lists_missing, ","),
+				table.concat(metas_missing, ", ")
+			)
+		end
+		local rc = orig_wrench_pickup_node(pos, player)
+		if rc == nil then
+			if #lists == 0 and #metas == 0 then
+				return false, S("can't pickup node: @1, no inventory and no meta.fields", node.name)
+			else
+				return false, S("can't pickup unsupported node: @1", node.name)
+			end
+		end
+		return rc
 	end
 	local def = minetest.registered_nodes[node.name]
 	print("wrench.register_node(\"" .. node.name .. "\", {");

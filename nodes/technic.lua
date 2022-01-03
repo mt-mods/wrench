@@ -107,6 +107,24 @@ wrench.register_node("technic:injector", {
 	timer = true,
 })
 
+if wrench.has_digilines then
+	wrench.register_node("technic:power_monitor", {
+		metas = {
+			channel = wrench.META_TYPE_STRING,
+			infotext = wrench.META_TYPE_IGNORE,
+			formspec = wrench.META_TYPE_IGNORE,
+		},
+	})
+	wrench.register_node("technic:switching_station", {
+		timer = true,
+		metas = {
+			channel = wrench.META_TYPE_STRING,
+			infotext = wrench.META_TYPE_IGNORE,
+			formspec = wrench.META_TYPE_IGNORE,
+		},
+	})
+end
+
 -- Forcefield emitter
 
 local states = { "off", "on" }

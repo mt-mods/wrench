@@ -64,15 +64,17 @@ wrench.register_node("pipeworks:mese_filter", filter_data)
 filter_data.metas["channel"] = wrench.META_TYPE_STRING
 wrench.register_node("pipeworks:digiline_filter", filter_data)
 
--- Tubes (6d style): 'mese_sand_tube' and 'teleport_tube'
+-- Tubes (6d style): 'mese_sand_tube','teleport_tube', 'digiline_detector_tube'
 
 for i = 1, 10 do
 	wrench.register_node("pipeworks:mese_sand_tube_"..i, {
 		drop = true,
 		metas = {
 			infotext = wrench.META_TYPE_STRING,
+			formspec = wrench.META_TYPE_IGNORE,
 			dist = wrench.META_TYPE_INT,
 			adjlist = wrench.META_TYPE_IGNORE,
+			tubedir = wrench.META_TYPE_IGNORE,
 		},
 		description = desc_infotext,
 	})
@@ -84,9 +86,22 @@ for i = 1, 10 do
 			channel = wrench.META_TYPE_STRING,
 			can_receive = wrench.META_TYPE_INT,
 			adjlist = wrench.META_TYPE_IGNORE,
+			tubedir = wrench.META_TYPE_IGNORE,
 		},
 		description = desc_infotext,
 	})
+	if wrench.has_digilines then
+		wrench.register_node("pipeworks:digiline_detector_tube_"..i, {
+			drop = true,
+			metas = {
+				formspec = wrench.META_TYPE_IGNORE,
+				channel = wrench.META_TYPE_STRING,
+				adjlist = wrench.META_TYPE_IGNORE,
+				tubedir = wrench.META_TYPE_IGNORE,
+			},
+			description = wrench.description_with_channel,
+		})
+	end
 end
 
 -- Tubes (old style): 'lua_tube' and 'mese_tube'
@@ -100,6 +115,7 @@ local lua_tube_data = {
 		lc_memory  = wrench.META_TYPE_STRING,
 		luac_id = wrench.META_TYPE_INT,
 		real_portstates = wrench.META_TYPE_INT,
+		tubedir = wrench.META_TYPE_IGNORE,
 	},
 	description = function(pos, meta, node, player)
 		local desc = minetest.registered_nodes["pipeworks:lua_tube000000"].description
@@ -114,6 +130,7 @@ local mese_tube_data = {
 		formspec = wrench.META_TYPE_STRING,
 		infotext = wrench.META_TYPE_IGNORE,
 		adjlist = wrench.META_TYPE_IGNORE,
+		tubedir = wrench.META_TYPE_IGNORE,
 	},
 	description = wrench.description_with_configuration,
 }

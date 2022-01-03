@@ -94,6 +94,7 @@ This mod is a fork from wrench/ in https://github.com/mt-mods/technic
 * https://github.com/mt-mods/pipeworks
   - pipeworks:autocrafter
   - pipeworks:deployer_\*
+  - pipeworks:digiline_detector_tube_\*
   - pipeworks:dispenser_\*
   - pipeworks:nodebreaker_\*
   - pipeworks:\*filter

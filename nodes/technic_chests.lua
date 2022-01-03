@@ -3,20 +3,6 @@
 
 local splitstacks = wrench.has_pipeworks and wrench.META_TYPE_INT
 
-local function get_chest_description(pos, meta, node)
-	local desc = minetest.registered_nodes[node.name].description
-	local text = meta:get_string("infotext")
-	if text ~= desc then
-		return text
-	end
-end
-
-local function with_owner_field(metas)
-	local result = table.copy(metas)
-	result.owner = wrench.META_TYPE_STRING
-	return result
-end
-
 local chests_meta = {
 	iron = {
 		infotext = wrench.META_TYPE_STRING,
@@ -44,6 +30,7 @@ local chests_meta = {
 		sort_mode = wrench.META_TYPE_INT,
 		autosort = wrench.META_TYPE_INT,
 		splitstacks = splitstacks,
+		color = wrench.META_TYPE_INT,
 	},
 	mithril = {
 		infotext = wrench.META_TYPE_STRING,
@@ -60,23 +47,34 @@ local chests_meta = {
 	},
 }
 
-for name, metas in pairs(chests_meta) do
-	wrench.register_node("technic:"..name.."_chest", {
+local function with_owner_field(metas)
+	local result = table.copy(metas)
+	result.owner = wrench.META_TYPE_STRING
+	return result
+end
+
+local function register_chests(material, color)
+	local lists_ignore = (material ~= "iron" and material ~= "copper") and {"quickmove"} or nil
+	wrench.register_node("technic:"..material.."_chest"..color, {
 		lists = {"main"},
-		metas = metas,
-		description = get_chest_description,
+		lists_ignore = lists_ignore,
+		metas = chests_meta[material],
 	})
-	wrench.register_node("technic:"..name.."_protected_chest", {
+	wrench.register_node("technic:"..material.."_protected_chest"..color, {
 		lists = {"main"},
-		metas = metas,
-		description = get_chest_description,
+		lists_ignore = lists_ignore,
+		metas = chests_meta[material],
 	})
-	wrench.register_node("technic:"..name.."_locked_chest", {
+	wrench.register_node("technic:"..material.."_locked_chest"..color, {
 		lists = {"main"},
-		metas = with_owner_field(metas),
-		description = get_chest_description,
+		lists_ignore = lists_ignore,
+		metas = with_owner_field(chests_meta[material]),
 		owned = true,
 	})
+end
+
+for material, metas in pairs(chests_meta) do
+	register_chests(material, "")
 end
 
 -- Register extra nodes with color marking for gold chest
@@ -100,20 +98,5 @@ local chest_mark_colors = {
 }
 
 for i = 1, 15 do
-	wrench.register_node("technic:gold_chest"..chest_mark_colors[i], {
-		lists = {"main"},
-		metas = chests_meta.gold,
-		description = get_chest_description,
-	})
-	wrench.register_node("technic:gold_protected_chest"..chest_mark_colors[i], {
-		lists = {"main"},
-		metas = chests_meta.gold,
-		description = get_chest_description,
-	})
-	wrench.register_node("technic:gold_locked_chest"..chest_mark_colors[i], {
-		lists = {"main"},
-		metas = with_owner_field(chests_meta.gold),
-		description = get_chest_description,
-		owned = true,
-	})
+	register_chests("gold", chest_mark_colors[i])
 end

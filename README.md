@@ -111,6 +111,9 @@ This mod is a fork from wrench/ in https://github.com/mt-mods/technic
   - technic:coal_alloy_furnace\*
   - technic:\*chest\*
   - technic:injector
+  - technic:power_monitor
+  - technic:supply_converter
+  - technic:switching_station
   - technic:tool_workshop
   - technic:\*_alloy_furnace\*
   - technic:\*_battery_box\*

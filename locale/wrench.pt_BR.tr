@@ -1,9 +1,11 @@
 # textdomain: wrench
 
-# technic_wrench translation template
+# Braziliam portuguese translation for wrench
+# Tradução portuguesa brasileira para wrench
+# By Sires
 
-Wrench=
-@1 with items=
+Wrench=Chave Inglesa
+@1 with items=@1 com items
 
 Cannot pickup node. Owned by @1.=
 Not enough room in inventory to pickup node.=

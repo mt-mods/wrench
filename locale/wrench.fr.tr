@@ -2,8 +2,8 @@
 
 # technic_wrench translation template
 
-Wrench=
-@1 with items=
+Wrench=Clé
+@1 with items=@1 avec des objets
 
 Cannot pickup node. Owned by @1.=
 Not enough room in inventory to pickup node.=

@@ -56,5 +56,5 @@ for _, mod in pairs(mods) do
 end
 
 if minetest.settings:get_bool("wrench.enable_debug", false) then
-	dofile(modpath.."/debug.lua")
+	dofile(modpath.."/debug/debug.lua")
 end

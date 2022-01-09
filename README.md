@@ -142,23 +142,19 @@ This mod is a fork from wrench/ in https://github.com/mt-mods/technic
 wrench.enable_crafting = true
 ```
 
-# Contributors (originally technic modpack)
+# Contributors
 
-* kpoppel
 * Nekogloop
-* Nore/Ekdohibs
 * ShadowNinja
-* VanessaE
 * BuckarooBanzay
 * OgelGames
 * int-ua
 * S-S-X
 * H-V-Smacker
 * groxxda
-* SwissalpS
 * And many others...
 
-# License (originally technic modpack)
+# License
 
 Unless otherwise stated, all components of this modpack are licensed under the
 LGPL, V2 or later.  See also the individual mod folders for their

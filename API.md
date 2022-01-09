@@ -54,9 +54,9 @@ wrench.register_node(node.name, {
         timer = true,
         -- Save NodeTimers
 
-        before_remove = nil,
+        before_pickup = nil,
         -- Default
-        before_remove = function(pos, meta, node, player)
+        before_pickup = function(pos, meta, node, player)
         -- Function called before pickup node
 
         after_pickup = nil,

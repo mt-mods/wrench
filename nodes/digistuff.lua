@@ -239,7 +239,7 @@ wrench.register_node("digistuff:piston", {
 })
 wrench.register_node("digistuff:piston_ext", {
 	drop = not piston_extended_restore,
-	before_remove = function(pos, meta, node, player)
+	before_pickup = function(pos, meta, node, player)
 		-- remove "digistuff:piston_pusher"
 		local def = minetest.registered_nodes[node.name]
 		def.after_dig_node(pos, node)

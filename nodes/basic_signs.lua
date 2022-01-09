@@ -20,6 +20,7 @@ local sign_def = {
 		glow = wrench.META_TYPE_STRING,
 		widefont = wrench.META_TYPE_INT,
 		unifont = wrench.META_TYPE_INT,
+		infotext = wrench.META_TYPE_IGNORE,
 	},
 	before_remove = remove_glow,
 	after_place = function(pos, player, stack, pointed)
@@ -59,6 +60,7 @@ register_all("basic_signs:sign_wall_locked", {
 		widefont = wrench.META_TYPE_INT,
 		unifont = wrench.META_TYPE_INT,
 		owner = wrench.META_TYPE_STRING,
+		infotext = wrench.META_TYPE_IGNORE,
 	},
 	before_remove = remove_glow,
 	after_place = function(pos, player, stack, pointed)

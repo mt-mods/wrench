@@ -15,6 +15,10 @@ local nodes = {
 for _, nodename in pairs(nodes) do
 	wrench.register_node(nodename, {
 		lists = {"main"},
+		metas = {
+			infotext = wrench.META_TYPE_IGNORE,
+			formspec = wrench.META_TYPE_IGNORE,
+		},
 	})
 end
 

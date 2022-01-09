@@ -9,12 +9,6 @@ local get_keys = function(list)
 	return keys
 end
 
-local array_find = function(list, val)
-	for i, _ in ipairs(list) do
-		if list[i] == val then return i end
-	end
-end
-
 local spairs = function(tbl, order_func)
 	local ptrs = {}
 	for p in pairs(tbl) do ptrs[#ptrs +1] = p end
@@ -41,40 +35,11 @@ wrench.pickup_node = function(pos, player)
 	local node = minetest.get_node(pos)
 	local meta = minetest.get_meta(pos)
 	if not player:get_player_control().sneak then
-	        local wrench_def = wrench.registered_nodes[node.name]
 		local inventory = meta:get_inventory()
 	        local lists = get_keys(inventory:get_lists())
-		local lists_missing = {}
-		if wrench_def and wrench_def.lists then
-			if #lists > 0 then
-				for _, v in ipairs(lists) do
-					if not array_find(wrench_def.lists, v)
-					and not (wrench_def.lists_ignore and array_find(wrench_def.lists_ignore, v)) then
-						table.insert(lists_missing, v)
-					end
-				end
-			end
-		end
 		local metatable = meta:to_table()
 		local metas = get_keys(metatable.fields)
-		local metas_missing = {}
-		if wrench_def and wrench_def.metas then
-			if #metas > 0 then
-				for k, v in pairs(metatable.fields) do
-					if not wrench_def.metas[k] then
-						table.insert(metas_missing, k)
-					end
-				end
-			end
-	        end
-		if #lists_missing > 0 or #metas_missing > 0 then
-			return false, S("can't pickup @1, unknown value(s) in lists: @2 metas: @3",
-				node.name,
-				table.concat(lists_missing, ","),
-				table.concat(metas_missing, ", ")
-			)
-		end
-		local rc = orig_wrench_pickup_node(pos, player)
+		local rc, message = orig_wrench_pickup_node(pos, player)
 		if rc == nil then
 			if #lists == 0 and #metas == 0 then
 				return false, S("can't pickup node: @1, no inventory and no meta.fields", node.name)
@@ -82,7 +47,7 @@ wrench.pickup_node = function(pos, player)
 				return false, S("can't pickup unsupported node: @1", node.name)
 			end
 		end
-		return rc
+		return rc, message
 	end
 	local def = minetest.registered_nodes[node.name]
 	print("wrench.register_node(\"" .. node.name .. "\", {");

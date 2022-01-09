@@ -9,6 +9,13 @@ local errors = {
 	bad_item = function(item) return S("Cannot pickup node containing @1.", item) end,
 	nested = S("Cannot pickup node. Nesting inventories is not allowed."),
 	metadata = S("Cannot pickup node. Node contains too much metadata."),
+	missing = function(node, missing_lists, missing_metas)
+		return S("Cannot pickup @1, unknown value(s) in lists: @2 metas: @3",
+			node.name,
+			table.concat(missing_lists, ","),
+			table.concat(missing_metas, ", ")
+		)
+	end
 }
 
 local function get_stored_metadata(itemstack)
@@ -76,6 +83,43 @@ function wrench.description_with_text(pos, meta, node, player)
 	return S("@1 with text \"@2\"", minetest.registered_nodes[node.name].description, text)
 end
 
+local function check_dev_lists(def, inventory)
+	local array_find = function(list, val)
+		for i, _ in ipairs(list) do
+			if list[i] == val then return i end
+		end
+	end
+	local get_keys = function(list)
+		local keys = {}
+		for k, _ in pairs(list) do
+			keys[#keys+1] = k
+		end
+		return keys
+	end
+	local def_lists = def.lists or {}
+	local lists = get_keys(inventory:get_lists())
+	local missing_lists = {}
+	for _, v in ipairs(lists) do
+		if not array_find(def_lists, v)
+			and not (def.lists_ignore and array_find(def.lists_ignore, v)) then
+			table.insert(missing_lists, v)
+		end
+	end
+	return missing_lists
+end
+
+local function check_dev_metas(def, meta)
+	local def_metas = def.metas or {}
+	local metatable = meta:to_table()
+	local missing_metas = {}
+	for k, v in pairs(metatable.fields) do
+		if not def_metas[k] then
+			table.insert(missing_metas, k)
+		end
+	end
+	return missing_metas
+end
+
 function wrench.pickup_node(pos, player)
 	local node = minetest.get_node(pos)
 	local def = wrench.registered_nodes[node.name]
@@ -96,6 +140,11 @@ function wrench.pickup_node(pos, player)
 		metas = {},
 	}
 	local inv = meta:get_inventory()
+	local missing_lists = check_dev_lists(def, inv)
+	local missing_metas = check_dev_metas(def, meta)
+	if #missing_metas > 0 or #missing_lists > 0 then
+		return false, errors.missing(node, missing_lists, missing_metas)
+	end
 	for _, listname in pairs(def.lists or {}) do
 		local list = inv:get_list(listname)
 		for i, stack in pairs(list) do

@@ -154,6 +154,8 @@ wrench.register_node("digistuff:movestone", {
 		formspec = wrench.META_TYPE_IGNORE,
 		channel = wrench.META_TYPE_STRING,
 		owner = wrench.META_TYPE_STRING,
+		state = wrench.META_TYPE_IGNORE,
+		active = wrench.META_TYPE_IGNORE,
 	},
 })
 

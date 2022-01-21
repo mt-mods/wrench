@@ -1,20 +1,18 @@
 
 -- Register wrench support for digiscreen
 
+local update_screen
+for _,lbm in pairs(minetest.registered_lbms) do
+	if lbm.name == "digiscreen:respawn" then
+		update_screen = lbm.action
+	end
+end
+
 wrench.register_node("digiscreen:digiscreen", {
 	metas = {
-		formspec = wrench.META_TYPE_STRING,
+		formspec = wrench.META_TYPE_IGNORE,
 		channel = wrench.META_TYPE_STRING,
 		data = wrench.META_TYPE_STRING,
 	},
-	after_place = function(pos, player, stack, pointed)
-		local meta = minetest.get_meta(pos)
-		local node = minetest.get_node(pos)
-		local def = minetest.registered_nodes[node.name]
-		local data = minetest.deserialize(meta:get_string("data"))
-		if data then
-			-- Force screen update
-			def.digiline.effector.action(pos, node, meta:get_string("channel"), data)
-		end
-	end,
+	after_place = update_screen,
 })

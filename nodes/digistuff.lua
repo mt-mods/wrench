@@ -39,7 +39,7 @@ end
 
 wrench.register_node("digistuff:camera", {
 	metas = {
-		formspec = wrench.META_TYPE_IGNORE,
+		formspec = wrench.META_TYPE_STRING,
 		channel = wrench.META_TYPE_STRING,
 		radius = wrench.META_TYPE_INT,
 		distance = wrench.META_TYPE_INT,
@@ -74,7 +74,7 @@ wrench.register_node("digistuff:controller_programmed", {
 
 wrench.register_node("digistuff:detector", {
 	metas = {
-		formspec = wrench.META_TYPE_IGNORE,
+		formspec = wrench.META_TYPE_STRING,
 		channel = wrench.META_TYPE_STRING,
 		radius = wrench.META_TYPE_INT,
 	},

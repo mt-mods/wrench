@@ -9,6 +9,7 @@ local errors = {
 	bad_item = function(item) return S("Cannot pickup node containing @1.", item) end,
 	nested = S("Cannot pickup node. Nesting inventories is not allowed."),
 	metadata = S("Cannot pickup node. Node contains too much metadata."),
+	no_list = S("Cannot pickup node. Node has no inventory."),
 	missing = function(node, missing_lists, missing_metas)
 		return S("Cannot pickup @1, unknown value(s) in lists: @2 metas: @3",
 			node.name,
@@ -147,6 +148,9 @@ function wrench.pickup_node(pos, player)
 	end
 	for _, listname in pairs(def.lists or {}) do
 		local list = inv:get_list(listname)
+		if not list then
+			return false, errors.no_list
+		end
 		for i, stack in pairs(list) do
 			if wrench.blacklisted_items[stack:get_name()] then
 				local desc = stack:get_definition().description

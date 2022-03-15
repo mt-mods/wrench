@@ -1,16 +1,22 @@
 unused_args = false
 allow_defined_top = true
-max_line_length = 999
 
 globals = {
-    "technic", "minetest",
+	"minetest",
 }
 
 read_globals = {
-    string = {fields = {"split", "trim"}},
-    table = {fields = {"copy", "getn"}},
+	string = {fields = {"split"}},
+	table = {fields = {"copy"}},
 
-    "intllib", "ItemStack", "drawers",
+	-- Minetest
+	"ItemStack",
+
+	-- Mods
+	"digilines",
+	"drawers",
+	"mesecon",
+	"pipeworks",
+	"signs_lib",
+	"xdecor",
 }
-
-files["init.lua"].ignore = { "name", "stack" }

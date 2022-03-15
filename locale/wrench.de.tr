@@ -1,0 +1,28 @@
+# textdomain: wrench
+
+# German Translation for technic_wrench
+# Deutsche Übersetzung von technic_wrench
+# by Xanthin and others
+# Siehe auch https://dev.minetest.net/Translating/de ".. der Konsistenz zuliebe"
+
+Wrench=Schraubenschluessel
+@1 with items=@1 mit Gegenstaenden
+
+Cannot pickup node. Owned by @1.=Block kann nicht genommen werden. Dieser gehört @1.
+Not enough room in inventory to pickup node.=Nicht genug Platz im Inventar um diesen Block zu nehmen.
+Cannot pickup node containing @1.=Block mit @1 kann nicht genommen werden.
+Cannot pickup node. Nesting inventories is not allowed.=Block kann nicht genommen werden. Verschalteltes Inventar ist nicht erlaubt.
+Cannot pickup node. Node contains too much metadata.=Block kann nicht genommen werden. Der Block enthält zu viele Metadaten.
+
+@1 with channel "@2"=@1 mit Kanal "@2"
+@1 with armor=@1 mit Rüstung
+@1 with configuration=@1 mit Konfiguration
+@1 with code=@1 mit Code
+@1 "@2" vs. "@3"=@1 "@2" gegen "@3"
+@1 with "@2"=@1 mit "@2"
+@1 with text "@2"=@1 mit Text "@2"
+@1 (@2) with channel "@3"=@1 (@2) mit Kanal "@3"
+light level @1=Lichtlevel @1
+
+unknown list value: @1=Unbekannter "list value": @1
+unknown meta key: @1=Unbekannter "meta key": @1

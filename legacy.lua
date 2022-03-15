@@ -1,4 +1,16 @@
 
+-- Compatibility for old function signature
+
+local register_node = wrench.register_node
+
+function wrench.register_node(self, ...)
+	if self == wrench then
+		register_node(...)
+	else
+		register_node(self, ...)
+	end
+end
+
 -- Register aliases for old wrench:picked_up_* nodes
 
 local all_nodes = {
@@ -119,7 +131,7 @@ local all_nodes = {
 
 for mod, nodes in pairs(all_nodes) do
 	if minetest.get_modpath(mod) then
-		for _,n in pairs(nodes) do
+		for _, n in pairs(nodes) do
 			minetest.register_alias("wrench:picked_up_"..n:gsub(":", "_"), n)
 		end
 	end

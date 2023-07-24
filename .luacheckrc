@@ -1,22 +1,18 @@
 unused_args = false
-allow_defined_top = true
 
 globals = {
-	"minetest",
+	"wrench",
 }
 
 read_globals = {
-	string = {fields = {"split"}},
-	table = {fields = {"copy"}},
-
-	-- Minetest
+	"table.copy",
+	"minetest",
 	"ItemStack",
-
-	-- Mods
 	"digilines",
 	"drawers",
 	"mesecon",
 	"pipeworks",
 	"signs_lib",
 	"xdecor",
+	"bones",
 }

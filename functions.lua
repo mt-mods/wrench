@@ -113,7 +113,7 @@ local function check_dev_metas(def, meta)
 	local def_metas = def.metas or {}
 	local metatable = meta:to_table()
 	local missing_metas = {}
-	for k, v in pairs(metatable.fields) do
+	for k in pairs(metatable.fields) do
 		if not def_metas[k] then
 			table.insert(missing_metas, k)
 		end

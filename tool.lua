@@ -1,15 +1,17 @@
 
 local S = wrench.translator
 
+local tool_uses = tonumber(minetest.settings:get("wrench.tool_uses")) or 50
+
 minetest.register_tool("wrench:wrench", {
 	description = S("Wrench"),
 	inventory_image = "technic_wrench.png",
-	on_use = function(itemstack, player, pointed_thing)
-		if not player or not pointed_thing then
+	on_use = function(stack, player, pointed)
+		if not player or not pointed then
 			return
 		end
 		local name = player:get_player_name()
-		local pos = pointed_thing.under
+		local pos = pointed.under
 		if not pos or minetest.is_protected(pos, name) then
 			return
 		end
@@ -20,8 +22,10 @@ minetest.register_tool("wrench:wrench", {
 			end
 			return
 		end
-		itemstack:add_wear(65535 / 20)
-		return itemstack
+		if tool_uses > 0 then
+			stack:add_wear(65535 / tool_uses)
+		end
+		return stack
 	end,
 })
 

@@ -53,13 +53,15 @@ wrench.register_node("default:furnace_active", {
 wrench.register_node("default:sign_wall_wood", {
 	metas = {
 		infotext = wrench.META_TYPE_STRING,
-		text = wrench.META_TYPE_STRING
+		text = wrench.META_TYPE_STRING,
+		formspec = wrench.META_TYPE_IGNORE,
 	},
 })
 
 wrench.register_node("default:sign_wall_steel", {
 	metas = {
 		infotext = wrench.META_TYPE_STRING,
-		text = wrench.META_TYPE_STRING
+		text = wrench.META_TYPE_STRING,
+		formspec = wrench.META_TYPE_IGNORE,
 	},
 })

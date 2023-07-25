@@ -6,6 +6,7 @@ globals = {
 
 read_globals = {
 	"table.copy",
+	"table.indexof",
 	"minetest",
 	"ItemStack",
 	"digilines",

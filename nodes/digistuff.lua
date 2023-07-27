@@ -138,9 +138,8 @@ for i = 0, 14 do
 			channel = wrench.META_TYPE_STRING,
 		},
 		description = function(pos, meta, node, player)
-			local state = S("light level @1", i)
 			local channel = meta:get_string("channel")
-			return S("@1 (@2) with channel \"@3\"", desc_stripped(node), state, channel)
+			return S("@1 (light level @2) with channel \"@3\"", desc_stripped(node), i, channel)
 		end,
 	})
 end

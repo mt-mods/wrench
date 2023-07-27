@@ -1,10 +1,10 @@
 # textdomain: wrench
 
-# technic_wrench brazilian portuguese translation
-# technic_wrench tradução para português brasileiro
-# by Sires
+# technic_wrench japanese translation
+# technic_wrench の日本語への翻訳
+# by damiemk
 
-Wrench=Chave Inglesa
+Wrench=レンチ
 
 Not enough room in inventory to pickup node.=
 Cannot pickup node containing @1.=
@@ -14,7 +14,7 @@ Cannot pickup node. Node contains too much metadata.=
 Cannot pickup node. Node is missing inventory.=
 Cannot pickup node. Node contains unknown metadata.=
 
-@1 with items=@1 com items
+@1 with items=アイテム付きレンチ @1
 @1 with text "@2"=
 @1 with channel "@2"=
 @1 with configuration=

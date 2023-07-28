@@ -5,7 +5,7 @@ local tool_uses = tonumber(minetest.settings:get("wrench.tool_uses")) or 50
 
 minetest.register_tool("wrench:wrench", {
 	description = S("Wrench"),
-	inventory_image = "technic_wrench.png",
+	inventory_image = "wrench_tool.png",
 	on_use = function(stack, player, pointed)
 		if not player or not pointed then
 			return
@@ -28,25 +28,3 @@ minetest.register_tool("wrench:wrench", {
 		return stack
 	end,
 })
-
-if minetest.settings:get_bool("wrench.enable_crafting", true) then
-	if minetest.get_modpath("technic") then
-		minetest.register_craft({
-			output = "wrench:wrench",
-			recipe = {
-				{"technic:stainless_steel_ingot", "", "technic:stainless_steel_ingot"},
-				{"", "technic:stainless_steel_ingot", ""},
-				{"", "technic:stainless_steel_ingot", ""}
-			}
-		})
-	elseif minetest.get_modpath("default") then
-		minetest.register_craft({
-			output = "wrench:wrench",
-			recipe = {
-				{"default:steel_ingot", "", "default:steel_ingot"},
-				{"", "default:steel_ingot", ""},
-				{"", "default:steel_ingot", ""}
-			}
-		})
-	end
-end

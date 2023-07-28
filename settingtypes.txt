@@ -6,6 +6,3 @@ wrench.tool_uses (Wrench uses) int 50
 
 # Enables compression of item metadata when picking up nodes. Significantly decreases the size of item metadata, at the cost of not being human-readable.
 wrench.compress_data (Compress item metadata) bool true
-
-# Shows debug info in the console when the wrench is used with 'sneak' (very experimental)
-wrench.enable_debug (Shows debug info) bool false

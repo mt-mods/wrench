@@ -55,12 +55,3 @@ for _, mod in pairs(mods) do
 		dofile(modpath.."/nodes/"..mod..".lua")
 	end
 end
-
-if minetest.settings:get_bool("wrench.enable_debug", false) then
-	local file = modpath.."/debug/debug.lua"
-	local f = io.open(file, "r")
-	if f then
-		io.close(f)
-		dofile(file)
-	end
-end

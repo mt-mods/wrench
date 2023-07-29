@@ -24,7 +24,6 @@ local colors = {
 
 -- Colored grip recipes by overriding item image using metadata
 -- Only works for 5.8.0+ clients, but it's purely aesthetic anyway :)
-
 for name, color in pairs(colors) do
 	local item = ItemStack("wrench:wrench")
 	item:get_meta():set_string("inventory_image", "wrench_tool.png^(wrench_grip.png^[multiply:"..color..")")
@@ -45,8 +44,20 @@ for name, color in pairs(colors) do
 	end
 end
 
--- Actual crafting recipe
+-- This is needed to preserve wear when coloring the wrench
+minetest.register_on_craft(function(crafted_item, player, old_craft_grid)
+	if crafted_item:get_name() ~= "wrench:wrench" then
+		return
+	end
+	for _,stack in ipairs(old_craft_grid) do
+		if stack:get_name() == "wrench:wrench" then
+			crafted_item:set_wear(stack:get_wear())
+			return crafted_item
+		end
+	end
+end)
 
+-- Actual crafting recipe
 if minetest.settings:get_bool("wrench.enable_crafting", true) then
 	if has_technic then
 		minetest.register_craft({

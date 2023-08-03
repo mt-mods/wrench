@@ -47,5 +47,6 @@ To make maintaining support easier, wrench only supports specific versions of mo
 
 # License
 
-Unless otherwise stated, all components of this modpack are licensed under the
-LGPL, V2 or later.
+Textures - CC BY-SA 4.0
+
+Everything else - LGPL, V2 or later.

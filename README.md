@@ -4,11 +4,15 @@
 [![License](https://img.shields.io/badge/license-LGPLv2.0%2B-purple.svg)](https://www.gnu.org/licenses/old-licenses/lgpl-2.0.en.html)
 [![ContentDB](https://content.minetest.net/packages/mt-mods/wrench/shields/downloads/)](https://content.minetest.net/packages/mt-mods/wrench/)
 
-The wrench tool allows you pickup nodes with inventories or other metadata, such as chests, signs, drawers, machines, etc, and transport them intact to another location.
+The wrench tool allows you pick up nodes with inventories or other metadata, such as chests, signs, drawers, machines, etc, and transport them intact to another location.
 
 ![](screenshot.png?raw=true)
 
 This mod was originally part of [`technic_plus`](https://github.com/mt-mods/technic), but was split out to be a standalone mod. It's now much more powerful, supporting many more mods, and is also safer to use.
+
+## Usage
+
+To pick up nodes, simply punch them with the wrench (left-click). The picked-up node can then be placed as normal.
 
 ## Settings
 
@@ -47,7 +51,11 @@ To make maintaining support easier, wrench only supports specific versions of mo
 - `vessels` - https://github.com/minetest/minetest_game
 - `xdecor` - https://github.com/minetest-mods/xdecor
 
-# License
+## API
+
+An API is provided to add support for more nodes. See [API.md](API.md) for details.
+
+## License
 
 Textures - CC BY-SA 4.0
 

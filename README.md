@@ -4,7 +4,7 @@
 [![License](https://img.shields.io/badge/license-LGPLv2.0%2B-purple.svg)](https://www.gnu.org/licenses/old-licenses/lgpl-2.0.en.html)
 [![ContentDB](https://content.minetest.net/packages/mt-mods/wrench/shields/downloads/)](https://content.minetest.net/packages/mt-mods/wrench/)
 
-The wrench tool allows you pick up nodes with inventories or other metadata, such as chests, signs, drawers, machines, etc, and transport them intact to another location.
+The wrench tool allows you to pick up nodes with inventories or other metadata, such as chests, signs, drawers, machines, etc, and transport them intact to another location.
 
 ![](screenshot.png?raw=true)
 

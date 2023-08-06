@@ -27,6 +27,10 @@ end
 
 wrench.register_node("3d_armor_stand:armor_stand", {
 	lists = lists,
+	metas = {
+		infotext = wrench.META_TYPE_STRING,
+		formspec = wrench.META_TYPE_IGNORE,
+	},
 	after_place = after_place,
 	description = description,
 })
@@ -36,6 +40,7 @@ wrench.register_node("3d_armor_stand:locked_armor_stand", {
 	metas = {
 		owner = wrench.META_TYPE_STRING,
 		infotext = wrench.META_TYPE_STRING,
+		formspec = wrench.META_TYPE_IGNORE,
 	},
 	owned = true,
 	after_place = after_place,

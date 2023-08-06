@@ -3,49 +3,46 @@ local S = wrench.translator
 
 local SERIALIZATION_VERSION = 1
 
+local compress_data = minetest.settings:get_bool("wrench.compress_data", true)
+
 local errors = {
 	owned = function(owner) return S("Cannot pickup node. Owned by @1.", owner) end,
-	full_inv = S("Not enough room in inventory to pickup node."),
 	bad_item = function(item) return S("Cannot pickup node containing @1.", item) end,
+	full_inv = S("Not enough room in inventory to pickup node."),
 	nested = S("Cannot pickup node. Nesting inventories is not allowed."),
 	metadata = S("Cannot pickup node. Node contains too much metadata."),
-	no_list = S("Cannot pickup node. Node has no inventory."),
-	missing = function(node, missing_lists, missing_metas)
-		return S("Cannot pickup @1, unknown value(s) in lists: @2 metas: @3",
-			node.name,
-			table.concat(missing_lists, ","),
-			table.concat(missing_metas, ", ")
-		)
-	end
+	missing_inv = S("Cannot pickup node. Node is missing inventory."),
+	unknown = S("Cannot pickup node. Node contains unknown metadata."),
 }
 
-local function get_stored_metadata(itemstack)
-	local meta = itemstack:get_meta()
-	local data = meta:get("data") or meta:get("")
-	data = minetest.deserialize(data)
-	if not data or not data.version or not data.name then
-		return
-	end
-	return data
+function wrench.description_with_items(pos, meta, node, player)
+	local desc = minetest.registered_nodes[node.name].description or node.name
+	return S("@1 with items", desc)
 end
 
-local function other_keys_than(list, keys)
-	local list2 = table.copy(list)
-	for _, k in ipairs(keys) do
-		list2[k] = nil
+function wrench.description_with_text(pos, meta, node, player)
+	local text = meta:get_string("text")
+	if #text > 32 then
+		text = text:sub(1, 24).."..."
 	end
-	local other_keys = {}
-	for k, _ in pairs(list2) do
-		other_keys[#other_keys+1] = k
-	end
-	return other_keys
+	local desc = minetest.registered_nodes[node.name].description or node.name
+	return S("@1 with text \"@2\"", desc, text)
+end
+
+function wrench.description_with_channel(pos, meta, node, player)
+	local desc = minetest.registered_nodes[node.name].description or node.name
+	return S("@1 with channel \"@2\"", desc, meta:get_string("channel"))
+end
+
+function wrench.description_with_configuration(pos, meta, node, player)
+	local desc = minetest.registered_nodes[node.name].description or node.name
+	return S("@1 with configuration", desc)
 end
 
 local function get_description(def, pos, meta, node, player)
-	local t = type(def.description)
-	if t == "string" then
+	if type(def.description) == "string" then
 		return def.description
-	elseif t == "function" then
+	elseif type(def.description) == "function" then
 		local desc = def.description(pos, meta, node, player)
 		if desc then
 			return desc
@@ -55,70 +52,63 @@ local function get_description(def, pos, meta, node, player)
 		return wrench.description_with_items(pos, meta, node, player)
 	elseif def.metas and def.metas.text then
 		return wrench.description_with_text(pos, meta, node, player)
-	elseif def.metas and def.metas.channel and
-		#other_keys_than(def.metas, {"channel", "formspec", "infotext", "owner"}) == 0 then
+	elseif def.metas and def.metas.channel then
 		return wrench.description_with_channel(pos, meta, node, player)
 	else
 		return wrench.description_with_configuration(pos, meta, node, player)
 	end
 end
 
-function wrench.description_with_items(pos, meta, node, player)
-	return S("@1 with items", minetest.registered_nodes[node.name].description)
-end
-
-function wrench.description_with_channel(pos, meta, node, player)
-	local desc = minetest.registered_nodes[node.name].description
-	return S("@1 with channel \"@2\"", desc, meta:get_string("channel"))
-end
-
-function wrench.description_with_configuration(pos, meta, node, player)
-	return S("@1 with configuration", minetest.registered_nodes[node.name].description)
-end
-
-function wrench.description_with_text(pos, meta, node, player)
-	local text = meta:get_string("text")
-	if #text > 32 then
-		text = text:sub(1, 24).."..."
+local function save_data(stack, data, desc)
+	local meta = stack:get_meta()
+	data = minetest.serialize(data)
+	if compress_data then
+		data = minetest.encode_base64(minetest.compress(data, "deflate"))
+		meta:set_string("compressed", "true")
 	end
-	return S("@1 with text \"@2\"", minetest.registered_nodes[node.name].description, text)
+	meta:set_string("data", data)
+	meta:set_string("description", desc)
+	return stack
 end
 
-local function check_dev_lists(def, inventory)
-	local array_find = function(list, val)
-		for i, _ in ipairs(list) do
-			if list[i] == val then return i end
-		end
+local function get_data(stack)
+	local meta = stack:get_meta()
+	local data = meta:get("data") or meta:get("")
+	if not data then
+		return nil
 	end
-	local get_keys = function(list)
-		local keys = {}
-		for k, _ in pairs(list) do
-			keys[#keys+1] = k
-		end
-		return keys
+	if meta:get("compressed") == "true" then
+		data = minetest.decompress(minetest.decode_base64(data), "deflate")
 	end
-	local def_lists = def.lists or {}
-	local lists = get_keys(inventory:get_lists())
-	local missing_lists = {}
-	for _, v in ipairs(lists) do
-		if not array_find(def_lists, v)
-			and not (def.lists_ignore and array_find(def.lists_ignore, v)) then
-			table.insert(missing_lists, v)
-		end
+	data = minetest.deserialize(data)
+	if not data or not data.version or not data.name then
+		return nil
 	end
-	return missing_lists
+	return data
 end
 
-local function check_dev_metas(def, meta)
+local function safe_to_pickup(def, meta, inv)
 	local def_metas = def.metas or {}
 	local metatable = meta:to_table()
-	local missing_metas = {}
-	for k, v in pairs(metatable.fields) do
+	for k in pairs(metatable.fields) do
 		if not def_metas[k] then
-			table.insert(missing_metas, k)
+			return false
 		end
 	end
-	return missing_metas
+	local all_lists = {}
+	for _,list in pairs(def.lists or {}) do
+		table.insert(all_lists, list)
+	end
+	for _,list in pairs(def.lists_ignore or {}) do
+		table.insert(all_lists, list)
+	end
+	local lists = inv:get_lists()
+	for k in ipairs(lists) do
+		if table.indexof(all_lists, k) == -1 then
+			return false
+		end
+	end
+	return true
 end
 
 function wrench.pickup_node(pos, player)
@@ -128,11 +118,15 @@ function wrench.pickup_node(pos, player)
 		return
 	end
 	local meta = minetest.get_meta(pos)
+	local inv = meta:get_inventory()
 	if def.owned and not minetest.check_player_privs(player, "protection_bypass") then
 		local owner = meta:get_string("owner")
 		if owner ~= "" and owner ~= player:get_player_name() then
 			return false, errors.owned(owner)
 		end
+	end
+	if not safe_to_pickup(def, meta, inv) then
+		return false, errors.unknown
 	end
 	local data = {
 		name = def.drop or node.name,
@@ -140,27 +134,25 @@ function wrench.pickup_node(pos, player)
 		lists = {},
 		metas = {},
 	}
-	local inv = meta:get_inventory()
-	local missing_lists = check_dev_lists(def, inv)
-	local missing_metas = check_dev_metas(def, meta)
-	if #missing_metas > 0 or #missing_lists > 0 then
-		return false, errors.missing(node, missing_lists, missing_metas)
-	end
 	for _, listname in pairs(def.lists or {}) do
 		local list = inv:get_list(listname)
 		if not list then
-			return false, errors.no_list
+			return false, errors.missing_inv
 		end
-		for i, stack in pairs(list) do
-			if wrench.blacklisted_items[stack:get_name()] then
-				local desc = stack:get_definition().description
-				return false, errors.bad_item(desc)
+		for i, stack in ipairs(list) do
+			if stack:is_empty() then
+				list[i] = ""
+			else
+				if wrench.blacklisted_items[stack:get_name()] then
+					local desc = stack:get_description()
+					return false, errors.bad_item(desc)
+				end
+				local sdata = get_data(stack, true)
+				if sdata and sdata.lists and next(sdata.lists) ~= nil then
+					return false, errors.nested
+				end
+				list[i] = stack:to_string()
 			end
-			local sdata = get_stored_metadata(stack)
-			if sdata and sdata.lists and next(sdata.lists) ~= nil then
-				return false, errors.nested
-			end
-			list[i] = stack:to_string()
 		end
 		data.lists[listname] = list
 	end
@@ -180,15 +172,12 @@ function wrench.pickup_node(pos, player)
 			elapsed = timer:get_elapsed()
 		}
 	end
-	local drop_node = node
+	local drop_node = table.copy(node)
 	if def.drop then
-		drop_node = table.copy(node)
 		drop_node.name = def.drop
 	end
 	local stack = ItemStack(drop_node.name)
-	local item_meta = stack:get_meta()
-	item_meta:set_string("data", minetest.serialize(data))
-	item_meta:set_string("description", get_description(def, pos, meta, drop_node, player))
+	save_data(stack, data, get_description(def, pos, meta, drop_node, player))
 	if #stack:to_string() > 65000 then
 		return false, errors.metadata
 	end
@@ -222,7 +211,7 @@ function wrench.restore_node(pos, player, stack, pointed)
 	if not stack then
 		return
 	end
-	local data = get_stored_metadata(stack)
+	local data = get_data(stack)
 	if not data then
 		return
 	end

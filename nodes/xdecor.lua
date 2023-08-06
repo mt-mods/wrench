@@ -70,7 +70,7 @@ wrench.register_node("realchess:chessboard", {
 	},
 	description = function(pos, meta, node, player)
 		local desc = minetest.registered_nodes[node.name].description
-		return S("@1 \"@2\" vs. \"@3\"", desc, meta:get_string("playerWhite"), meta:get_string("playerBlack"))
+		return S("@1 with game \"@2\" vs. \"@3\"", desc, meta:get_string("playerWhite"), meta:get_string("playerBlack"))
 	end
 })
 
@@ -114,7 +114,7 @@ wrench.register_node("xdecor:itemframe", {
 		local item = meta:get_string("item")
 		if item and item ~= "" then
 			local d = ItemStack(item):get_short_description()
-			return S("@1 with \"@2\"", desc, d or item)
+			return S("@1 with item \"@2\"", desc, d or item)
 		else
 			return desc
 		end

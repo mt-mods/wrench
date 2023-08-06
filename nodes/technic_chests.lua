@@ -73,7 +73,7 @@ local function register_chests(material, color)
 	})
 end
 
-for material, metas in pairs(chests_meta) do
+for material in pairs(chests_meta) do
 	register_chests(material, "")
 end
 

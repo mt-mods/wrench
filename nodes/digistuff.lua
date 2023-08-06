@@ -3,13 +3,13 @@
 
 local S = wrench.translator
 
-function desc_stripped(node)
+local function desc_stripped(node)
 	local desc = minetest.registered_nodes[node.name].description
 	desc = string.gsub(desc, " %(you hacker you!%)", "")
 	return string.gsub(desc, " %- you hacker you!%)", ")")
 end
 
-function desc_stripped_with_channel(pos, meta, node, player)
+local function desc_stripped_with_channel(pos, meta, node, player)
 	return S("@1 with channel \"@2\"", desc_stripped(node), meta:get_string("channel"))
 end
 
@@ -138,9 +138,8 @@ for i = 0, 14 do
 			channel = wrench.META_TYPE_STRING,
 		},
 		description = function(pos, meta, node, player)
-			local state = S("light level @1", i)
 			local channel = meta:get_string("channel")
-			return S("@1 (@2) with channel \"@3\"", desc_stripped(node), state, channel)
+			return S("@1 (light level @2) with channel \"@3\"", desc_stripped(node), i, channel)
 		end,
 	})
 end

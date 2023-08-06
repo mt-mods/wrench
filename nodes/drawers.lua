@@ -8,7 +8,9 @@ for _, drawer_type in ipairs({1, 2, 4}) do
 
 	local def = {
 		lists = {"upgrades"},
-		metas = {},
+		metas = {
+			formspec = wrench.META_TYPE_IGNORE,
+		},
 		after_place = drawers.spawn_visuals
 	}
 

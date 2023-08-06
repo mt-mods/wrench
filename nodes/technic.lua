@@ -76,7 +76,8 @@ wrench.register_node("technic:coal_alloy_furnace", {
 		fuel_totaltime = wrench.META_TYPE_FLOAT,
 		fuel_time = wrench.META_TYPE_FLOAT,
 		src_totaltime = wrench.META_TYPE_FLOAT,
-		src_time = wrench.META_TYPE_FLOAT
+		src_time = wrench.META_TYPE_FLOAT,
+		formspec = wrench.META_TYPE_IGNORE,
 	},
 })
 
@@ -87,7 +88,8 @@ wrench.register_node("technic:coal_alloy_furnace_active", {
 		fuel_totaltime = wrench.META_TYPE_FLOAT,
 		fuel_time = wrench.META_TYPE_FLOAT,
 		src_totaltime = wrench.META_TYPE_FLOAT,
-		src_time = wrench.META_TYPE_FLOAT
+		src_time = wrench.META_TYPE_FLOAT,
+		formspec = wrench.META_TYPE_IGNORE,
 	},
 })
 

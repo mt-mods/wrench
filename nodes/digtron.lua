@@ -2,19 +2,31 @@
 -- Register wrench support for digtron
 
 wrench.register_node("digtron:battery_holder", {
-	lists = {"batteries"}
+	lists = {"batteries"},
+	metas = {
+		formspec = wrench.META_TYPE_IGNORE,
+	},
 })
 
 wrench.register_node("digtron:inventory", {
-	lists = {"main"}
+	lists = {"main"},
+	metas = {
+		formspec = wrench.META_TYPE_IGNORE,
+	},
 })
 
 wrench.register_node("digtron:fuelstore", {
-	lists = {"fuel"}
+	lists = {"fuel"},
+	metas = {
+		formspec = wrench.META_TYPE_IGNORE,
+	},
 })
 
 wrench.register_node("digtron:combined_storage", {
-	lists = {"main", "fuel"}
+	lists = {"main", "fuel"},
+	metas = {
+		formspec = wrench.META_TYPE_IGNORE,
+	},
 })
 
 -- Blacklist loaded crates to prevent nesting of inventories

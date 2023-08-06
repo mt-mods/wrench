@@ -24,31 +24,21 @@ wrench.register_node("default:chest_locked", {
 	owned = true,
 })
 
-wrench.register_node("default:furnace", {
-	lists = {"fuel", "src", "dst"},
-	metas = {
-		infotext = wrench.META_TYPE_STRING,
-		fuel_totaltime = wrench.META_TYPE_FLOAT,
-		fuel_time = wrench.META_TYPE_FLOAT,
-		src_totaltime = wrench.META_TYPE_FLOAT,
-		src_time = wrench.META_TYPE_FLOAT,
-		splitstacks = splitstacks,
-		formspec = formspec,
-	},
-})
-
-wrench.register_node("default:furnace_active", {
-	lists = {"fuel", "src", "dst"},
-	metas = {
-		infotext = wrench.META_TYPE_STRING,
-		fuel_totaltime = wrench.META_TYPE_FLOAT,
-		fuel_time = wrench.META_TYPE_FLOAT,
-		src_totaltime = wrench.META_TYPE_FLOAT,
-		src_time = wrench.META_TYPE_FLOAT,
-		splitstacks = splitstacks,
-		formspec = formspec,
-	},
-})
+for _,name in pairs({"default:furnace", "default:furnace_active"}) do
+	wrench.register_node(name, {
+		lists = {"fuel", "src", "dst"},
+		metas = {
+			infotext = wrench.META_TYPE_STRING,
+			fuel_totaltime = wrench.META_TYPE_FLOAT,
+			fuel_time = wrench.META_TYPE_FLOAT,
+			src_totaltime = wrench.META_TYPE_FLOAT,
+			src_time = wrench.META_TYPE_FLOAT,
+			timer_elapsed = wrench.META_TYPE_INT,
+			splitstacks = splitstacks,
+			formspec = formspec,
+		},
+	})
+end
 
 wrench.register_node("default:sign_wall_wood", {
 	metas = {

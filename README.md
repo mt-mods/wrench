@@ -57,6 +57,6 @@ An API is provided to add support for more nodes. See [API.md](API.md) for detai
 
 ## License
 
-Textures - CC BY-SA 4.0
+Textures - [CC BY-SA 4.0](LICENSE-MEDIA)
 
-Everything else - LGPL, V2 or later.
+Everything else - [LGPL, V2 or later.](LICENSE)

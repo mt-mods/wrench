@@ -1,0 +1,20 @@
+
+-- Register wrench support for the jumpdrive mod
+
+wrench.register_node("jumpdrive:engine", {
+    lists = {"main", "upgrade"},
+    metas = {
+        x = wrench.META_TYPE_INT,
+        y = wrench.META_TYPE_INT,
+        z = wrench.META_TYPE_INT,
+        radius = wrench.META_TYPE_INT,
+        powerstorage = wrench.META_TYPE_INT,
+        max_powerstorage = wrench.META_TYPE_INT,
+        owner = wrench.META_TYPE_STRING,
+        channel = wrench.META_TYPE_STRING,
+        infotext = wrench.META_TYPE_STRING,
+        formspec = wrench.META_TYPE_IGNORE, -- legacy field
+        HV_EU_input = wrench.META_TYPE_IGNORE,
+        HV_EU_demand = wrench.META_TYPE_IGNORE
+    }
+})

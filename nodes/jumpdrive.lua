@@ -18,3 +18,19 @@ wrench.register_node("jumpdrive:engine", {
         HV_EU_demand = wrench.META_TYPE_IGNORE
     }
 })
+
+wrench.register_node("jumpdrive:fleet_controller", {
+    lists = {"main"},
+    metas = {
+        x = wrench.META_TYPE_INT,
+        y = wrench.META_TYPE_INT,
+        z = wrench.META_TYPE_INT,
+        owner = wrench.META_TYPE_STRING,
+        channel = wrench.META_TYPE_STRING,
+        infotext = wrench.META_TYPE_STRING,
+        formspec = wrench.META_TYPE_STRING,
+        active = wrench.META_TYPE_INT,
+        jump_index = wrench.META_TYPE_INT,
+        jump_list = wrench.META_TYPE_STRING
+    }
+})

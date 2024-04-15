@@ -34,6 +34,7 @@ local mods = {
 	"digistuff",
 	"digtron",
 	"drawers",
+	"jumpdrive",
 	"mesecons_commandblock",
 	"mesecons_detector",
 	"mesecons_luacontroller",

@@ -117,14 +117,29 @@ function wrench.pickup_node(pos, player)
 	if not def then
 		return
 	end
-	local meta = minetest.get_meta(pos)
-	local inv = meta:get_inventory()
-	if def.owned and not minetest.check_player_privs(player, "protection_bypass") then
-		local owner = meta:get_string("owner")
-		if owner ~= "" and owner ~= player:get_player_name() then
-			return false, errors.owned(owner)
+	local pickup_override = false
+	if def.can_pickup then
+		local can_pickup, err_msg = def.can_pickup(pos, player)
+		if can_pickup == false then
+			return false, err_msg
+		elseif can_pickup == true then
+			pickup_override = true
 		end
 	end
+	local meta = minetest.get_meta(pos)
+	if not pickup_override then
+		local name = player:get_player_name()
+		if minetest.is_protected(pos, name) then
+			return
+		end
+		if def.owned and not minetest.check_player_privs(player, "protection_bypass") then
+			local owner = meta:get_string("owner")
+			if owner ~= "" and owner ~= player:get_player_name() then
+				return false, errors.owned(owner)
+			end
+		end
+	end
+	local inv = meta:get_inventory()
 	if not safe_to_pickup(def, meta, inv) then
 		return false, errors.unknown
 	end

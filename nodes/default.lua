@@ -37,6 +37,7 @@ for _,name in pairs({"default:furnace", "default:furnace_active"}) do
 			splitstacks = splitstacks,
 			formspec = formspec,
 		},
+		timer = true,
 	})
 end
 

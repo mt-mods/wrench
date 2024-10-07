@@ -4,7 +4,7 @@
 # technic_wrench deutsche übersetzung
 # by Xanthin and others
 
-Wrench=Schraubenschluessel
+Wrench=Schraubenschlüssel
 
 Not enough room in inventory to pickup node.=Nicht genug Platz im Inventar um diesen Block zu nehmen.
 Cannot pickup node containing @1.=Block mit @1 kann nicht genommen werden.
@@ -14,7 +14,7 @@ Cannot pickup node. Node contains too much metadata.=Block kann nicht genommen w
 Cannot pickup node. Node is missing inventory.=
 Cannot pickup node. Node contains unknown metadata.=
 
-@1 with items=@1 mit Gegenstaenden
+@1 with items=@1 mit Gegenständen
 @1 with text "@2"=@1 mit Text "@2"
 @1 with channel "@2"=@1 mit Kanal "@2"
 @1 with configuration=@1 mit Konfiguration

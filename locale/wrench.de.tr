@@ -7,8 +7,8 @@ Cannot pickup node containing @1.=Block mit @1 kann nicht aufgenommen werden.
 Cannot pickup node. Owned by @1.=Block kann nicht aufgenommen werden. Er gehört @1.
 Cannot pickup node. Nesting inventories is not allowed.=Block kann nicht aufgenommen werden. Behälter zu verschachteln ist nicht erlaubt.
 Cannot pickup node. Node contains too much metadata.=Block kann nicht aufgenommen werden. Er enthält zu viele Metadaten.
-Cannot pickup node. Node is missing inventory.=Block ist kein Behälter.
-Cannot pickup node. Node contains unknown metadata.=Block enthält unbekannte Metadaten.
+Cannot pickup node. Node is missing inventory.=Block kann nicht aufgenommen werden. Block ist kein Behälter.
+Cannot pickup node. Node contains unknown metadata.=Block kann nicht aufgenommen werden. Block enthält unbekannte Metadaten.
 
 @1 with items=@1 mit Gegenständen
 @1 with text "@2"=@1 mit Text "@2"

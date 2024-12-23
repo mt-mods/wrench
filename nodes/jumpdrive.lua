@@ -10,6 +10,7 @@ wrench.register_node("jumpdrive:engine", {
         radius = wrench.META_TYPE_INT,
         powerstorage = wrench.META_TYPE_INT,
         max_powerstorage = wrench.META_TYPE_INT,
+        power_requirement = wrench.META_TYPE_IGNORE,
         owner = wrench.META_TYPE_STRING,
         channel = wrench.META_TYPE_STRING,
         infotext = wrench.META_TYPE_STRING,

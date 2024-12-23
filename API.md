@@ -68,7 +68,12 @@ Used by `wrench.register_node`.
 	-- If true, only the owner of the node can pickup the node.
 
 	timer = true,
-	-- If true, the node timer is saved, and restarted upon placement
+	-- If true, the node timer is saved, and restarted upon placement.
+	
+	can_pickup = function(pos, player)
+	-- Function called before a node is picked up.
+	-- Return true to skip owner and protection checks.
+	-- Return false to disallow pickup. Can also return an optional error message.
 
 	before_pickup = function(pos, meta, node, player)
 	-- Function called before a node is picked up, but after metadata has been stored.

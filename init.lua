@@ -38,6 +38,7 @@ local mods = {
 	"mesecons_detector",
 	"mesecons_luacontroller",
 	"mesecons_microcontroller",
+	"missions",
 	"mobs",
 	"more_chests",
 	"pipeworks",

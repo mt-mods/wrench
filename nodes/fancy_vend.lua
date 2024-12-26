@@ -12,7 +12,7 @@ for _, vendor in ipairs({
 		metas = {
 			alerted = wrench.META_TYPE_STRING,
 			configured = wrench.META_TYPE_STRING,
-			infotext = wrench.META_TYPE_STRING,
+			infotext = wrench.META_TYPE_IGNORE,
 			item = wrench.META_TYPE_STRING,
 			log = wrench.META_TYPE_STRING,
 			message = wrench.META_TYPE_STRING,

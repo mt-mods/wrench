@@ -27,6 +27,7 @@ local mods = {
 	"bees",
 	"biofuel",
 	"bones",
+	"christmas",
 	"connected_chests",
 	"default",
 	"digilines",

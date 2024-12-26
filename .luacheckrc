@@ -5,10 +5,12 @@ globals = {
 }
 
 read_globals = {
+	"core",
 	"table.copy",
 	"table.indexof",
 	"minetest",
 	"ItemStack",
+	"barter",
 	"digilines",
 	"drawers",
 	"mesecon",

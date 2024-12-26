@@ -28,6 +28,7 @@ local mods = {
 	"biofuel",
 	"bones",
 	"connected_chests",
+	"currency",
 	"default",
 	"digilines",
 	"digiscreen",

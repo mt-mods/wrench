@@ -40,6 +40,7 @@ local mods = {
 	"mesecons_microcontroller",
 	"mobs",
 	"more_chests",
+	"moreblocks",
 	"pipeworks",
 	"protector",
 	"signs_lib",

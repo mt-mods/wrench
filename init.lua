@@ -43,6 +43,7 @@ local mods = {
 	"pipeworks",
 	"protector",
 	"signs_lib",
+	"spacecannon",
 	"technic",
 	"technic_chests",
 	"technic_cnc",

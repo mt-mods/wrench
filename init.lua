@@ -29,6 +29,7 @@ local mods = {
 	"bones",
 	"connected_chests",
 	"default",
+	"digibuilder",
 	"digilines",
 	"digiscreen",
 	"digistuff",

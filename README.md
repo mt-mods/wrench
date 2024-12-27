@@ -60,7 +60,7 @@ To make maintaining support easier, wrench only supports specific versions of mo
 - `signs_lib` - https://github.com/mt-mods/signs_lib
 - `smartshop` - https://github.com/pandorabox-io/smartshop
 - `soundblock` - https://github.com/mt-mods/soundblock
-- `spacecannon` - https://github.com/pandorabox-io/spacecannon
+- `spacecannon` - https://github.com/mt-mods/spacecannon
 - `technic` - https://github.com/mt-mods/technic
 - `technic_chests` - https://github.com/mt-mods/technic
 - `technic_cnc` - https://github.com/mt-mods/technic

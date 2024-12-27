@@ -50,7 +50,7 @@ To make maintaining support easier, wrench only supports specific versions of mo
 - `mesecons_detector` - https://github.com/minetest-mods/mesecons
 - `mesecons_luacontroller` - https://github.com/minetest-mods/mesecons
 - `mesecons_microcontroller` - https://github.com/minetest-mods/mesecons
-- `missions` - https://github.com/BuckarooBanzay/missions
+- `missions` - https://github.com/mt-mods/missions
 - `mobs` - https://notabug.org/tenplus1/mobs_redo
 - `more_chests` - https://github.com/minetest-mods/more_chests
 - `moreblocks` - https://github.com/minetest-mods/moreblocks

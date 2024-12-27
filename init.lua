@@ -47,6 +47,7 @@ local mods = {
 	"technic_chests",
 	"technic_cnc",
 	"vessels",
+	"wine",
 	"xdecor",
 }
 

@@ -42,7 +42,7 @@ To make maintaining support easier, wrench only supports specific versions of mo
 - `drawers` - https://github.com/minetest-mods/drawers
 - `easyvend` - https://github.com/minetest-mirrors/easyvend
 - `ehlphabet` - https://github.com/mt-mods/ehlphabet
-- `fancy_vend` - https://github.com/pandorabox-io/fancy_vend
+- `fancy_vend` - https://github.com/mt-mods/fancy_vend
 - `jumpdrive` - https://github.com/mt-mods/jumpdrive
 - `locator` - https://github.com/pandorabox-io/locator
 - `mapserver` - https://github.com/minetest-mapserver/mapserver_mod

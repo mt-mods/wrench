@@ -14,6 +14,7 @@ read_globals = {
 	"mesecon",
 	"pipeworks",
 	"signs_lib",
+	"smartshop",
 	"xdecor",
 	"bones",
 }

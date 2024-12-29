@@ -142,6 +142,8 @@ for i = 1, 6 do
 	table.insert(mese_tube_data.lists, "line"..i)
 end
 
+local has_lua_tube = core.get_modpath("mesecons_luacontroller") and true
+
 for xm = 0, 1 do
 for xp = 0, 1 do
 for ym = 0, 1 do
@@ -149,7 +151,9 @@ for yp = 0, 1 do
 for zm = 0, 1 do
 for zp = 0, 1 do
 	local tname = xm..xp..ym..yp..zm..zp
-	wrench.register_node("pipeworks:lua_tube"..tname, lua_tube_data)
+	if has_lua_tube then
+		wrench.register_node("pipeworks:lua_tube"..tname, lua_tube_data)
+	end
 	wrench.register_node("pipeworks:mese_tube_"..tname, mese_tube_data)
 end
 end
@@ -158,5 +162,8 @@ end
 end
 end
 
-lua_tube_data.drop = nil
-wrench.register_node("pipeworks:lua_tube_burnt", lua_tube_data)
+if has_lua_tube then
+	lua_tube_data.drop = nil
+	wrench.register_node("pipeworks:lua_tube_burnt", lua_tube_data)
+end
+

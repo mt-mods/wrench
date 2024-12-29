@@ -11,6 +11,7 @@ read_globals = {
 	"minetest",
 	"ItemStack",
 	"beacon",
+	"christmas",
 	"digilines",
 	"drawers",
 	"mesecon",

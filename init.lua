@@ -44,6 +44,7 @@ local mods = {
 	"missions",
 	"mobs",
 	"more_chests",
+	"moreblocks",
 	"pipeworks",
 	"powerbanks",
 	"protector",

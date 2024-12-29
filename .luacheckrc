@@ -5,6 +5,7 @@ globals = {
 }
 
 read_globals = {
+	"core",
 	"table.copy",
 	"table.indexof",
 	"minetest",

@@ -31,6 +31,7 @@ local mods = {
 	"christmas",
 	"connected_chests",
 	"default",
+	"digibuilder",
 	"digilines",
 	"digiscreen",
 	"digistuff",

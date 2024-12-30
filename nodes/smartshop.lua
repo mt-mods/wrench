@@ -9,12 +9,12 @@ wrench.register_node("smartshop:shop", {
 	},
 	metas = {
 		alerted = wrench.META_TYPE_INT,
-		type = wrench.META_TYPE_INT,
-		ghost = wrench.META_TYPE_INT,
 		creative = wrench.META_TYPE_INT,
+		ghost = wrench.META_TYPE_INT,
 		infotext = wrench.META_TYPE_IGNORE,
 		owner = wrench.META_TYPE_STRING,
 		state = wrench.META_TYPE_IGNORE,
+		type = wrench.META_TYPE_INT,
 	},
 	after_pickup = function(pos)
 		-- Remove entities

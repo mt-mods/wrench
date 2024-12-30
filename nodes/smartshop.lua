@@ -18,7 +18,12 @@ wrench.register_node("smartshop:shop", {
 	},
 	after_pickup = function(pos)
 		-- Remove entities
-		smartshop.update(pos, "clear")
+		if smartshop.update_entities then
+			smartshop.update_entities(pos, "clear")
+		else
+			-- Older version
+			smartshop.update(pos, "clear")
+		end
 		-- Give smartshop a chance to keep track of statistics
 		smartshop.update_info(pos)
 	end,
@@ -26,7 +31,12 @@ wrench.register_node("smartshop:shop", {
 		-- Update infotext
 		smartshop.update_info(pos)
 		-- Create entities
-		smartshop.update(pos)
+		if smartshop.update_entities then
+			smartshop.update_entities(pos, "update")
+		else
+			-- Older version
+			smartshop.update(pos, "update")
+		end
 	end,
 })
 

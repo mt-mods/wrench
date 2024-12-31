@@ -66,6 +66,7 @@ To make maintaining support easier, wrench only supports specific versions of mo
 - `technic_cnc` - https://github.com/mt-mods/technic
 - `vacuum` - https://github.com/mt-mods/vacuum
 - `vessels` - https://github.com/minetest/minetest_game
+- `wine` - https://codeberg.org/tenplus1/wine
 - `xdecor` - https://github.com/minetest-mods/xdecor
 
 ## API

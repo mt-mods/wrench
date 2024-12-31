@@ -13,16 +13,17 @@ read_globals = {
 	"ItemStack",
 	"barter",
 	"beacon",
+	"bones",
 	"christmas",
 	"digilines",
 	"drawers",
 	"jumpdrive",
+	"locator",
 	"mesecon",
 	"pipeworks",
 	"signs_lib",
 	"smartshop",
 	"spacecannon",
 	"xdecor",
-	"bones",
 }
 

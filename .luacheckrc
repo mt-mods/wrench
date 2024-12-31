@@ -10,11 +10,15 @@ read_globals = {
 	"table.indexof",
 	"minetest",
 	"ItemStack",
+	"beacon",
+	"christmas",
 	"digilines",
 	"drawers",
 	"mesecon",
 	"pipeworks",
 	"signs_lib",
+	"spacecannon",
 	"xdecor",
 	"bones",
 }
+

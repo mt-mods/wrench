@@ -50,6 +50,7 @@ local mods = {
 	"powerbanks",
 	"protector",
 	"signs_lib",
+	"smartshop",
 	"spacecannon",
 	"soundblock",
 	"technic",

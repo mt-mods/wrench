@@ -30,6 +30,7 @@ local mods = {
 	"bones",
 	"christmas",
 	"connected_chests",
+	"currency",
 	"default",
 	"digibuilder",
 	"digilines",

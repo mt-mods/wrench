@@ -42,6 +42,7 @@ local mods = {
 	"easyvend",
 	"jumpdrive",
 	"locator",
+	"mapserver",
 	"mesecons_commandblock",
 	"mesecons_detector",
 	"mesecons_luacontroller",

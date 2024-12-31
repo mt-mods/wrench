@@ -38,6 +38,7 @@ local mods = {
 	"digistuff",
 	"digtron",
 	"drawers",
+	"fancy_vend",
 	"easyvend",
 	"jumpdrive",
 	"locator",

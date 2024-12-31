@@ -17,6 +17,7 @@ read_globals = {
 	"christmas",
 	"digilines",
 	"drawers",
+	"fancy_vend",
 	"jumpdrive",
 	"locator",
 	"mesecon",

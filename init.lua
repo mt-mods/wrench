@@ -38,6 +38,7 @@ local mods = {
 	"digistuff",
 	"digtron",
 	"drawers",
+	"jumpdrive",
 	"easyvend",
 	"mesecons_commandblock",
 	"mesecons_detector",

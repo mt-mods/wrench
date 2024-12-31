@@ -1,4 +1,5 @@
 unused_args = false
+--std = "luanti+max"
 
 globals = {
 	"wrench",
@@ -15,6 +16,7 @@ read_globals = {
 	"christmas",
 	"digilines",
 	"drawers",
+	"jumpdrive",
 	"mesecon",
 	"pipeworks",
 	"signs_lib",

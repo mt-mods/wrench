@@ -26,29 +26,47 @@ To make maintaining support easier, wrench only supports specific versions of mo
 
 - `3d_armor_stand` - https://github.com/minetest-mods/3d_armor
 - `basic_signs` - https://github.com/mt-mods/basic_signs
+- `beacon` - https://github.com/OgelGames/beacon
 - `bees` - https://notabug.org/TenPlus1/bees
 - `biofuel` - https://github.com/Lokrates/Biofuel
 - `bones` - https://github.com/minetest/minetest_game OR https://github.com/OgelGames/bones
+- `christmas` - https://github.com/mt-mods/christmas
 - `connected_chests` - https://github.com/HybridDog/connected_chests
+- `currency` - https://github.com/mt-mods/currency
 - `default` - https://github.com/minetest/minetest_game
+- `digibuilder` - https://github.com/BuckarooBanzay/digibuilder
 - `digilines` - https://github.com/minetest-mods/digilines
 - `digiscreen` - https://cheapiesystems.com/git/digiscreen
 - `digistuff` - https://github.com/mt-mods/digistuff
 - `digtron` - https://github.com/minetest-mods/digtron
 - `drawers` - https://github.com/minetest-mods/drawers
+- `easyvend` - https://github.com/minetest-mirrors/easyvend
+- `ehlphabet` - https://github.com/mt-mods/ehlphabet
+- `fancy_vend` - https://github.com/mt-mods/fancy_vend
+- `jumpdrive` - https://github.com/mt-mods/jumpdrive
+- `locator` - https://github.com/pandorabox-io/locator
+- `mapserver` - https://github.com/minetest-mapserver/mapserver_mod
 - `mesecons_commandblock` - https://github.com/minetest-mods/mesecons
 - `mesecons_detector` - https://github.com/minetest-mods/mesecons
 - `mesecons_luacontroller` - https://github.com/minetest-mods/mesecons
 - `mesecons_microcontroller` - https://github.com/minetest-mods/mesecons
+- `missions` - https://github.com/mt-mods/missions
 - `mobs` - https://notabug.org/tenplus1/mobs_redo
 - `more_chests` - https://github.com/minetest-mods/more_chests
+- `moreblocks` - https://github.com/minetest-mods/moreblocks
 - `pipeworks` - https://github.com/mt-mods/pipeworks
+- `powerbanks` - https://github.com/OgelGames/powerbanks
 - `protector` - https://notabug.org/tenplus1/protector
 - `signs_lib` - https://github.com/mt-mods/signs_lib
+- `smartshop` - https://github.com/pandorabox-io/smartshop
+- `soundblock` - https://github.com/mt-mods/soundblock
+- `spacecannon` - https://github.com/mt-mods/spacecannon
 - `technic` - https://github.com/mt-mods/technic
 - `technic_chests` - https://github.com/mt-mods/technic
 - `technic_cnc` - https://github.com/mt-mods/technic
+- `vacuum` - https://github.com/mt-mods/vacuum
 - `vessels` - https://github.com/minetest/minetest_game
+- `wine` - https://codeberg.org/tenplus1/wine
 - `xdecor` - https://github.com/minetest-mods/xdecor
 
 ## API

@@ -11,11 +11,15 @@ read_globals = {
 	"minetest",
 	"ItemStack",
 	"barter",
+	"beacon",
+	"christmas",
 	"digilines",
 	"drawers",
 	"mesecon",
 	"pipeworks",
 	"signs_lib",
+	"spacecannon",
 	"xdecor",
 	"bones",
 }
+

@@ -51,6 +51,7 @@ local mods = {
 	"protector",
 	"signs_lib",
 	"smartshop",
+	"spacecannon",
 	"soundblock",
 	"technic",
 	"technic_chests",

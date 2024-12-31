@@ -10,11 +10,5 @@ wrench.register_node("wine:wine_barrel", {
 		water = wrench.META_TYPE_INT,
 	},
 	timer = true,
-	after_place = function(pos)
-		local timer = core.get_node_timer(pos)
-		if not timer:started() then
-			timer:start(0)
-		end
-	end,
 })
 

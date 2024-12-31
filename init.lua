@@ -64,6 +64,7 @@ local mods = {
 	"technic_cnc",
 	"vacuum",
 	"vessels",
+	"wine",
 	"xdecor",
 }
 

@@ -18,6 +18,7 @@ read_globals = {
 	"mesecon",
 	"pipeworks",
 	"signs_lib",
+	"smartshop",
 	"spacecannon",
 	"xdecor",
 	"bones",

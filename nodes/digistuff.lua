@@ -68,6 +68,10 @@ wrench.register_node("digistuff:controller_programmed", {
 		channel = wrench.META_TYPE_STRING,
 	},
 	description = desc_stripped_with_channel,
+	-- Prevent picking up occupied controllers.
+	can_pickup = function(pos)
+		return core.registered_nodes["digistuff:controller_programmed"].can_dig(pos)
+	end,
 })
 
 -- Detector
@@ -266,3 +270,4 @@ wrench.register_node("digistuff:wall_knob_configured", {
 	},
 	description = desc_stripped_with_channel,
 })
+

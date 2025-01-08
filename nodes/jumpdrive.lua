@@ -16,7 +16,8 @@ wrench.register_node("jumpdrive:engine", {
 		infotext = wrench.META_TYPE_STRING,
 		formspec = wrench.META_TYPE_IGNORE, -- legacy field
 		HV_EU_input = wrench.META_TYPE_IGNORE,
-		HV_EU_demand = wrench.META_TYPE_IGNORE
+		HV_EU_demand = wrench.META_TYPE_IGNORE,
+		simulation_expiry = wrench.META_TYPE_INT,
 	},
 	after_place = function(pos)
 		jumpdrive.update_formspec(core.get_meta(pos), pos)
@@ -38,3 +39,4 @@ wrench.register_node("jumpdrive:fleet_controller", {
 		jump_list = wrench.META_TYPE_STRING
 	}
 })
+

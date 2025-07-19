@@ -39,7 +39,7 @@ wrench.register_node("pipeworks:dispenser_off", wielder_data)
 wrench.register_node("pipeworks:dispenser_on", wielder_data)
 
 table.insert(wielder_data.lists, "pick")
-table.insert(wielder_data.lists, "ghost_pick")
+wielder_data.lists_ignore = {"ghost_pick"}
 wrench.register_node("pipeworks:nodebreaker_off", wielder_data)
 wrench.register_node("pipeworks:nodebreaker_on", wielder_data)
 

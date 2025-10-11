@@ -53,22 +53,35 @@ local function with_owner_field(metas)
 	return result
 end
 
+local function description(pos, meta, node, player)
+	local infotext = meta:get_string('infotext')
+	-- Default label starts with an escape char for translated text.
+	if 27 == infotext:sub(1, 1):byte() then
+		return wrench.description_with_items(pos, meta, node, player)
+	end
+
+	return infotext
+end
+
 local function register_chests(material, color)
 	local lists_ignore = (material ~= "iron" and material ~= "copper") and {"quickmove"} or nil
 	wrench.register_node("technic:"..material.."_chest"..color, {
 		lists = {"main"},
 		lists_ignore = lists_ignore,
 		metas = chests_meta[material],
+		description = description,
 	})
 	wrench.register_node("technic:"..material.."_protected_chest"..color, {
 		lists = {"main"},
 		lists_ignore = lists_ignore,
 		metas = chests_meta[material],
+		description = description,
 	})
 	wrench.register_node("technic:"..material.."_locked_chest"..color, {
 		lists = {"main"},
 		lists_ignore = lists_ignore,
 		metas = with_owner_field(chests_meta[material]),
+		description = description,
 		owned = true,
 	})
 end

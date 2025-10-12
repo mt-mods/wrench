@@ -216,7 +216,7 @@ function wrench.pickup_node(pos, player)
 	if wrench.has_mesecons and node_def.mesecons then
 		mesecon.on_dignode(pos, node)
 	end
-	if wrench.has_digilines and node_def.digiline or node_def.digilines then
+	if wrench.has_digilines and (node_def.digiline or node_def.digilines) then
 		digilines.update_autoconnect(pos)
 	end
 	return true
@@ -267,7 +267,7 @@ function wrench.restore_node(pos, player, stack, pointed)
 	if wrench.has_mesecons and node_def.mesecons then
 		mesecon.on_placenode(pos, minetest.get_node(pos))
 	end
-	if wrench.has_digilines and node_def.digiline or node_def.digilines then
+	if wrench.has_digilines and (node_def.digiline or node_def.digilines) then
 		digilines.update_autoconnect(pos)
 	end
 	return true

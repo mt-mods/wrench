@@ -56,11 +56,10 @@ end
 local function description(pos, meta, node, player)
 	local infotext = meta:get_string('infotext')
 	-- Default label starts with an escape char for translated text.
-	if 27 == infotext:sub(1, 1):byte() then
+	if infotext:sub(1, 1):byte() == 27 then
 		return wrench.description_with_items(pos, meta, node, player)
 	end
-
-	return infotext
+	return minetest.formspec_escape(infotext)
 end
 
 local function register_chests(material, color)

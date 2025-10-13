@@ -46,3 +46,14 @@ wrench.register_node("3d_armor_stand:locked_armor_stand", {
 	after_place = after_place,
 	description = description,
 })
+
+wrench.register_node("3d_armor_stand:shared_armor_stand", {
+	lists = lists,
+	metas = {
+		infotext = wrench.META_TYPE_STRING,
+		formspec = wrench.META_TYPE_IGNORE,
+	},
+	after_place = after_place,
+	description = description,
+})
+

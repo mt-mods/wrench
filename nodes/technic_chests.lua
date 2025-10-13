@@ -59,8 +59,7 @@ local function description(pos, meta, node, player)
 	if 27 == infotext:sub(1, 1):byte() then
 		return wrench.description_with_items(pos, meta, node, player)
 	end
-
-	return infotext
+	return core.formspec_escape(infotext)
 end
 
 local function register_chests(material, color)

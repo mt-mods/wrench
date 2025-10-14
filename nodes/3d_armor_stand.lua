@@ -35,7 +35,7 @@ local function after_place(pos, player)
 	if has_single_inventory then
 		-- Server is running newer version with single inv-list.
 		-- Items may need to be moved from separate lists and old lists removed.
-		local temp_list, temp_stack
+		local temp_list
 		for i, list_name in ipairs(legacy_lists) do
 			temp_list = inv:get_list(list_name)
 			-- If first legacy list doesn't exist,

@@ -7,7 +7,7 @@ local def = minetest.registered_nodes["3d_armor_stand:armor_stand"]
 
 local function noop() end
 local add_entity_and_node = def and def.after_place_node or noop
-local update_entity = def and def.on_metadata_inventory_put or noop
+local update_entity = def and def.on_metadata_inventory_take or noop
 
 local lists = {
 	"armor_head",

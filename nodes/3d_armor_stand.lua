@@ -30,6 +30,35 @@ local lists = has_single_inventory and { "main" } or legacy_lists
 
 local function after_place(pos, player)
 	add_entity_and_node(pos, player)
+	local meta = core.get_meta(pos)
+	local inv = meta:get_inventory()
+	if has_single_inventory then
+		-- Server is running newer version with single inv-list.
+		-- Items may need to be moved from separate lists and old lists removed.
+		local temp_list, temp_stack
+		for i, list_name in ipairs(legacy_lists) do
+			temp_list = inv:get_list(list_name)
+			-- If first legacy list doesn't exist,
+			-- assume this stand was already updated before it was picked up.
+			if not temp_list then break end
+
+			-- Move to main list.
+			inv:set_stack("main", i, temp_list[1])
+			-- Remove legacy list.
+			inv:set_size(list_name, 0)
+		end
+	else
+		-- Server is running older version. As convenience for testers
+		-- we support some backward compatability.
+		local main_list = inv:get_list("main")
+		if main_list then
+			-- A wrenched stand from a newer version has been placed.
+			for i, stack in ipairs(main_list) do
+				inv:set_stack(legacy_lists[i], 1, stack)
+			end
+			inv:set_size("main", 0)
+		end
+	end
 	update_entity(pos)
 end
 

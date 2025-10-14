@@ -9,12 +9,24 @@ local function noop() end
 local add_entity_and_node = def and def.after_place_node or noop
 local update_entity = def and def.on_metadata_inventory_take or noop
 
-local lists = {
+-- detect which version is being used
+-- commit 8f775a64f0a29afbcc63cbcd78938c17609ed187 merged all lists into one
+local has_single_inventory = false
+for _, lbm in ipairs(core.registered_lbms) do
+	if "3d_armor_stand:update_inventories" == lbm.name then
+		has_single_inventory = true
+		break
+	end
+end
+
+local legacy_lists = {
 	"armor_head",
 	"armor_torso",
 	"armor_legs",
 	"armor_feet",
 }
+
+local lists = has_single_inventory and { "main" } or legacy_lists
 
 local function after_place(pos, player)
 	add_entity_and_node(pos, player)

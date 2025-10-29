@@ -5,9 +5,8 @@ local S = wrench.translator
 
 local def = minetest.registered_nodes["3d_armor_stand:armor_stand"]
 
-local function noop() end
-local add_entity_and_node = def and def.after_place_node or noop
-local update_entity = def and def.on_metadata_inventory_take or noop
+local add_entity_and_node = def and def.after_place_node
+local update_entity = def and def.on_metadata_inventory_take
 
 -- detect which version is being used
 -- commit 8f775a64f0a29afbcc63cbcd78938c17609ed187 merged all lists into one

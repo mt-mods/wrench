@@ -39,11 +39,10 @@ local function after_place(pos, player)
 			temp_list = inv:get_list(list_name)
 			-- If first legacy list doesn't exist,
 			-- assume this stand was already updated before it was picked up.
-			if not temp_list then break end
-
-			-- Move to main list.
+			if not temp_list then
+				break
+			end
 			inv:set_stack("main", i, temp_list[1])
-			-- Remove legacy list.
 			inv:set_size(list_name, 0)
 		end
 	end

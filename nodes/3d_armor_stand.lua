@@ -46,17 +46,6 @@ local function after_place(pos, player)
 			-- Remove legacy list.
 			inv:set_size(list_name, 0)
 		end
-	else
-		-- Server is running older version. As convenience for testers
-		-- we support some backward compatability.
-		local main_list = inv:get_list("main")
-		if main_list then
-			-- A wrenched stand from a newer version has been placed.
-			for i, stack in ipairs(main_list) do
-				inv:set_stack(legacy_lists[i], 1, stack)
-			end
-			inv:set_size("main", 0)
-		end
 	end
 	update_entity(pos)
 end

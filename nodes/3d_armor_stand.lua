@@ -12,7 +12,7 @@ local update_entity = def and def.on_metadata_inventory_take
 -- commit 8f775a64f0a29afbcc63cbcd78938c17609ed187 merged all lists into one
 local has_single_inventory = false
 for _, lbm in ipairs(core.registered_lbms) do
-	if "3d_armor_stand:update_inventories" == lbm.name then
+	if lbm.name == "3d_armor_stand:update_inventories" then
 		has_single_inventory = true
 		break
 	end

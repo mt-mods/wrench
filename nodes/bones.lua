@@ -5,6 +5,10 @@ local S = wrench.translator
 
 if bones.redo then
 	local function can_pickup_bones(pos, player)
+		if bones.pickup_bones then
+			-- Bones can be picked up without a wrench, so don't pick them up.
+			return false
+		end
 		local meta = minetest.get_meta(pos)
 		if meta:get_string("infotext") == "" then
 			return false

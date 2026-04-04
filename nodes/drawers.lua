@@ -1,7 +1,21 @@
 
 -- Register wrench support for drawers mod nodes
 
+local S = wrench.translator
 local INT, STRING = wrench.META_TYPE_INT, wrench.META_TYPE_STRING
+
+local function description(pos, meta, node, player)
+	local item_name = meta:get_string("name")
+	-- Ignore cabinets with multiple drawers and empty ones.
+	if "" == item_name then
+		return wrench.description_with_items(pos, meta, node, player)
+	end
+
+	local node_def = core.registered_nodes[node.name]
+	local node_desc = node_def.description or node.name
+	local item_desc = core.registered_items[item_name].description or item_name
+	return S("@1 with @2", node_desc, item_desc)
+end
 
 -- Assemble definitions for drawer type 1, 2 and 4
 for _, drawer_type in ipairs({1, 2, 4}) do
@@ -11,7 +25,8 @@ for _, drawer_type in ipairs({1, 2, 4}) do
 		metas = {
 			formspec = wrench.META_TYPE_IGNORE,
 		},
-		after_place = drawers.spawn_visuals
+		after_place = drawers.spawn_visuals,
+		description = description,
 	}
 
 	for i=1, drawer_type do

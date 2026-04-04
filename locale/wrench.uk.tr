@@ -12,6 +12,7 @@ Cannot pickup node. Node contains too much metadata.=Неможливо узят
 Cannot pickup node. Node is missing inventory.=Неможливо взяти блок, оскільки у нього немає інвентаря.
 Cannot pickup node. Node contains unknown metadata.=Неможливо взяти блок, оскільки він містить невідомі метадані.
 
+@1 with @2=@1 з @2
 @1 with items=@1 з предметами
 @1 with text "@2"=@1 з текстом «@2»
 @1 with channel "@2"=@1 з каналом «@2»

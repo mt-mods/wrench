@@ -7,7 +7,7 @@ local INT, STRING = wrench.META_TYPE_INT, wrench.META_TYPE_STRING
 local function description(pos, meta, node, player)
 	local item_name = meta:get_string("name")
 	-- Ignore cabinets with multiple drawers and empty ones.
-	if "" == item_name then
+	if item_name == "" then
 		return wrench.description_with_items(pos, meta, node, player)
 	end
 

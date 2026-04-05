@@ -13,7 +13,7 @@ local function description(pos, meta, node, player)
 
 	local node_def = core.registered_nodes[node.name]
 	local node_desc = node_def.description or node.name
-	local item_desc = core.registered_items[item_name].description or item_name
+	local item_desc = ItemStack(item_name):get_short_description() or item_name
 	return S("@1 with @2", node_desc, item_desc)
 end
 

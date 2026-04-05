@@ -14,7 +14,6 @@ Cannot pickup node. Node contains too much metadata.=
 Cannot pickup node. Node is missing inventory.=
 Cannot pickup node. Node contains unknown metadata.=
 
-@1 with @2=
 @1 with items=アイテム付きレンチ @1
 @1 with text "@2"=
 @1 with channel "@2"=

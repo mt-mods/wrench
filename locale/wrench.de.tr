@@ -10,7 +10,6 @@ Cannot pickup node. Node contains too much metadata.=Block kann nicht aufgenomme
 Cannot pickup node. Node is missing inventory.=Block kann nicht aufgenommen werden. Block ist kein Behälter.
 Cannot pickup node. Node contains unknown metadata.=Block kann nicht aufgenommen werden. Block enthält unbekannte Metadaten.
 
-@1 with @2=@1 mit @2
 @1 with items=@1 mit Gegenständen
 @1 with text "@2"=@1 mit Text "@2"
 @1 with channel "@2"=@1 mit Kanal "@2"

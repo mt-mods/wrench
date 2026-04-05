@@ -14,7 +14,6 @@ Cannot pickup node. Node contains too much metadata.=Tidak dapat mengambil nodus
 Cannot pickup node. Node is missing inventory.=Tidak dapat mengambil nodus. Nodus kehilangan inventaris.
 Cannot pickup node. Node contains unknown metadata.=Tidak dapat mengambil nodus. Nodus mengandung metadata yang tidak diketahui.
 
-@1 with @2=@1 berisi @2
 @1 with items=@1 berisi barang
 @1 with text "@2"=@1 berisi teks "@2"
 @1 with channel "@2"=@1 dengan saluran "@2"

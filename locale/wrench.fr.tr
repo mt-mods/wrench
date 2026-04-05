@@ -14,7 +14,6 @@ Cannot pickup node. Node contains too much metadata.=Impossible de récupérer l
 Cannot pickup node. Node is missing inventory.=Impossible de récupérer l'objet car l'inventaire est manquant
 Cannot pickup node. Node contains unknown metadata.=Impossible de récupérer l'objet car il contient des métadonnées inconnues.
 
-@1 with @2=@1 avec @2
 @1 with items=@1 avec des objets
 @1 with text "@2"=@1 avec le texte "@2"
 @1 with channel "@2"=@1 avec le canal "@2"

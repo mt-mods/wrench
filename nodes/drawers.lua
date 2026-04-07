@@ -1,7 +1,6 @@
 
 -- Register wrench support for drawers mod nodes
 
-local S = wrench.translator
 local INT, STRING = wrench.META_TYPE_INT, wrench.META_TYPE_STRING
 
 local function description(pos, meta, node, player)
@@ -11,10 +10,12 @@ local function description(pos, meta, node, player)
 		return wrench.description_with_items(pos, meta, node, player)
 	end
 
-	local node_def = core.registered_nodes[node.name]
-	local node_desc = node_def.description or node.name
 	local item_desc = ItemStack(item_name):get_short_description() or item_name
-	return S("@1 with @2", node_desc, item_desc)
+	local count = meta:get_int("count")
+	if 1000 <= count then
+		count = math.round(count * .001) .. "k"
+	end
+	return count .. " " .. item_desc
 end
 
 -- Assemble definitions for drawer type 1, 2 and 4

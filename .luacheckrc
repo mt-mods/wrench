@@ -7,6 +7,7 @@ globals = {
 
 read_globals = {
 	"core",
+	math = { fields = { "round" } },
 	"table.copy",
 	"table.indexof",
 	"minetest",

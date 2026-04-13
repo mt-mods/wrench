@@ -3,19 +3,37 @@
 
 local INT, STRING = wrench.META_TYPE_INT, wrench.META_TYPE_STRING
 
-local function description(pos, meta, node, player)
-	local item_name = meta:get_string("name")
-	-- Ignore cabinets with multiple drawers and empty ones.
-	if item_name == "" then
-		return wrench.description_with_items(pos, meta, node, player)
-	end
-
+local function compact_description_for_drawer(meta, id)
+	local item_name = meta:get_string("name" .. id)
 	local item_desc = ItemStack(item_name):get_short_description() or item_name
-	local count = meta:get_int("count")
+	local count = meta:get_int("count" .. id)
 	if 1000 <= count then
 		count = math.round(count * .001) .. "k"
 	end
 	return count .. " " .. item_desc
+end
+
+local function description(pos, meta, node, player)
+	local node_def = core.registered_nodes[node.name]
+	local drawers = node_def.groups.drawer
+
+	if 1 == drawers then
+		return compact_description_for_drawer(meta, "")
+	end
+
+	local id = 1
+	local descriptions = {}
+	repeat
+		table.insert(descriptions, compact_description_for_drawer(meta, id))
+		id = id + 1
+	until id > drawers
+
+  if 2 == drawers then
+		return table.concat(descriptions, "\n")
+	end
+
+	return descriptions[1] .. "   " .. descriptions[2] .. "\n"
+		.. descriptions[3] .. "   " .. descriptions[4]
 end
 
 -- Assemble definitions for drawer type 1, 2 and 4

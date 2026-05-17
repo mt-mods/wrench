@@ -52,6 +52,7 @@ To make maintaining support easier, wrench only supports specific versions of mo
 - `mesecons_microcontroller` - https://github.com/minetest-mods/mesecons
 - `missions` - https://github.com/mt-mods/missions
 - `mobs` - https://notabug.org/tenplus1/mobs_redo
+- `mooncontroller` - https://github.com/mt-mods/mooncontroller
 - `more_chests` - https://github.com/minetest-mods/more_chests
 - `moreblocks` - https://github.com/minetest-mods/moreblocks
 - `pipeworks` - https://github.com/mt-mods/pipeworks

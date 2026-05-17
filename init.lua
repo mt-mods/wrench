@@ -50,6 +50,7 @@ local mods = {
 	"mesecons_microcontroller",
 	"missions",
 	"mobs",
+	"mooncontroller",
 	"more_chests",
 	"moreblocks",
 	"pipeworks",

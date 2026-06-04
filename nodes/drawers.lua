@@ -3,14 +3,38 @@
 
 local INT, STRING = wrench.META_TYPE_INT, wrench.META_TYPE_STRING
 
--- Assemble definitions for drawer type 1, 2 and 4
+local function slot_description(meta, id)
+	local count = meta:get_int("count"..id)
+	if count == 0 then
+		return ""
+	end
+	local item = ItemStack(meta:get_string("name"..id)):get_short_description()
+	if count >= 1000 then
+		count = string.format("%.1fk", count / 1000)
+	end
+	return "\n"..count.." "..item
+end
+
+-- Assemble definitions for 1x1, 1x2 and 1x4 drawers
 for _, drawer_type in ipairs({1, 2, 4}) do
+
+	local function description(pos, meta, node)
+		local desc = wrench.description_with_items(pos, meta, node)
+		if drawer_type == 1 then
+			return desc..slot_description(meta, "")
+		end
+		for i=1, drawer_type do
+			desc = desc..slot_description(meta, i)
+		end
+		return desc
+	end
 
 	local def = {
 		lists = {"upgrades"},
 		metas = {
 			formspec = wrench.META_TYPE_IGNORE,
 		},
+		description = description,
 		after_place = drawers.spawn_visuals
 	}
 

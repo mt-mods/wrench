@@ -10,7 +10,7 @@ local function description(pos, meta, node, player)
 		return wrench.description_with_items(pos, meta, node, player)
 	end
 
-	local item_desc = ItemStack(item_name):get_short_description() or item_name
+	local item_desc = ItemStack(item_name):get_short_description()
 	local count = meta:get_int("count")
 	if 1000 <= count then
 		count = math.round(count * .001) .. "k"

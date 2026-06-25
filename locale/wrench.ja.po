@@ -1,0 +1,66 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Luanti textdomain wrench x.x.x\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-03-31 14:15+0000\n"
+"PO-Revision-Date: 2026-03-31 14:15+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: ja\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: ltt_convert 0.2.2\n"
+
+msgid "Wrench"
+msgstr "レンチ"
+
+msgid "Not enough room in inventory to pickup node."
+msgstr ""
+
+msgid "Cannot pickup node containing @1."
+msgstr ""
+
+msgid "Cannot pickup node. Owned by @1."
+msgstr ""
+
+msgid "Cannot pickup node. Nesting inventories is not allowed."
+msgstr ""
+
+msgid "Cannot pickup node. Node contains too much metadata."
+msgstr ""
+
+msgid "Cannot pickup node. Node is missing inventory."
+msgstr ""
+
+msgid "Cannot pickup node. Node contains unknown metadata."
+msgstr ""
+
+msgid "@1 with items"
+msgstr "アイテム付きレンチ @1"
+
+msgid "@1 with text \"@2\""
+msgstr ""
+
+msgid "@1 with channel \"@2\""
+msgstr ""
+
+msgid "@1 with configuration"
+msgstr ""
+
+msgid "@1 with armor"
+msgstr ""
+
+msgid "@1 with code"
+msgstr ""
+
+msgid "@1 with game \"@2\" vs. \"@3\""
+msgstr ""
+
+msgid "@1 with item \"@2\""
+msgstr ""
+
+msgid "@1 (light level @2) with channel \"@3\""
+msgstr ""
+

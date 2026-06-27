@@ -22,17 +22,16 @@ local function register_machine_node(nodename, tier)
 	})
 end
 
-local defaults = {tiers = {"LV", "MV", "HV"}}
-
 local base_machines = {
-	electric_furnace = defaults,
-	grinder = defaults,
-	compressor = defaults,
-	alloy_furnace = {tiers = {"LV", "MV"}},
-	extractor = {tiers = {"LV", "MV"}},
-	centrifuge = {tiers = {"MV"}},
-	freezer = {tiers = {"MV"}},
+	electric_furnace = {tiers = {"LV", "MV", technic.plus and "HV"}},
+	grinder          = {tiers = {"LV", "MV", technic.plus and "HV"}},
+	compressor       = {tiers = {"LV", "MV", technic.plus and "HV"}},
+	alloy_furnace    = {tiers = {"LV", "MV"}},
+	extractor        = {tiers = {"LV", "MV"}},
+	centrifuge       = {tiers = {"MV"}},
+	freezer          = {tiers = {"MV"}},
 }
+local generator_machine = {tiers = {"LV", "MV", "HV"}}
 
 for name, data in pairs(base_machines) do
 	for _, tier in ipairs(data.tiers) do
@@ -61,7 +60,7 @@ local function register_generator(nodename, tier)
 	})
 end
 
-for _, tier in ipairs(defaults.tiers) do
+for _, tier in ipairs(generator_machine) do
 	local nodename ="technic:"..tier:lower().."_generator"
 	register_generator(nodename, tier)
 	register_generator(nodename.."_active", tier)

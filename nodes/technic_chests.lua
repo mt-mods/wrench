@@ -70,12 +70,14 @@ local function register_chests(material, color)
 		metas = chests_meta[material],
 		description = description,
 	})
-	wrench.register_node("technic:"..material.."_protected_chest"..color, {
-		lists = {"main"},
-		lists_ignore = lists_ignore,
-		metas = chests_meta[material],
-		description = description,
-	})
+	if technic.plus then
+		wrench.register_node("technic:"..material.."_protected_chest"..color, {
+			lists = {"main"},
+			lists_ignore = lists_ignore,
+			metas = chests_meta[material],
+			description = description,
+		})
+	end
 	wrench.register_node("technic:"..material.."_locked_chest"..color, {
 		lists = {"main"},
 		lists_ignore = lists_ignore,
@@ -109,6 +111,8 @@ local chest_mark_colors = {
 	"_yellow",
 }
 
-for i = 1, 15 do
-	register_chests("gold", chest_mark_colors[i])
+if technic.plus then
+	for i = 1, 15 do
+		register_chests("gold", chest_mark_colors[i])
+	end
 end

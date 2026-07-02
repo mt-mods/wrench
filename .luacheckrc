@@ -26,6 +26,7 @@ read_globals = {
 	"signs_lib",
 	"smartshop",
 	"spacecannon",
+	"technic",
 	"xdecor",
 }
 

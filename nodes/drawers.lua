@@ -24,6 +24,7 @@ for _, drawer_type in ipairs({1, 2, 4}) do
 
 		def.metas["name"..suffix] = STRING
 		def.metas["count"..suffix] = INT
+		def.metas["locked"..suffix] = INT
 		def.metas["max_count"..suffix] = INT
 		def.metas["base_stack_max"..suffix] = INT
 		def.metas["entity_infotext"..suffix] = STRING

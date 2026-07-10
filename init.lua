@@ -62,6 +62,7 @@ local mods = {
 	"technic",
 	"technic_chests",
 	"technic_cnc",
+	"telemosaic",
 	"vacuum",
 	"vessels",
 	"wine",

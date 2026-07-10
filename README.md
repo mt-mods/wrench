@@ -64,6 +64,7 @@ To make maintaining support easier, wrench only supports specific versions of mo
 - `technic` - https://github.com/mt-mods/technic OR https://github.com/minetest-mods/technic
 - `technic_chests` - https://github.com/mt-mods/technic
 - `technic_cnc` - https://github.com/mt-mods/technic
+- `telemosaic` - https://github.com/mt-mods/telemosaic
 - `vacuum` - https://github.com/mt-mods/vacuum
 - `vessels` - https://github.com/minetest/minetest_game
 - `wine` - https://codeberg.org/tenplus1/wine

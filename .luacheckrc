@@ -9,6 +9,7 @@ read_globals = {
 	"core",
 	"table.copy",
 	"table.indexof",
+	"string.split",
 	"minetest",
 	"ItemStack",
 	"barter",
